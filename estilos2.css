@@ -1,0 +1,333 @@
+/* Elimina los márgenes por defecto */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fuente de toda la página */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f4f6f9; /* Fondo suave para el resto del sitio */
+}
+
+/* NAVBAR */
+nav {
+  display: flex; /* los pone horizontalmente*/
+  padding: 12px 40px;
+  background-color: #0F2137;
+  align-items: center; /* centra verticalmente los elementos del nav */
+  justify-content: space-between; /* espacio entre logo y menú */
+}
+
+nav a:not(.logo a) { /*para que el logo no cambie de color al pasar el mouse*/
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:not(.logo a):hover {
+  color: #F9A826;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600; /* grosor */
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* SECCIÓN HERO */
+.hero {
+  min-height: 400px; /* flexibiliza la altura si el contenido crece */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 80px;
+  color: #ffffff;
+  /* Capa oscura sobre la imagen para legibilidad */
+  background-image: linear-gradient(rgba(15, 33, 55, 0.6), rgba(15, 33, 55, 0.6)), url('fondo.png');
+  background-size: cover; /*ocupa todo el hero*/
+  background-position: center;
+  background-repeat: no-repeat; /* Evita que la imagen se repita por si es muy chica */
+}
+
+.hero-izquierda {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.hero-derecha {
+  width: 38%;
+}
+
+/* Texto de la sección Hero */
+.hero-content {
+  text-align: left; 
+  max-width: 600px;
+}
+
+.hero-content h1 {
+  font-size: 36px; 
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.hero-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #e0e6ed;
+}
+
+/* BARRA DE CARACTERÍSTICAS */
+.caracteristicas {
+  max-width: 550px;
+  display: flex;
+  flex-wrap: wrap; /*para que si se achica la pag, las cosas vayan hacia abajo*/
+  justify-content: space-around;
+  background-color: rgba(15, 33, 55, 0.85); /* Coherencia de color con el nav */
+  backdrop-filter: blur(5px); /* Efecto cristal moderno */
+  color: #ffffff;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.caracteristicas .item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.caracteristicas .item img {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 6px;
+}
+
+.caracteristicas .item h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.caracteristicas .item p {
+  font-size: 11px;
+  color: #b0c4de;
+}
+
+.cotizacion {
+  background-color: rgba(10, 25, 47, 0.15);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.cotizacion form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cotizacion h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px
+}
+
+.cotizacion label {
+  font-size: 15px;
+  font-weight:600;
+}
+
+.cotizacion button {
+  margin-top: 10px; /*margen arriba*/
+  padding: 15px;   /*para extender la caja naranja*/
+  background-color: #F9A826;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer; /*cursor cambia a una mano*/
+  transition: 0.3s;
+}
+
+.cotizacion button:hover {
+  background-color: #d48b1d;
+}
+
+
+.titulo-publi h2{
+  font-size: 22px;
+  font-weight: 600;
+  padding: 15px 15px;
+  display: flex;
+  justify-content: center;
+}
+
+.boton-publi {
+  display:flex;
+  justify-content: flex-end; /*alinear horizontalmente al final*/
+  padding: 15px 15px;
+}
+
+.boton-publi button {
+  background: none;
+  border: none;
+  color: #2F80ED;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+.publicaciones-card{  /*como se distribuyen todas las publicaciones.*/
+  display:flex;
+  flex-wrap: wrap; /*por si no entran las publi, las manda para abajo*/
+  gap: 20px;  
+  justify-content: center; /*centra las cajas*/
+}
+
+.publi {
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(22, 81, 171, 0.398);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.publi img {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+}
+
+.modelo-publi{
+  padding: 10px;
+  font-weight: 500;
+}
+
+
+.especificaciones-publi {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px;
+}
+
+.especificaciones-publi p {
+  font-size: 14px;
+  color: #555;
+}
+
+.precio-publi p {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.publi button {
+  margin: 15px;  /*margenes hacia afuera*/
+  padding: 12px;  /*espacio hacia adentro*/
+  background-color: #1b4774; /*fondo*/
+  color: white;  /*color ver publicacion que es realmente el boton*/
+  border: none;    
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.publi button:hover {
+  background-color: #5c80a5;
+}
+
+footer {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #0F2137;
+  margin-top: 80px;
+}
+
+.empresaInfo{
+  color: #ffffff;
+}
+
+.infoHeader{
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contentInfoEmpresa{
+  font-size: 17px;
+  margin-top: 10px;
+  max-width: 300px;
+}
+
+.empresaInfo img{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.infoHeader h3 {
+  font-size: 22px;
+  font-weight: 600;
+  /*margin: 10px;*/
+}
+
+.contactoEmpresa {
+  color: #ffffff;
+  min-width: 150px;
+}
+
+.contactoEmpresa h3 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.contactoEmpresa ul {
+  list-style: none;
+  margin: 20px;
+  gap: 20px;
+}
+
+
+.divisorFooter {
+  display: flex;
+  justify-content: center;
+  gap: 150px;  /*espacio entre ambas secciones*/
+  
+}
+
+.infoLegal {
+  color: #ffffff;
+  margin-top: 30px;
+}

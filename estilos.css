@@ -1,0 +1,21 @@
+header{
+    display: flex; /*los pone horizontal */
+    justify-content: space-between; /* separa los elem */
+    height: 70px;
+    background-color: #0F2137;
+    padding: 10px; /* Agrega espacio para centrar */
+    align-items: center; 
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* redondea img */
+    object-fit: cover;
+    margin-right: 10px;
+}
