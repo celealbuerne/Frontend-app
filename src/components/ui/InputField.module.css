@@ -1,0 +1,36 @@
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+}
+
+.label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0f2137;
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: #1a202c;
+  background-color: #ffffff;
+  border: 2px solid #4d687c;
+  border-radius: 10px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease; /* esto anima la transicion a la regla :focus */
+}
+
+.inputField:focus {
+  border-color: #1b4774;
+  box-shadow: 0 0 0 3px rgba(27, 71, 116, 0.25);
+}
+
+.inputField::placeholder {
+  color: #8c9ba5;
+  font-size: 0.95rem;
+}

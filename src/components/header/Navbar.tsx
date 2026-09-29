@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import style from './Navbar.module.css';
 
 const NAV_OPTIONS = [
-  { key: 'Inicio', href: '#' },
+  { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '#' },
   { key: 'Aeropuertos', href: '#' },
   { key: 'Proveedores', href: '#' },
@@ -23,7 +23,7 @@ export default function Navbar() {
           );
         })}
       </ul>
-      <Link to="#" className={style.loginLink}>
+      <Link to="/login" className={style.loginLink}>
         Ingresar
       </Link>
     </nav>
