@@ -1,0 +1,7 @@
+.publicacionesRecientes {
+  margin: 20px;
+  padding: 10px 0;
+  background-color: #91aabf;
+  display: flex;
+  flex-direction: column;
+}

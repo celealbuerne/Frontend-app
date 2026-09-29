@@ -1,0 +1,57 @@
+.publi {
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(22, 81, 171, 0.398);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 20rem;
+}
+
+.publi img {
+  align-self: center;
+  height: 12rem;
+  width: auto;
+  object-fit: cover;
+}
+
+.modeloPubli {
+  padding: 10px;
+  font-weight: 500;
+}
+
+.especificacionesPubli {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 15px;
+}
+
+.especificacionesPubli p {
+  font-size: 14px;
+  color: #555;
+}
+
+.precioPubli p {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.publi button {
+  margin: 15px; /*margenes hacia afuera*/
+  padding: 12px; /*espacio hacia adentro*/
+  background-color: #1b4774; /*fondo*/
+  color: white; /*color ver publicacion que es realmente el boton*/
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.publi button:hover {
+  background-color: #5c80a5;
+}

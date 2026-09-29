@@ -1,0 +1,41 @@
+.navbar {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border-top: 1px #4a5b6f solid;
+  border-bottom: 1px #4a5b6f solid;
+  padding: 5px 0;
+}
+
+.menu {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menuOption {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.menuOption:hover {
+  color: #ebf5ff;
+}
+
+.loginLink {
+  position: absolute; /* sale del flujo */
+  right: 20px; /* distancia al borde derecho de la pagina */
+  color: #acd6ff;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.loginLink:hover {
+  color: #cbacff;
+  text-decoration: underline;
+}
