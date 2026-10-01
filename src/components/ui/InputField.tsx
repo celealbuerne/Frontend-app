@@ -14,7 +14,12 @@ export default function InputField({ label, name, ...rest }: InputFieldProps) {
       <label htmlFor={inputId} className={style.label}>
         {label}
       </label>
-      <input id={inputId} className={style.inputField} {...rest} />
+      <input
+        id={inputId}
+        className={style.inputField}
+        name={inputId}
+        {...rest}
+      />
     </div>
   );
 }

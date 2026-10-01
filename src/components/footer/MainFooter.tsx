@@ -29,10 +29,8 @@ export default function MainFooter() {
         <ul className={style.socialMediaOptions}>
           {CONTACT_OPTIONS.map((op) => {
             return (
-              <li>
-                <Link key={op.key} to={op.href}>
-                  {op.key}
-                </Link>
+              <li key={op.key}>
+                <Link to={op.href}>{op.key}</Link>
               </li>
             );
           })}

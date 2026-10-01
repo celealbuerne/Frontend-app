@@ -15,8 +15,8 @@ export default function Navbar() {
       <ul className={style.menu}>
         {NAV_OPTIONS.map((op) => {
           return (
-            <li>
-              <Link key={op.key} to={op.href} className={style.menuOption}>
+            <li key={op.key}>
+              <Link to={op.href} className={style.menuOption}>
                 {op.key}
               </Link>
             </li>
