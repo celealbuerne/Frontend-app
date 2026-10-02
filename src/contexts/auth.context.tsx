@@ -21,14 +21,20 @@ export function AuthProvider({ children }: AuthProviderProps) {
     return !!localStorage.getItem('sessionToken');
   });
   const [currentUser, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('sessionUser');
-    return savedUser ? JSON.parse(savedUser) : null;
+    try {
+      const savedUser = localStorage.getItem('sessionUser');
+      return savedUser ? JSON.parse(savedUser) : null;
+    } catch {
+      localStorage.removeItem('sessionUser');
+      return null;
+    }
   });
 
   const loginUser = async (user: string, password: string) => {
     const res = await login(user, password);
 
     localStorage.setItem('sessionToken', res.data.token);
+    localStorage.setItem('sessionUser', JSON.stringify(res.data.usuario));
     setIsLogged(true);
     setUser(res.data.usuario);
 
