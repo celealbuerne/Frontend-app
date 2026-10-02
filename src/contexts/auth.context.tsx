@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, type ReactNode } from 'react';
 import type { RegisterPayload, User } from '../models/user.model.ts';
-import { login } from '../services/auth.service.ts';
+import { login, register } from '../services/auth.service.ts';
 
 interface AuthContextType {
   currentUser: User | null;
@@ -43,18 +43,9 @@ export function AuthProvider({ children }: AuthProviderProps) {
   };
 
   const registerUser = async (data: RegisterPayload) => {
-    /*
-        const res = await login(user, password);
-        
-        if (!res.ok){
-            throw new Error(res.mensaje);
-        }
-        
-        localStorage.setItem('sessionToken', res.data.token)
-        setIsLogged(true);
+    const res = await register(data);
 
-        console.log(res.mensaje, res.data.token);
-        */
+    console.log(res.mensaje, res.data);
   };
 
   return (

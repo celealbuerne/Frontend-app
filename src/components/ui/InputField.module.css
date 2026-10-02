@@ -34,3 +34,23 @@
   color: #8c9ba5;
   font-size: 0.95rem;
 }
+
+select.inputField {
+  cursor: pointer;
+}
+
+.inputField.inputError {
+  border-color: #8b0000;
+}
+
+.inputField.inputError:focus {
+  border-color: #8b0000;
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.25);
+}
+
+.errorMessage {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #6b0f1a;
+  margin-top: -6px;
+}

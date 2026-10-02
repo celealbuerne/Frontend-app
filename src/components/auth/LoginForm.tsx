@@ -47,7 +47,7 @@ export default function LoginForm() {
 
         <div className={style.registerPrompt}>
           <span>¿No tienes una cuenta? </span>
-          <Link to="#" className={style.registerLink}>
+          <Link to="/register" className={style.registerLink}>
             Registrarse
           </Link>
         </div>

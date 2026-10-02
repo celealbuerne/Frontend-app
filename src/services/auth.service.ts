@@ -1,3 +1,4 @@
+import type { RegisterPayload } from '../models/user.model.ts';
 import { api } from './api.ts';
 
 export async function login(user: string, password: string) {
@@ -15,6 +16,26 @@ export async function login(user: string, password: string) {
     if (!response.ok) {
       const errorData = await response.json().catch(() => null);
       throw new Error(errorData?.message || 'Error al iniciar sesión');
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+
+export async function register(payload: RegisterPayload) {
+  try {
+    const response = await api('/auth/register', {
+      method: 'POST',
+      body: payload,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => null);
+      throw new Error(errorData?.message || 'Error al registrar el usuario');
     }
 
     const data = await response.json();

@@ -4,10 +4,21 @@ import style from './InputField.module.css';
 interface InputFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string;
   name: string;
+  error?: string;
 }
-export default function InputField({ label, name, ...rest }: InputFieldProps) {
+
+export default function InputField({
+  label,
+  name,
+  error,
+  className = '',
+  ...rest
+}: InputFieldProps) {
   const generatedId = useId();
   const inputId = name || generatedId;
+
+  const inputClasses =
+    `${style.inputField} ${error ? style.inputError : ''} ${className}`.trim();
 
   return (
     <div className={style.inputContainer}>
@@ -16,10 +27,12 @@ export default function InputField({ label, name, ...rest }: InputFieldProps) {
       </label>
       <input
         id={inputId}
-        className={style.inputField}
+        className={inputClasses}
         name={inputId}
+        aria-invalid={!!error}
         {...rest}
       />
+      {error && <span className={style.errorMessage}>{error}</span>}
     </div>
   );
 }
