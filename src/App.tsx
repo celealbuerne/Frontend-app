@@ -5,6 +5,7 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './contexts/auth.context';
 import RegisterPage from './pages/RegisterPage';
+import ProfilePage from './pages/ProfilePage.tsx';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route index element={<HomePage />}></Route>
             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/register" element={<RegisterPage />}></Route>
+            <Route path="/profile" element={<ProfilePage />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>

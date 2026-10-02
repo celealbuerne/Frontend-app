@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import style from './Navbar.module.css';
+import { useAuth } from '../../contexts/auth.context.tsx';
 
 const NAV_OPTIONS = [
   { key: 'Inicio', href: '/' },
@@ -10,6 +11,8 @@ const NAV_OPTIONS = [
 ];
 
 export default function Navbar() {
+  const { isLogged } = useAuth();
+
   return (
     <nav className={style.navbar}>
       <ul className={style.menu}>
@@ -23,9 +26,15 @@ export default function Navbar() {
           );
         })}
       </ul>
-      <Link to="/login" className={style.loginLink}>
-        Ingresar
-      </Link>
+      {isLogged ? (
+        <Link to="/profile" className={style.loginLink}>
+          Mi Perfil
+        </Link>
+      ) : (
+        <Link to="/login" className={style.loginLink}>
+          Ingresar
+        </Link>
+      )}
     </nav>
   );
 }

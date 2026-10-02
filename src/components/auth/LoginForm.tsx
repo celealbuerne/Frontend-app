@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../ui/InputField';
 import Button from '../ui/Button';
 import style from './LoginForm.module.css';
@@ -6,6 +6,7 @@ import { useAuth } from '../../contexts/auth.context';
 
 export default function LoginForm() {
   const { loginUser } = useAuth();
+  const navigate = useNavigate();
 
   const submitForm = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,6 +17,7 @@ export default function LoginForm() {
     try {
       await loginUser(user, password);
       event.target.reset();
+      navigate('/profile', { replace: true });
     } catch (error) {
       console.error(error);
     }
