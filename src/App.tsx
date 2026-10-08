@@ -6,6 +6,9 @@ import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './contexts/auth.context';
 import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage.tsx';
+import HomeProveedor from './pages/proveedor/HomeProveedor';
+import CrearPublicacion from './pages/proveedor/CrearPublicacion';
+
 
 function App() {
   return (
@@ -17,6 +20,8 @@ function App() {
             <Route path="/login" element={<LoginPage />}></Route>
             <Route path="/register" element={<RegisterPage />}></Route>
             <Route path="/profile" element={<ProfilePage />}></Route>
+            <Route path="/proveedor" element={<HomeProveedor />} />
+            <Route path="/proveedor/crear-publicacion" element={<CrearPublicacion/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

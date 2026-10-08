@@ -32,3 +32,10 @@
   scrollbar-width: auto;
   gap: 20px;
 }
+
+/* cargando - sin publicaciones */
+.mensaje{
+  margin: 20px 20px;
+  color: #ffffff;
+  text-align: center;
+}

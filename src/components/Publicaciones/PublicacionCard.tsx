@@ -9,6 +9,8 @@ export interface publicacionData {
   precio: number;
 }
 
+const BASE_URL = 'http://localhost:3000';
+
 export default function PublicacionCard({
   imagen,
   modelo,
@@ -17,9 +19,13 @@ export default function PublicacionCard({
   capacidad,
   precio,
 }: publicacionData) {
+  const src = `${BASE_URL}/${imagen.replace(/^\/+/, '')}`;
+
   return (
     <article className={style.publi}>
-      <img src={imagen} alt="imagenPublicacion" />
+      <img
+        src={src} alt="Aeronave" 
+      />
 
       <div className={style.modeloPubli}>
         <h3>{modelo}</h3>

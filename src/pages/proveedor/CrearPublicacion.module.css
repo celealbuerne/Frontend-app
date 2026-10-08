@@ -1,0 +1,121 @@
+.contenedor {
+  width: 100%;
+  padding: 3rem 2rem 5rem;
+  box-sizing: border-box;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.titulo {
+  color: #ffffff;
+  font-size: 1.7rem;
+}
+
+.botonVolver {
+  color: #acd6ff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.botonVolver:hover {
+  color: #cbacff;
+  text-decoration: underline;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto; /*sin margen arriba/abajo y centrado horizontalmente*/
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  border: 1px solid #e1e8ef;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(15, 33, 55, 0.12);
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: #0f2137;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.campo input,
+.campo textarea,
+.campo select {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid #c9d5e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #0f2137;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.campo input:focus,
+.campo textarea:focus,
+.campo select:focus {
+  outline: 2px solid #1e4263;
+}
+
+.campo textarea {
+  resize: vertical;
+}
+
+.fechas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.vistaPrevia {
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.errores,
+.errorServidor {
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.errores {
+  padding-left: 2rem;
+}
+
+.botonPublicar {
+  padding: 0.85rem 1.4rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e4263;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botonPublicar:hover {
+  background-color: #15324c;
+}
+

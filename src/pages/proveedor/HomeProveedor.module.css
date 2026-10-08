@@ -1,0 +1,89 @@
+.contenedor {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 3rem 2rem 4rem;
+  min-height: 15 px;
+ 
+}
+
+/*  (titulo + boton) */
+.encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: #000000 1px solid; /*luego cambiar color*/
+}
+.titulo {
+  color: black;
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+
+.botonNueva {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 8px;
+  background-color: #15334f;  
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  transition:
+    background-color 0.2s ease,
+    transform 0.15s ease,
+}
+/*color y lo levanta al pasar el mouse*/
+.botonNueva:hover {
+  background-color: #082137;
+  transform: translateY(-2px); 
+}
+
+.contenedorPublicaciones {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* listado de publicaciones */
+.lsitado {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.8rem;
+}
+
+/* estado sin publicaciones */
+.vacio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 250px;
+  padding: 3rem 2rem;
+  background-color: #ffffff;
+  border: 1px solid #e1e8ef;
+  border-radius: 14px;
+  color: #6b7d90;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+/* mensaje de error */
+
+.error {
+  margin: 0;
+  padding: 1rem 1.25rem;
+
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+
+  font-size: 0.95rem;
+}

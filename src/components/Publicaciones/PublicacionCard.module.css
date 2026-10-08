@@ -10,10 +10,11 @@
 }
 
 .publi img {
-  align-self: center;
+  width: 100%;
   height: 12rem;
-  width: auto;
   object-fit: cover;
+  display: block;
+  border-radius: 20px 20px 0 0;
 }
 
 .modeloPubli {
