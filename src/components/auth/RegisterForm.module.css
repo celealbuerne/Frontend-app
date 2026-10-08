@@ -25,6 +25,13 @@
   gap: 30px;
 }
 
+.roleSection {
+  grid-column: span 2;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
 .sectionTitle {
   grid-column: span 2;
   font-size: 1.25rem;

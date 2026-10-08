@@ -5,7 +5,7 @@ import { login, register } from '../services/auth.service.ts';
 interface AuthContextType {
   currentUser: User | null;
   isLogged: boolean;
-  loginUser: (user: string, password: string) => Promise<void>;
+  loginUser: (user: string, password: string) => Promise<User>; 
   logoutUser: () => void;
   registerUser: (data: RegisterPayload) => Promise<void>;
 }
@@ -38,7 +38,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     setIsLogged(true);
     setUser(res.data.usuario);
 
-    console.log(res.mensaje, res.data.token);
+    return res.data.usuario
   };
 
   const logoutUser = () => {

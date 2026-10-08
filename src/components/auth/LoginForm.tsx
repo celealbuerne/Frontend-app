@@ -15,9 +15,15 @@ export default function LoginForm() {
     const password = event.target.password.value.trim();
 
     try {
-      await loginUser(user, password);
+      const usuario = await loginUser(user, password);
       event.target.reset();
-      navigate('/profile', { replace: true });
+      if (usuario.roles.includes('PROVEEDOR')) {
+        navigate('/proveedor', { replace: true });
+      } else if (usuario.roles.includes('CLIENTE')) {
+        navigate('/perfil', { replace: true });
+      } else if (usuario.roles.includes('ADMIN')) {
+        navigate('/admin', { replace: true });
+      }
     } catch (error) {
       console.error(error);
     }
@@ -29,10 +35,10 @@ export default function LoginForm() {
 
       <form className={style.form} onSubmit={submitForm}>
         <InputField
-          label="Usuario (Correo electrónico)"
-          type="email"
+          label="Usuario"
+          type="text"
           name="user"
-          placeholder="ejemplo@mail.com"
+          placeholder="ejemplo"
           required
         />
         <InputField

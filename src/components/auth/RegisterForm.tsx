@@ -16,6 +16,7 @@ interface formError {
   identity?: string;
   password?: string;
   confirmPassword?: string;
+  rol?: string;
 }
 
 export default function RegisterForm() {
@@ -63,6 +64,7 @@ export default function RegisterForm() {
       tipoDocumento: event.target.identityType.value.trim(),
       documento: Number(event.target.identity.value.trim()),
       contraseña: event.target.password.value.trim(),
+      rol: event.target.rol.value.trim(),
     };
 
     try {
@@ -99,10 +101,10 @@ export default function RegisterForm() {
           required
         />
         <InputField
-          label="Usuario (Correo electrónico)"
-          type="email"
+          label="Usuario"
+          type="text"
           name="user"
-          placeholder="ejemplo@mail.com"
+          placeholder="Ingrese su nombre de usuario"
           error={formErrors.user}
           onChange={() => clearError('user')}
           required
@@ -125,6 +127,19 @@ export default function RegisterForm() {
           onChange={() => clearError('confirmPassword')}
           required
         />
+        <section className={style.roleSection}>
+          <h2 className={style.sectionTitle}>Selecciona tu rol</h2>
+          <SelectField
+            label="Quiero registrarme como"
+            name="rol"
+            defaultValue="CLIENTE"
+            required
+            options={[
+            { value: 'CLIENTE', label: 'Cliente (quiero reservar vuelos)' },
+            { value: 'PROVEEDOR', label: 'Proveedor (quiero publicar mis aeronaves)' },
+            ]}
+          ></SelectField>
+        </section>
 
         <h2 className={style.sectionTitle}>Datos Personales</h2>
 
