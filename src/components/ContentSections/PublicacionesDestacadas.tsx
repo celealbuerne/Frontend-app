@@ -35,7 +35,7 @@ export default function Publicaciones() {
     <>
       <div className={style.headMenu}>
         <h2 className={style.titulo}>Publicaciones Destacadas</h2>
-        <Link to="#" className={style.botonMas}>
+        <Link to="/publicacion" className={style.botonMas}>
           Ver más
         </Link>
       </div>
@@ -45,17 +45,9 @@ export default function Publicaciones() {
       {publicaciones?.length === 0 && !error && <p className={style.mensaje}>Todavía no hay publicaciones.</p>}
 
       <div className={style.publicaciones}>
-        {(publicaciones ??[]).map((publicacion) => {
+        {(publicaciones ?? []).map((publicacion) => {
           return (
-            <PublicacionCard
-              key={publicacion.id}
-              imagen={publicacion.imagen}
-              modelo={publicacion.laAeronave.modelo}
-              origen={publicacion.laAeronave.elAeropuerto.nombre}
-              descripcion={publicacion.descripcion}
-              capacidad={publicacion.laAeronave.capacidad}
-              precio={publicacion.precioPorKM}
-            />
+            <PublicacionCard key={publicacion.id} publicacion={publicacion} />
           );
         })}
       </div>

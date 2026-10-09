@@ -2,46 +2,33 @@
   box-sizing: border-box;
   width: 100%;
   padding: 3rem 2rem 4rem;
-  min-height: 15 px;
- 
+  min-height: 10px;
 }
 
 /*  (titulo + boton) */
 .encabezado {
   display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
+  gap: 1rem;
   justify-content: space-between;
   width: 100%;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
+  margin-bottom: 25px;
   border-bottom: #000000 1px solid; /*luego cambiar color*/
 }
+
 .titulo {
-  color: black;
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f2137;
+  text-align: center;
+  margin: 0;
 }
 
 .botonNueva {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 18px;
-  border-radius: 8px;
-  background-color: #15334f;  
-  color: #ffffff;
-  font-size: 15px;
-  font-weight: bold;
-  transition:
-    background-color 0.2s ease,
-    transform 0.15s ease,
-}
-/*color y lo levanta al pasar el mouse*/
-.botonNueva:hover {
-  background-color: #082137;
-  transform: translateY(-2px); 
+  width: auto;
+  align-self: flex-start;
+  margin-bottom: 10px;
 }
 
 .contenedorPublicaciones {
@@ -51,7 +38,7 @@
 }
 
 /* listado de publicaciones */
-.lsitado {
+.listado {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.8rem;

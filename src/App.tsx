@@ -9,7 +9,6 @@ import ProfilePage from './pages/ProfilePage.tsx';
 import HomeProveedor from './pages/proveedor/HomeProveedor';
 import CrearPublicacion from './pages/proveedor/CrearPublicacion';
 
-
 function App() {
   return (
     <AuthProvider>

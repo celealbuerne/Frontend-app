@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/auth.context';
 import { getMisPublicaciones } from '../../services/publicacion.service';
 import type { Publicacion } from '../../models/publicacion.model';
 import PublicacionCard from '../../components/Publicaciones/PublicacionCard';
 import style from './HomeProveedor.module.css';
+import Button from '../../components/ui/Button';
 
 
 export default function HomeProveedor() {
   const { currentUser } = useAuth();
+  const navigate = useNavigate()
 
   // null = todavia no llego la respuesta, [] no hay publicaciones
   const [publicaciones, setPublicaciones] = useState<Publicacion[] | null>(null);
@@ -45,9 +47,14 @@ export default function HomeProveedor() {
     <main className={style.contenedor}>
       <div className={style.encabezado}>
         <h1 className={style.titulo}>Mis publicaciones</h1>
-        <Link to="/proveedor/crear-publicacion" className={style.botonNueva}>
-          Crear publicación
-        </Link>
+        <Button
+          type='button'
+          variant='primary'
+          className={style.botonNueva}
+          onClick={() => navigate('/proveedor/crear-publicacion')}
+        >
+          Crear Publicación
+        </Button>
       </div>
       
       <section className={style.contenedorPublicaciones}>
@@ -59,15 +66,7 @@ export default function HomeProveedor() {
 
         <section className={style.listado}>
           {(publicaciones ?? []).map((publicacion) => (
-            <PublicacionCard
-              key={publicacion.id}
-              imagen= {publicacion.imagen}
-              modelo={publicacion.laAeronave.modelo}
-              origen={publicacion.laAeronave.elAeropuerto.nombre}
-              descripcion={publicacion.descripcion}
-              capacidad={publicacion.laAeronave.capacidad}
-              precio={publicacion.precioPorKM}
-            />
+            <PublicacionCard key={publicacion.id} publicacion={publicacion} />
           ))}
         </section>
       </section>

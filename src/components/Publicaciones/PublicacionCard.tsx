@@ -1,30 +1,20 @@
 import style from './PublicacionCard.module.css';
+import type { Publicacion } from '../../models/publicacion.model';
 
-export interface publicacionData {
-  imagen: string;
-  modelo: string;
-  origen: string;
-  descripcion: string;
-  capacidad: number;
-  precio: number;
-}
+
 
 const BASE_URL = 'http://localhost:3000';
 
-export default function PublicacionCard({
-  imagen,
-  modelo,
-  origen,
-  descripcion,
-  capacidad,
-  precio,
-}: publicacionData) {
+export default function PublicacionCard({ publicacion }: {publicacion: Publicacion}) {
+  const { imagen, descripcion, precioPorKM, laAeronave } = publicacion;
+  const {modelo, capacidad, elAeropuerto} = laAeronave;
+
   const src = `${BASE_URL}/${imagen.replace(/^\/+/, '')}`;
 
   return (
     <article className={style.publi}>
       <img
-        src={src} alt="Aeronave" 
+        src={src} alt={`Aeronave ${modelo}`}
       />
 
       <div className={style.modeloPubli}>
@@ -32,13 +22,13 @@ export default function PublicacionCard({
       </div>
 
       <div className={style.especificacionesPubli}>
-        <p>{origen}</p>
+        <p>{elAeropuerto.nombre}</p>
         <p>{descripcion}</p>
         <p>Hasta {capacidad} pasajeros</p>
       </div>
 
       <div className={style.precioPubli}>
-        <p>{precio} USD/km</p>
+        <p>{precioPorKM} USD/km</p>
       </div>
 
       <button type="button">Ver Más</button>
