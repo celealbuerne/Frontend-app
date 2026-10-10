@@ -35,7 +35,7 @@ export default function Publicaciones() {
     <>
       <div className={style.headMenu}>
         <h2 className={style.titulo}>Publicaciones Destacadas</h2>
-        <Link to="/publicacion" className={style.botonMas}>
+        <Link to="/publicaciones" className={style.botonMas}>
           Ver más
         </Link>
       </div>

@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import ProfilePage from './pages/ProfilePage.tsx';
 import HomeProveedor from './pages/proveedor/HomeProveedor';
 import CrearPublicacion from './pages/proveedor/CrearPublicacion';
+import PublicacionHome from './pages/publicacion/PublicacionHome.tsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/profile" element={<ProfilePage />}></Route>
             <Route path="/proveedor" element={<HomeProveedor />} />
             <Route path="/proveedor/crear-publicacion" element={<CrearPublicacion/>}/>
+            <Route path="/publicaciones" element={<PublicacionHome/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

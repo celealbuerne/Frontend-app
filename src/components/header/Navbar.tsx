@@ -4,7 +4,7 @@ import { useAuth } from '../../contexts/auth.context.tsx';
 
 const NAV_VISITANTE = [
   { key: 'Inicio', href: '/' },
-  { key: 'Publicaciones', href: '#' },
+  { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Aeropuertos', href: '#' },
   { key: 'Proveedores', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
@@ -21,7 +21,7 @@ const NAV_PROVEEDOR = [
 
 const NAV_CLIENTE = [
   { key: 'Inicio', href: '/' },
-  { key: 'Publicaciones', href: '#' },
+  { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Reservas', href: '#' },
   { key: 'Aeropuertos', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
