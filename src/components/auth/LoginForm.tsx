@@ -20,9 +20,9 @@ export default function LoginForm() {
       if (usuario.roles.includes('PROVEEDOR')) {
         navigate('/proveedor', { replace: true });
       } else if (usuario.roles.includes('CLIENTE')) {
-        navigate('/perfil', { replace: true });
+        navigate('/profile', { replace: true });
       } else if (usuario.roles.includes('ADMIN')) {
-        navigate('/admin', { replace: true });
+        navigate('/profile', { replace: true });
       }
     } catch (error) {
       console.error(error);
