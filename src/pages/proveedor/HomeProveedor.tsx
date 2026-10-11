@@ -20,10 +20,10 @@ export default function HomeProveedor() {
     if (!currentUser) return;
     let cancelado = false;
 
-    async function cargarPublicaciones(proveedorID: number) {
+    async function cargarPublicaciones() {
       try {
         setError(null); //limia cualquier error
-        const response = await getMisPublicaciones(proveedorID);
+        const response = await getMisPublicaciones();
         if (!cancelado) setPublicaciones(response.data);
       } catch (e) {
         if (!cancelado) {  //cancelado es false-> el efecto todavia no fue cancelado
@@ -33,7 +33,7 @@ export default function HomeProveedor() {
       }
     }
 
-    cargarPublicaciones(currentUser.id);
+    cargarPublicaciones();
     return () => {
       cancelado = true;
     };

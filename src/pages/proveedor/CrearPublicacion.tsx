@@ -7,11 +7,7 @@ export default function CrearPublicacion() {
   const navigate = useNavigate();
 
   const crearForm = async (datos: FormData) =>{
-    const response= await createPublicacion(datos);
-    if (!response.ok){
-      const body = await response.json().catch(() => null);
-      throw new Error(body?.mensaje ?? 'No se pudo crear la publicación');
-    }
+    await createPublicacion(datos);
     navigate('/proveedor')
   }
 

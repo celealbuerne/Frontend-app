@@ -5,7 +5,7 @@ interface AeronavesResponse {
   mensaje: string;
   data: Aeronave[];
 }
-
+//revisar el lo del id y cambiar
 export async function getAeronavesByProveedor(proveedorID: number): Promise<AeronavesResponse> {
   const response = await api(`/aeronaves/proveedor/${proveedorID}`);
 

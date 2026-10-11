@@ -42,8 +42,8 @@ export async function createPublicacion(data: FormData){
   return response.json();
 }
 
-export async function getMisPublicaciones(proveedorId: number): Promise<PublicacionesResponse> {
-  const response = await api(`/publicaciones/MisPublicaciones/${proveedorId}`);
+export async function getMisPublicaciones(): Promise<PublicacionesResponse> {
+  const response = await api('/publicaciones/MisPublicaciones');
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
     throw new Error(errorData?.message || 'Error al obtener las publicaciones');

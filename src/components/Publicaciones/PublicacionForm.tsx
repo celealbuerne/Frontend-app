@@ -28,6 +28,7 @@ export default function PublicacionForm({
   const [errores, setErrores] = useState<string[]>([]);
   const [errorServidor, setErrorServidor] = useState<string | null>(null);
   const [vistaPrevia, setVistaPrevia] = useState<string | null>(null); //guarda la URL temporal de la img elegida para mostrarla antes de enviarla al back
+  const [enviando, setEnviando] = useState(false);
 
   const hoy = new Date().toLocaleDateString('en-CA');
 
@@ -36,7 +37,7 @@ export default function PublicacionForm({
       if (!currentUser) return;
 
       try {
-        const respuesta = await getAeronavesByProveedor(currentUser.id);
+        const respuesta = await getAeronavesByProveedor(currentUser.id); //revisar lo del id
         setAeronaves(respuesta.data);
       } catch (e) {
         setErrorServidor(
@@ -79,18 +80,20 @@ export default function PublicacionForm({
     setErrorServidor(null);
     if (nuevosErrores.length > 0) return;
 
+    setEnviando(true);
     try {
       await onSubmit(datos); // (crear o editar)
     } catch (e) {
       setErrorServidor(
         e instanceof Error ? e.message : 'Error al guardar la publicación.'
       );
+    } finally {
+      setEnviando(false);
     }
   };
-
+//para edicion hay que agregar que no se pueda modificar la aeronave
   return (
     <form className={style.formulario} onSubmit={submitForm}>
-      //para edicion hay que agregar que no se pueda modificar la aeronave
       <SelectField
         label="Aeronave"
         name="aeronaveID"
@@ -170,8 +173,8 @@ export default function PublicacionForm({
       )}
       {errorServidor && <p className={style.errorServidor}>{errorServidor}</p>}
 
-      <Button type="submit" variant="primary">
-        {textoBoton}
+      <Button type="submit" variant="primary" disabled={enviando}>
+        {enviando ? 'Guardando...' : textoBoton}
       </Button>
     </form>
   );

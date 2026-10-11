@@ -7,8 +7,10 @@
 
 .titulo {
   margin: 0 0 1.5rem;
-  color: #ffffff;
   font-size: 36px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f2137;
 }
 
 .filtros {
