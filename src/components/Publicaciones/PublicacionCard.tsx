@@ -6,8 +6,8 @@ import type { Publicacion } from '../../models/publicacion.model';
 const BASE_URL = 'http://localhost:3000';
 
 export default function PublicacionCard({ publicacion }: {publicacion: Publicacion}) {
-  const { imagen, descripcion, precioPorKM, laAeronave } = publicacion;
-  const {modelo, capacidad, elAeropuerto} = laAeronave;
+  const { imagen, descripcion, precioPorKM, aeronave } = publicacion;
+  const {modelo, capacidad, ultimoAeropuerto} = aeronave;
 
   const src = `${BASE_URL}/${imagen.replace(/^\/+/, '')}`;
 
@@ -22,7 +22,7 @@ export default function PublicacionCard({ publicacion }: {publicacion: Publicaci
       </div>
 
       <div className={style.especificacionesPubli}>
-        <p>{elAeropuerto.nombre}</p>
+        <p>{ultimoAeropuerto.nombre}</p>
         <p>{descripcion}</p>
         <p>Hasta {capacidad} pasajeros</p>
       </div>

@@ -4,12 +4,10 @@ export interface Publicacion {
   id: number;
   fechaAlta: Date;
   fechaModificacion: Date;
-  fechaInicioDisponibilidad: Date;
-  fechaFinDisponibilidad: Date;
   descripcion: string;
   precioPorKM: number;
   imagen: string; //solo el nombre del archivo que guardo multer
-  laAeronave: Aeronave;
+  aeronave: Aeronave;
 }
 
 export interface PublicacionesResponse {

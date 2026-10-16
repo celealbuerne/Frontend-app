@@ -14,7 +14,7 @@ const NAV_VISITANTE = [
 const NAV_PROVEEDOR = [
   { key: 'Inicio', href: '/' },
   { key: 'Mis Publicaciones', href: '/proveedor' },
-  { key: 'Mi Flota', href: '/crear-publicacion' }, 
+  { key: 'Mi Flota', href: '/proveedor/crear-publicacion' }, 
   { key: 'Aeropuertos', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
 ]

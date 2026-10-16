@@ -30,8 +30,6 @@ export default function PublicacionForm({
   const [vistaPrevia, setVistaPrevia] = useState<string | null>(null); //guarda la URL temporal de la img elegida para mostrarla antes de enviarla al back
   const [enviando, setEnviando] = useState(false);
 
-  const hoy = new Date().toLocaleDateString('en-CA');
-
   useEffect(() => {
     const cargarAeronaves = async () => {
       if (!currentUser) return;
@@ -48,9 +46,6 @@ export default function PublicacionForm({
     cargarAeronaves();
   }, [currentUser]);
 
-  const aFechaInput = (fecha?: Date | string) =>
-    fecha ? new Date(fecha).toISOString().slice(0, 10) : undefined;
-
   useEffect(() => {
     return () => {
       if (vistaPrevia) URL.revokeObjectURL(vistaPrevia);
@@ -66,16 +61,7 @@ export default function PublicacionForm({
     event.preventDefault();
     const datos = new FormData(event.currentTarget);
 
-    const inicio = String(datos.get('fechaInicioDisponibilidad'));
-    const fin = String(datos.get('fechaFinDisponibilidad'));
-
     const nuevosErrores: string[] = [];
-    if (fin <= inicio) {
-      nuevosErrores.push(
-        'La fecha de fin tiene que ser posterior a la de inicio.'
-      );
-    }
-
     setErrores(nuevosErrores);
     setErrorServidor(null);
     if (nuevosErrores.length > 0) return;
@@ -98,12 +84,12 @@ export default function PublicacionForm({
         label="Aeronave"
         name="aeronaveID"
         required
-        defaultValue={valoresIniciales?.laAeronave.id ?? ''}
+        defaultValue={valoresIniciales?.aeronave.id ?? ''}
       >
         <option value="">Seleccioná una aeronave</option>
         {aeronaves.map((aeronave) => (
           <option key={aeronave.id} value={aeronave.id}>
-            {aeronave.modelo} - {aeronave.elAeropuerto.nombre}
+            {aeronave.modelo} - {aeronave.ultimoAeropuerto.nombre}
           </option>
         ))}
       </SelectField>
@@ -127,24 +113,6 @@ export default function PublicacionForm({
         step="any"
         required
         defaultValue={valoresIniciales?.precioPorKM}
-      />
-
-      <InputField
-        label="Disponible desde"
-        type="date"
-        name="fechaInicioDisponibilidad"
-        min={editando ? undefined : hoy}
-        required
-        defaultValue={aFechaInput(valoresIniciales?.fechaInicioDisponibilidad)}
-      />
-
-      <InputField
-        label="Disponible hasta"
-        type="date"
-        name="fechaFinDisponibilidad"
-        min={editando ? undefined : hoy}
-        required
-        defaultValue={aFechaInput(valoresIniciales?.fechaFinDisponibilidad)}
       />
 
       <InputField

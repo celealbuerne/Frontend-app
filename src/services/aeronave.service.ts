@@ -28,8 +28,8 @@ export async function createAeronave(data: {
   autonomia: number;
   velocidadMaxima: number;
   antiguedad: string;
-  miProveedor: number;
-  elAeropuerto: number;
+  proveedor: number;
+  ultimoAeropuerto: number;
 }) {
   const response = await api('/aeronaves', {
     method: 'POST',

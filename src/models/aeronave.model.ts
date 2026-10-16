@@ -11,5 +11,5 @@ export interface Aeronave {
   autonomia: number;
   velocidadMaxima: number;
   antiguedad: Date;
-  elAeropuerto: Aeropuerto;
+  ultimoAeropuerto: Aeropuerto;
 }
