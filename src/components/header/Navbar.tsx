@@ -10,14 +10,16 @@ const NAV_VISITANTE = [
   { key: 'Sobre nosotros', href: '#' },
 ];
 
-//A definir estos .... flota=aeronaves(?)
+// A definir: Mi Flota / Aeropuertos / Sobre nosotros
 const NAV_PROVEEDOR = [
   { key: 'Inicio', href: '/' },
+  { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Publicaciones', href: '/proveedor' },
-  { key: 'Mi Flota', href: '/proveedor/crear-publicacion' }, 
+  { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' },
+  { key: 'Mi Flota', href: '#' },
   { key: 'Aeropuertos', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
-]
+];
 
 const NAV_CLIENTE = [
   { key: 'Inicio', href: '/' },

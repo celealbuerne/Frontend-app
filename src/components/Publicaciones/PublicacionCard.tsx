@@ -1,11 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import style from './PublicacionCard.module.css';
 import type { Publicacion } from '../../models/publicacion.model';
-
-
 
 const BASE_URL = 'http://localhost:3000';
 
 export default function PublicacionCard({ publicacion }: {publicacion: Publicacion}) {
+  const navigate = useNavigate();
   const { imagen, descripcion, precioPorKM, aeronave } = publicacion;
   const {modelo, capacidad, ultimoAeropuerto} = aeronave;
 
@@ -31,7 +31,9 @@ export default function PublicacionCard({ publicacion }: {publicacion: Publicaci
         <p>{precioPorKM} USD/km</p>
       </div>
 
-      <button type="button">Ver Más</button>
+      <button type="button" onClick={() => navigate('/publicaciones')}>
+        Ver Más
+      </button>
     </article>
   );
 }

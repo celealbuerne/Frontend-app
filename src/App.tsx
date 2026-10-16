@@ -5,10 +5,10 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import { AuthProvider } from './contexts/auth.context';
 import RegisterPage from './pages/RegisterPage';
-import ProfilePage from './pages/ProfilePage.tsx';
+import ProfilePage from './pages/ProfilePage';
 import HomeProveedor from './pages/proveedor/HomeProveedor';
 import CrearPublicacion from './pages/proveedor/CrearPublicacion';
-import PublicacionHome from './pages/publicacion/PublicacionHome.tsx';
+import PublicacionHome from './pages/publicacion/PublicacionHome';
 
 function App() {
   return (
@@ -16,13 +16,20 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<MainLayout />}>
-            <Route index element={<HomePage />}></Route>
-            <Route path="/login" element={<LoginPage />}></Route>
-            <Route path="/register" element={<RegisterPage />}></Route>
-            <Route path="/profile" element={<ProfilePage />}></Route>
-            <Route path="/proveedor" element={<HomeProveedor />} />
-            <Route path="/proveedor/crear-publicacion" element={<CrearPublicacion/>}/>
-            <Route path="/publicaciones" element={<PublicacionHome/>}/>
+            {/* Rutas públicas */}
+            <Route index element={<HomePage />} />
+            <Route path="publicaciones" element={<PublicacionHome />} />
+            <Route path="login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+
+            {/* Rutas generales autenticadas */}
+            <Route path="profile" element={<ProfilePage />} />
+
+            {/* Rutas de proveedor */}
+            <Route path="proveedor">
+              <Route index element={<HomeProveedor />} />
+              <Route path="crear-publicacion" element={<CrearPublicacion />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>
