@@ -1,13 +1,13 @@
+import { useState, type SubmitEvent } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '../ui/Button';
 import InputField from '../ui/InputField';
 import SelectField from '../ui/SelectField';
 import style from './RegisterForm.module.css';
 import { useAuth } from '../../contexts/auth.context';
-import { Link } from 'react-router-dom';
-import type { RegisterPayload } from '../../models/user.model.ts';
-import { useState } from 'react';
+import type { RegisterPayload } from '../../models/user.model';
 
-interface formError {
+interface FormError {
   profileName?: string;
   user?: string;
   country?: string;
@@ -20,61 +20,20 @@ interface formError {
 }
 
 export default function RegisterForm() {
-  const [formErrors, setFormErrors] = useState<formError>({});
+  const [formErrors, setFormErrors] = useState<FormError>({});
+  const [errorServidor, setErrorServidor] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [rolSeleccionado, setRolSeleccionado] = useState('CLIENTE');
+
   const { registerUser } = useAuth();
+  const navigate = useNavigate();
 
   const maxDate = new Date();
   maxDate.setFullYear(maxDate.getFullYear() - 18);
   const maxBirthDate = maxDate.toLocaleDateString('en-CA');
 
-  const submitForm = async (event: React.SubmitEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const form = event.currentTarget;
-    const errors: formError = {};
-
-    const password = form.password.value;
-    const confirmPassword = form.confirmPassword.value;
-    const identity = Number(form.identity.value.trim());
-    const dateOfBirth = form.dateOfBirth.value;
-
-    if (Number.isNaN(identity)) {
-      errors.identity = 'Se debe ingresar un número válido';
-    }
-    if (password !== confirmPassword) {
-      errors.confirmPassword = 'Las contraseñas deben coincidir';
-    }
-    if (password.length < 6) {
-      errors.password = 'La contraseña debe tener al menos 6 caracteres.';
-    }
-    if (dateOfBirth > maxBirthDate) {
-      errors.dateOfBirth = 'La fecha no es válida.';
-    }
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
-    setFormErrors({});
-    const payload: RegisterPayload = {
-      nombre: event.target.profileName.value.trim(),
-      nombreUsuario: event.target.user.value.trim(),
-      pais: event.target.country.value.trim(),
-      fechaNacimiento: event.target.dateOfBirth.value.trim(),
-      tipoDocumento: event.target.identityType.value.trim(),
-      documento: Number(event.target.identity.value.trim()),
-      contraseña: event.target.password.value.trim(),
-      rol: event.target.rol.value.trim(),
-    };
-
-    try {
-      await registerUser(payload);
-      event.target.reset();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const clearError = (fieldName: keyof formError) => {
+  const clearError = (fieldName: keyof FormError) => {
+    setErrorServidor(null);
     if (formErrors[fieldName]) {
       setFormErrors((prev) => {
         const next = { ...prev };
@@ -84,11 +43,88 @@ export default function RegisterForm() {
     }
   };
 
+  const submitForm = async (event: SubmitEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setErrorServidor(null);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const profileName = String(formData.get('profileName') ?? '').trim();
+    const user = String(formData.get('user') ?? '').trim();
+    const password = String(formData.get('password') ?? '');
+    const confirmPassword = String(formData.get('confirmPassword') ?? '');
+    const rol = String(formData.get('rol') ?? 'CLIENTE').trim();
+    const identityType = String(formData.get('identityType') ?? '').trim();
+    const identityStr = String(formData.get('identity') ?? '').trim();
+    const country = String(formData.get('country') ?? '').trim();
+    const dateOfBirth = String(formData.get('dateOfBirth') ?? '').trim();
+    const identity = Number(identityStr);
+
+    const errors: FormError = {};
+
+    if (!identityStr || Number.isNaN(identity) || identity <= 0) {
+      errors.identity = 'Se debe ingresar un número de documento válido';
+    }
+    if (password !== confirmPassword) {
+      errors.confirmPassword = 'Las contraseñas deben coincidir';
+    }
+    if (password.length < 6) {
+      errors.password = 'La contraseña debe tener al menos 6 caracteres.';
+    }
+    if (!dateOfBirth || dateOfBirth > maxBirthDate) {
+      errors.dateOfBirth = 'Debes tener al menos 18 años para registrarte.';
+    }
+
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    setFormErrors({});
+
+    const payload: RegisterPayload = {
+      nombre: profileName,
+      nombreUsuario: user,
+      pais: country,
+      fechaNacimiento: dateOfBirth,
+      tipoDocumento: identityType,
+      documento: identity,
+      contraseña: password,
+      rol,
+    };
+
+    setIsLoading(true);
+    try {
+      await registerUser(payload);
+      form.reset();
+      navigate('/login', {
+        state: {
+          mensaje: '¡Cuenta creada con éxito!',
+        },
+      });
+    } catch (error) {
+      setErrorServidor(
+        error instanceof Error ? error.message : 'Error al registrar el usuario'
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <section className={style.card}>
-      <h1 className={style.title}>Registrarse como Cliente</h1>
+      <h1 className={style.title}>
+        {rolSeleccionado === 'PROVEEDOR'
+          ? 'Registrarse como Proveedor'
+          : 'Registrarse como Cliente'}
+      </h1>
 
       <form className={style.form} onSubmit={submitForm}>
+        {errorServidor && (
+          <div className={style.errorAlert}>{errorServidor}</div>
+        )}
+
         <h2 className={style.sectionTitle}>Datos de la Cuenta</h2>
 
         <InputField
@@ -127,6 +163,7 @@ export default function RegisterForm() {
           onChange={() => clearError('confirmPassword')}
           required
         />
+
         <section className={style.roleSection}>
           <h2 className={style.sectionTitle}>Selecciona tu rol</h2>
           <SelectField
@@ -134,11 +171,15 @@ export default function RegisterForm() {
             name="rol"
             defaultValue="CLIENTE"
             required
+            onChange={(e) => {
+              clearError('rol');
+              setRolSeleccionado(e.target.value);
+            }}
             options={[
-            { value: 'CLIENTE', label: 'Cliente (quiero reservar vuelos)' },
-            { value: 'PROVEEDOR', label: 'Proveedor (quiero publicar mis aeronaves)' },
+              { value: 'CLIENTE', label: 'Cliente (quiero reservar vuelos)' },
+              { value: 'PROVEEDOR', label: 'Proveedor (quiero publicar mis aeronaves)' },
             ]}
-          ></SelectField>
+          />
         </section>
 
         <h2 className={style.sectionTitle}>Datos Personales</h2>
@@ -186,7 +227,7 @@ export default function RegisterForm() {
         />
 
         <div className={style.submitButton}>
-          <Button type="submit" variant="primary">
+          <Button type="submit" variant="primary" isLoading={isLoading}>
             Continuar
           </Button>
         </div>
