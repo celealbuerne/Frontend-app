@@ -9,6 +9,7 @@ import ProfilePage from './pages/ProfilePage';
 import HomeProveedor from './pages/proveedor/HomeProveedor';
 import CrearPublicacion from './pages/proveedor/CrearPublicacion';
 import PublicacionHome from './pages/publicacion/PublicacionHome';
+import PublicacionDetalle from './pages/publicacion/PublicacionDetalle';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             {/* Rutas públicas */}
             <Route index element={<HomePage />} />
             <Route path="publicaciones" element={<PublicacionHome />} />
+            <Route path="publicaciones/:id" element={<PublicacionDetalle />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
 

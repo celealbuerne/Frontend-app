@@ -4,18 +4,20 @@ import type { Publicacion } from '../../models/publicacion.model';
 
 const BASE_URL = 'http://localhost:3000';
 
-export default function PublicacionCard({ publicacion }: {publicacion: Publicacion}) {
+export default function PublicacionCard({
+  publicacion,
+}: {
+  publicacion: Publicacion;
+}) {
   const navigate = useNavigate();
-  const { imagen, descripcion, precioPorKM, aeronave } = publicacion;
-  const {modelo, capacidad, ultimoAeropuerto} = aeronave;
+  const { imagen, descripcion, precioPorDia, aeronave } = publicacion;
+  const { modelo, capacidad, ultimoAeropuerto } = aeronave;
 
   const src = `${BASE_URL}/${imagen.replace(/^\/+/, '')}`;
 
   return (
     <article className={style.publi}>
-      <img
-        src={src} alt={`Aeronave ${modelo}`}
-      />
+      <img src={src} alt={`Aeronave ${modelo}`} />
 
       <div className={style.modeloPubli}>
         <h3>{modelo}</h3>
@@ -28,10 +30,13 @@ export default function PublicacionCard({ publicacion }: {publicacion: Publicaci
       </div>
 
       <div className={style.precioPubli}>
-        <p>{precioPorKM} USD/km</p>
+        <p>{precioPorDia} USD/km</p>
       </div>
 
-      <button type="button" onClick={() => navigate('/publicaciones')}>
+      <button
+        type="button"
+        onClick={() => navigate(`/publicaciones/${publicacion.id}`)}
+      >
         Ver Más
       </button>
     </article>
