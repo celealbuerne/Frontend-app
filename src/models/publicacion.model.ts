@@ -5,7 +5,7 @@ export interface Publicacion {
   fechaAlta: Date;
   fechaModificacion: Date;
   descripcion: string;
-  precioPorKM: number;
+  precioPorDia: number;
   imagen: string; //solo el nombre del archivo que guardo multer
   aeronave: Aeronave;
 }

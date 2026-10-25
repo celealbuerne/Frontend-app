@@ -1,65 +1,113 @@
 .contenedor {
-  box-sizing: border-box;
   width: 100%;
-  padding: 3rem 2rem 5rem;
-  min-height: 50vh;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+  min-height: calc(100vh - 160px);
+}
+
+.cabecera {
+  margin-bottom: 2rem;
 }
 
 .titulo {
-  margin: 0 0 1.5rem;
-  font-size: 36px;
-  font-size: 1.8rem;
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.subtitulo {
+  margin: 0;
+  font-size: 1rem;
+  color: #cbd5e1;
+  font-weight: 400;
+}
+
+.contenidoPrincipal {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.lateralFiltros {
+  width: 280px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 140px;
+}
+
+.seccionPublicaciones {
+  flex: 1;
+  min-width: 0;
+  background-color: #91aabf;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 18px rgba(15, 33, 55, 0.12);
+}
+
+.seccionCabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(15, 33, 55, 0.15);
+}
+
+.seccionTitulo {
+  margin: 0;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #0f2137;
 }
 
-.filtros {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  padding: 1.25rem;
-  background-color: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  color: #ffffff;
-}
-
-.filtros label {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  font-size: 0.9rem;
+.contador {
+  font-size: 0.85rem;
   font-weight: 600;
-}
-
-.filtros input {
-  padding: 0.55rem;
-  border: 1px solid #c9d6e2;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.acciones {
-  display: flex;
-  gap: 0.75rem;
-}
-
-
-.botonLimpiar {
-  background-color: transparent;
-  color: #ffffff;
-  border-color: #c9d6e2;
+  color: #0f2137;
+  background-color: rgba(15, 33, 55, 0.12);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
 }
 
 .listado {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
+  gap: 1.75rem;
+  justify-items: center;
 }
 
-.mensaje {
-  margin: 2rem 0;
-  color: #ffffff;
+.estado {
+  padding: 4rem 1.5rem;
   text-align: center;
+  color: #0f2137;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.mensajeError {
+  padding: 0.85rem 1.25rem;
+  border-radius: 10px;
+  background-color: #fef2f2;
+  color: #991b1b;
+  margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .contenidoPrincipal {
+    flex-direction: column;
+  }
+
+  .lateralFiltros {
+    width: 100%;
+    position: static;
+  }
+
+  .seccionPublicaciones {
+    padding: 1.5rem;
+  }
 }

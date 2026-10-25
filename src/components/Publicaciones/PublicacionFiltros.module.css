@@ -1,0 +1,80 @@
+.filtros {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.5rem;
+  background-color: #91aabf;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(15, 33, 55, 0.12);
+  color: #0f2137;
+}
+
+.cabeceraFiltro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(15, 33, 55, 0.15);
+}
+
+.tituloFiltro {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f2137;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.filtros label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f2137;
+  gap: 6px;
+}
+
+.filtros input {
+  padding: 0.65rem 0.75rem;
+  border: 1.5px solid #4d687c;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.filtros input:focus {
+  border-color: #0f2137;
+}
+
+.acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.botonLimpiar {
+  background-color: transparent;
+  color: #0f2137;
+  border-color: #0f2137;
+  transition: all 0.2s ease;
+}
+
+.botonLimpiar:hover {
+  background-color: rgba(15, 33, 55, 0.1);
+  border-color: #0f2137;
+  color: #0f2137;
+}
+
+.error {
+  margin: 0;
+  padding: 0.65rem 0.85rem;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border-radius: 8px;
+  font-size: 0.925rem;
+  line-height: 1.4;
+}
