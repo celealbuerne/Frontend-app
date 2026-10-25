@@ -20,6 +20,10 @@ export function api(
       ...options.headers,
     },
     method: options.method || 'GET',
-    body: isFormData ? options.body : options.body ? JSON.stringify(options.body) : undefined, //si es FormData, se envia tal cual, si no se convierte a JSON
+    body: isFormData
+      ? options.body
+      : options.body
+        ? JSON.stringify(options.body)
+        : undefined, //si es FormData, se envia tal cual, si no se convierte a JSON
   });
 }

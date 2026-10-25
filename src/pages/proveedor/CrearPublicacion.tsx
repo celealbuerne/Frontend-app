@@ -6,10 +6,10 @@ import style from './CrearPublicacion.module.css';
 export default function CrearPublicacion() {
   const navigate = useNavigate();
 
-  const crearForm = async (datos: FormData) =>{
+  const crearForm = async (datos: FormData) => {
     await createPublicacion(datos);
-    navigate('/proveedor')
-  }
+    navigate('/proveedor');
+  };
 
   return (
     <main className={style.contenedor}>
@@ -20,7 +20,7 @@ export default function CrearPublicacion() {
         </Link>
       </div>
 
-      <PublicacionForm textoBoton='Publicar' onSubmit={crearForm}/>
+      <PublicacionForm textoBoton="Publicar" onSubmit={crearForm} />
     </main>
   );
 }

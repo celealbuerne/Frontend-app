@@ -6,15 +6,15 @@ interface AeronavesResponse {
   data: Aeronave[];
 }
 //revisar el lo del id y cambiar
-export async function getAeronavesByProveedor(proveedorID: number): Promise<AeronavesResponse> {
+export async function getAeronavesByProveedor(
+  proveedorID: number
+): Promise<AeronavesResponse> {
   const response = await api(`/aeronaves/proveedor/${proveedorID}`);
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
 
-    throw new Error(
-      errorData?.message || 'Error al obtener las aeronaves'
-    );
+    throw new Error(errorData?.message || 'Error al obtener las aeronaves');
   }
 
   return response.json();
@@ -39,9 +39,7 @@ export async function createAeronave(data: {
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
 
-    throw new Error(
-      errorData?.message || 'Error al crear la aeronave'
-    );
+    throw new Error(errorData?.message || 'Error al crear la aeronave');
   }
 
   return response.json();

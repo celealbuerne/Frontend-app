@@ -41,7 +41,9 @@ export default function LoginForm() {
       }
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : 'Error al iniciar sesión. Inténtalo nuevamente.'
+        err instanceof Error
+          ? err.message
+          : 'Error al iniciar sesión. Inténtalo nuevamente.'
       );
     } finally {
       setIsLoading(false);

@@ -177,7 +177,10 @@ export default function RegisterForm() {
             }}
             options={[
               { value: 'CLIENTE', label: 'Cliente (quiero reservar vuelos)' },
-              { value: 'PROVEEDOR', label: 'Proveedor (quiero publicar mis aeronaves)' },
+              {
+                value: 'PROVEEDOR',
+                label: 'Proveedor (quiero publicar mis aeronaves)',
+              },
             ]}
           />
         </section>

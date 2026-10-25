@@ -77,7 +77,7 @@ export default function PublicacionForm({
       setEnviando(false);
     }
   };
-//para edicion hay que agregar que no se pueda modificar la aeronave
+  //para edicion hay que agregar que no se pueda modificar la aeronave
   return (
     <form className={style.formulario} onSubmit={submitForm}>
       <SelectField
@@ -112,7 +112,7 @@ export default function PublicacionForm({
         min="1"
         step="any"
         required
-        defaultValue={valoresIniciales?.precioPorKM}
+        defaultValue={valoresIniciales?.precioPorDia}
       />
 
       <InputField

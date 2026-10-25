@@ -1,7 +1,14 @@
 import { api } from './api.ts';
-import type {PublicacionesResponse, PublicacionResponse, PublicacionFiltros, Publicacion} from '../models/publicacion.model.ts';
+import type {
+  PublicacionesResponse,
+  PublicacionResponse,
+  PublicacionFiltros,
+  Publicacion,
+} from '../models/publicacion.model.ts';
 
-export async function getAllPublicaciones(filtros: PublicacionFiltros = {}): Promise<PublicacionesResponse> {
+export async function getAllPublicaciones(
+  filtros: PublicacionFiltros = {}
+): Promise<PublicacionesResponse> {
   const params = new URLSearchParams();
 
   if (filtros.precioMin !== undefined) {
@@ -21,7 +28,9 @@ export async function getAllPublicaciones(filtros: PublicacionFiltros = {}): Pro
   return response.json();
 }
 
-export async function getOnePublicacion(id: number): Promise<PublicacionResponse> {
+export async function getOnePublicacion(
+  id: number
+): Promise<PublicacionResponse> {
   const response = await api(`/publicaciones/${id}`);
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
@@ -30,7 +39,7 @@ export async function getOnePublicacion(id: number): Promise<PublicacionResponse
   return response.json();
 }
 
-export async function createPublicacion(data: FormData){
+export async function createPublicacion(data: FormData) {
   const response = await api('/publicaciones', {
     method: 'POST',
     body: data,

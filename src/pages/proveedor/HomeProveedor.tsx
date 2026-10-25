@@ -7,13 +7,14 @@ import PublicacionCard from '../../components/Publicaciones/PublicacionCard';
 import style from './HomeProveedor.module.css';
 import Button from '../../components/ui/Button';
 
-
 export default function HomeProveedor() {
   const { currentUser } = useAuth();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // null = todavia no llego la respuesta, [] no hay publicaciones
-  const [publicaciones, setPublicaciones] = useState<Publicacion[] | null>(null);
+  const [publicaciones, setPublicaciones] = useState<Publicacion[] | null>(
+    null
+  );
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -26,9 +27,12 @@ export default function HomeProveedor() {
         const response = await getMisPublicaciones();
         if (!cancelado) setPublicaciones(response.data);
       } catch (e) {
-        if (!cancelado) {  //cancelado es false-> el efecto todavia no fue cancelado
+        if (!cancelado) {
+          //cancelado es false-> el efecto todavia no fue cancelado
           setPublicaciones([]);
-          setError(e instanceof Error ? e.message : 'Error al cargar las publicaciones');
+          setError(
+            e instanceof Error ? e.message : 'Error al cargar las publicaciones'
+          );
         }
       }
     }
@@ -48,15 +52,15 @@ export default function HomeProveedor() {
       <div className={style.encabezado}>
         <h1 className={style.titulo}>Mis publicaciones</h1>
         <Button
-          type='button'
-          variant='primary'
+          type="button"
+          variant="primary"
           className={style.botonNueva}
           onClick={() => navigate('/proveedor/crear-publicacion')}
         >
           Crear Publicación
         </Button>
       </div>
-      
+
       <section className={style.contenedorPublicaciones}>
         {error && <p className={style.error}>{error}</p>}
 

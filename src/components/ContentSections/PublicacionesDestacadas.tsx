@@ -5,10 +5,10 @@ import { getPublicacionesRecientes } from '../../services/publicacion.service';
 import type { Publicacion } from '../../models/publicacion.model';
 import { useState, useEffect } from 'react';
 
-//lo cambie a publicaciones recientes por simplicidad de md
 export default function Publicaciones() {
-
-  const [publicaciones, setPublicaciones] = useState<Publicacion[] | null >(null)
+  const [publicaciones, setPublicaciones] = useState<Publicacion[] | null>(
+    null
+  );
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -21,7 +21,9 @@ export default function Publicaciones() {
       } catch (e) {
         if (!cancelado) {
           setPublicaciones([]);
-          setError(e instanceof Error ? e.message : 'Error al cargar las publicaciones');
+          setError(
+            e instanceof Error ? e.message : 'Error al cargar las publicaciones'
+          );
         }
       }
     }
@@ -30,7 +32,7 @@ export default function Publicaciones() {
       cancelado = true;
     };
   }, []);
-  
+
   return (
     <>
       <div className={style.headMenu}>
@@ -39,10 +41,12 @@ export default function Publicaciones() {
           Ver más
         </Link>
       </div>
-      
+
       {error && <p className={style.mensaje}>{error}</p>}
       {publicaciones === null && <p className={style.mensaje}>Cargando...</p>}
-      {publicaciones?.length === 0 && !error && <p className={style.mensaje}>Todavía no hay publicaciones.</p>}
+      {publicaciones?.length === 0 && !error && (
+        <p className={style.mensaje}>Todavía no hay publicaciones.</p>
+      )}
 
       <div className={style.publicaciones}>
         {(publicaciones ?? []).map((publicacion) => {

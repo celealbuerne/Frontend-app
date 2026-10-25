@@ -15,9 +15,7 @@ export async function getAllAeropuertos(): Promise<AeropuertosResponse> {
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
 
-    throw new Error(
-      errorData?.message || 'Error al obtener los aeropuertos'
-    );
+    throw new Error(errorData?.message || 'Error al obtener los aeropuertos');
   }
 
   return response.json();

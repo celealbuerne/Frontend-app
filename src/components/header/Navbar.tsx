@@ -27,18 +27,18 @@ const NAV_CLIENTE = [
   { key: 'Mis Reservas', href: '#' },
   { key: 'Aeropuertos', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
-]
+];
 
-function obtenerOpciones (roles?:string[]){
+function obtenerOpciones(roles?: string[]) {
   if (roles?.includes('PROVEEDOR')) return NAV_PROVEEDOR;
   if (roles?.includes('CLIENTE')) return NAV_CLIENTE;
   return NAV_VISITANTE;
 }
-  
+
 export default function Navbar() {
   const { isLogged, currentUser } = useAuth();
 
-  const opciones = obtenerOpciones (isLogged ? currentUser?.roles : undefined);
+  const opciones = obtenerOpciones(isLogged ? currentUser?.roles : undefined);
 
   return (
     <nav className={style.navbar}>
