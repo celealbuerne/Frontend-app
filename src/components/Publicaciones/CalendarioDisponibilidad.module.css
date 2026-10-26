@@ -8,126 +8,100 @@
   gap: 1.25rem;
 }
 
-.controlesCalendario {
+.barraInstruccion {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.tituloMesGrupo {
-  display: flex;
-  align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
 }
 
-.tituloMes {
-  font-size: 1.45rem;
-  font-weight: 700;
-  color: #0f2137;
-  margin: 0;
+.textoInstruccion {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1e3550;
 }
 
-.botonNavMes {
-  background-color: #366cad;
-  color: #ffffff;
-  border: none;
-  border-radius: 8px;
-  padding: 0.6rem 1.1rem;
-  font-size: 0.95rem;
+.botonLimpiar {
+  background-color: transparent;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.15s ease;
 }
 
-.botonNavMes:hover {
-  background-color: #267ace;
+.botonLimpiar:hover {
+  background-color: #fef2f2;
 }
 
-.botonHoy {
-  background-color: #bbdaff;
+.contenedorDayPicker {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.calendarioRdp {
+  --rdp-accent-color: #366cad;
+  --rdp-accent-background-color: #dbeafe;
+  --rdp-day-height: 52px;
+  --rdp-day-width: 52px;
+  --rdp-day_button-height: 48px;
+  --rdp-day_button-width: 48px;
+  --rdp-day_button-border-radius: 10px;
+  margin: 0;
+  font-family: inherit;
   color: #0f2137;
-  border: none;
-  border-radius: 6px;
-  padding: 0.35rem 0.75rem;
-  font-size: 0.85rem;
+}
+/* :global(.rdp) para el componente externo */
+.calendarioRdp :global(.rdp-month_caption) {
+  font-size: 1.35rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  text-transform: capitalize;
+  color: #0f2137;
 }
 
-.botonHoy:hover {
-  background-color: #ffab1b;
-}
-
-.grillaSemana {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-  text-align: center;
-}
-
-.encabezadoDia {
-  font-size: 0.9rem;
+.calendarioRdp :global(.rdp-weekday) {
+  font-size: 0.85rem;
   font-weight: 700;
   color: #475569;
   text-transform: uppercase;
-  padding: 0.4rem 0;
 }
 
-.grillaDias {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
-}
-
-.celdaDia {
-  min-height: 74px;
-  border-radius: 10px;
-  padding: 0.55rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 2px solid transparent;
-  transition: transform 0.15s ease;
-}
-
-.celdaVacia {
-  background-color: transparent;
-  pointer-events: none;
-}
-
-.celdaDisponible {
+.calendarioRdp :global(.rdp-day:not([data-disabled='true']) .rdp-day_button) {
   background-color: #ecfdf5;
-  color: #000000;
+  font-weight: 600;
 }
 
-.celdaOcupada {
-  background-color: #fef2f2;
-  border: 2px #991b1b dashed;
-  color: #991b1b;
+.calendarioRdp :global(.rdp-selected .rdp-day_button) {
+  background-color: #dbeafe;
+  color: #0f2137;
 }
 
-.celdaPasada {
+.calendarioRdp :global(.rdp-range_start .rdp-day_button),
+.calendarioRdp :global(.rdp-range_end .rdp-day_button) {
+  background-color: #366cad;
+  color: #0f2137;
+}
+
+.diaOcupado :global(.rdp-day_button) {
+  background-color: #fef2f2 !important;
+  border: 2px dashed #991b1b !important;
+  color: #991b1b !important;
+  opacity: 1 !important;
+  text-decoration: line-through;
+}
+
+.diaPasado :global(.rdp-day_button) {
   background-color: #f1f5f9;
   color: #94a3b8;
-}
-
-.celdaHoy {
-  box-shadow: 0 0 0 2px #0f2137;
-}
-
-.numeroDia {
-  font-size: 1.05rem;
-  font-weight: 700;
-}
-
-.estadoTextoDia {
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
 }
 
 .leyenda {
@@ -160,6 +134,11 @@
   border-color: #34d399;
 }
 
+.indicadorSeleccionado {
+  background-color: #366cad;
+  border-color: #0f2137;
+}
+
 .indicadorOcupado {
   background-color: #fef2f2;
   border-color: #f87171;
@@ -172,12 +151,10 @@
 }
 
 @media (max-width: 768px) {
-  .celdaDia {
-    min-height: 58px;
-    padding: 0.35rem;
-  }
-
-  .estadoTextoDia {
-    font-size: 0.65rem;
+  .calendarioRdp {
+    --rdp-day-height: 42px;
+    --rdp-day-width: 42px;
+    --rdp-day_button-height: 38px;
+    --rdp-day_button-width: 38px;
   }
 }
