@@ -67,7 +67,9 @@ export async function getPublicacionesRecientes() {
   return res.json() as Promise<{ data: Publicacion[] }>;
 }
 
-export async function GetDisponibilidad(id: number): Promise<DisponibilidadResponse>{
+export async function GetDisponibilidad(
+  id: number
+): Promise<DisponibilidadResponse> {
   const response = await api(`/publicaciones/${id}/disponibilidad`);
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);

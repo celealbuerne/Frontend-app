@@ -42,9 +42,7 @@ export default function CalendarioDisponibilidad({
     [hoy]
   );
 
-  const [anioActual, setAnioActual] = useState<number>(() =>
-    hoy.getFullYear()
-  );
+  const [anioActual, setAnioActual] = useState<number>(() => hoy.getFullYear());
   const [mesActual, setMesActual] = useState<number>(() => hoy.getMonth());
 
   const celdasCalendario = useMemo(() => {
@@ -129,11 +127,7 @@ export default function CalendarioDisponibilidad({
           <h2 className={style.tituloMes}>
             {NOMBRES_MESES[mesActual]} {anioActual}
           </h2>
-          <button
-            type="button"
-            className={style.botonHoy}
-            onClick={irMesHoy}
-          >
+          <button type="button" className={style.botonHoy} onClick={irMesHoy}>
             Hoy
           </button>
         </div>
@@ -223,4 +217,3 @@ export default function CalendarioDisponibilidad({
     </div>
   );
 }
-

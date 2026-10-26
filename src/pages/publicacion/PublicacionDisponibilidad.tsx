@@ -103,9 +103,7 @@ export default function PublicacionDisponibilidad() {
         const inicio = toDateKey(p.fechaInicio);
         const fin = toDateKey(p.fechaFin);
         if (!inicio || !fin) return null;
-        return inicio <= fin
-          ? { inicio, fin }
-          : { inicio: fin, fin: inicio };
+        return inicio <= fin ? { inicio, fin } : { inicio: fin, fin: inicio };
       })
       .filter((r): r is { inicio: string; fin: string } => r !== null)
       .sort((a, b) => a.inicio.localeCompare(b.inicio));
@@ -187,26 +185,26 @@ export default function PublicacionDisponibilidad() {
                   <p>No se registran períodos ocupados.</p>
                 </div>
               ) : (
-                  <ul className={style.listaPeriodos}>
-                    {rangosNormalizados.map((rango, index) => (
-                      <li
-                        key={`${rango.inicio}-${rango.fin}-${index}`}
-                        className={style.itemPeriodo}
-                      >
-                        <span className={style.badgeOcupado}>Ocupado</span>
-                        <div className={style.fechasPeriodo}>
-                          <span>
-                            <strong>Desde:</strong>{' '}
-                            {formatearFechaHumana(rango.inicio)}
-                          </span>
-                          <span>
-                            <strong>Hasta:</strong>{' '}
-                            {formatearFechaHumana(rango.fin)}
-                          </span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+                <ul className={style.listaPeriodos}>
+                  {rangosNormalizados.map((rango, index) => (
+                    <li
+                      key={`${rango.inicio}-${rango.fin}-${index}`}
+                      className={style.itemPeriodo}
+                    >
+                      <span className={style.badgeOcupado}>Ocupado</span>
+                      <div className={style.fechasPeriodo}>
+                        <span>
+                          <strong>Desde:</strong>{' '}
+                          {formatearFechaHumana(rango.inicio)}
+                        </span>
+                        <span>
+                          <strong>Hasta:</strong>{' '}
+                          {formatearFechaHumana(rango.fin)}
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
               )}
             </aside>
           </div>

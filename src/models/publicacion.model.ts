@@ -15,7 +15,7 @@ export interface PublicacionFiltros {
   precioMax?: number;
 }
 
-export interface BaseResponse{
+export interface BaseResponse {
   mensaje: string;
   data: unknown;
 }
@@ -36,4 +36,3 @@ export interface PeriodoOcupado {
 export interface DisponibilidadResponse extends BaseResponse {
   data: PeriodoOcupado[];
 }
-
