@@ -10,17 +10,30 @@ export interface Publicacion {
   aeronave: Aeronave;
 }
 
-export interface PublicacionesResponse {
-  mensaje: string;
-  data: Publicacion[];
-}
-
-export interface PublicacionResponse {
-  mensaje: string;
-  data: Publicacion;
-}
-
 export interface PublicacionFiltros {
   precioMin?: number;
   precioMax?: number;
 }
+
+export interface BaseResponse{
+  mensaje: string;
+  data: unknown;
+}
+
+export interface PublicacionesResponse extends BaseResponse {
+  data: Publicacion[];
+}
+
+export interface PublicacionResponse extends BaseResponse {
+  data: Publicacion;
+}
+
+export interface PeriodoOcupado {
+  fechaInicio: string;
+  fechaFin: string;
+}
+
+export interface DisponibilidadResponse extends BaseResponse {
+  data: PeriodoOcupado[];
+}
+

@@ -46,6 +46,10 @@
   line-height: 1.4;
 }
 
+.precioPubli {
+  margin-top: auto;
+}
+
 .precioPubli p {
   padding: 12px 16px 4px;
   font-size: 1.2rem;
@@ -55,7 +59,7 @@
 }
 
 .publi button {
-  margin: 12px 16px 16px;
+  margin: 8px 16px 16px;
   padding: 11px;
   background-color: #1b4774;
   color: #ffffff;

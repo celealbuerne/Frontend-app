@@ -10,6 +10,7 @@ import HomeProveedor from './pages/proveedor/HomeProveedor';
 import CrearPublicacion from './pages/proveedor/CrearPublicacion';
 import PublicacionHome from './pages/publicacion/PublicacionHome';
 import PublicacionDetalle from './pages/publicacion/PublicacionDetalle';
+import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibilidad';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="publicaciones" element={<PublicacionHome />} />
             <Route path="publicaciones/:id" element={<PublicacionDetalle />} />
+            <Route
+              path="publicaciones/:id/disponibilidad"
+              element={<PublicacionDisponibilidad />}
+            />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />
 

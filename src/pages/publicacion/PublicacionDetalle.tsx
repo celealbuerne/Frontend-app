@@ -52,10 +52,8 @@ export default function PublicacionDetalle() {
     };
   }, [id]);
 
-  const handleSolicitarReserva = () => {
-    alert(
-      `Has solicitado una reserva para ${publicacion?.aeronave?.modelo ?? 'esta aeronave'}.`
-    );
+  const handleVerDisponibilidad = () => {
+    navigate(`/publicaciones/${id}/disponibilidad`);
   };
 
   if (cargando) {
@@ -234,9 +232,9 @@ export default function PublicacionDetalle() {
           <button
             type="button"
             className={style.botonReserva}
-            onClick={handleSolicitarReserva}
+            onClick={handleVerDisponibilidad}
           >
-            Solicitar reserva
+            Ver disponibilidad
           </button>
         </div>
       </aside>

@@ -4,6 +4,7 @@ import type {
   PublicacionResponse,
   PublicacionFiltros,
   Publicacion,
+  DisponibilidadResponse,
 } from '../models/publicacion.model.ts';
 
 export async function getAllPublicaciones(
@@ -64,4 +65,13 @@ export async function getPublicacionesRecientes() {
   const res = await api(`/publicaciones/recientes`);
   if (!res.ok) throw new Error('Error al cargar las publicaciones');
   return res.json() as Promise<{ data: Publicacion[] }>;
+}
+
+export async function GetDisponibilidad(id: number): Promise<DisponibilidadResponse>{
+  const response = await api(`/publicaciones/${id}/disponibilidad`);
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+    throw new Error(errorData?.message || 'Error al obtener la agenda');
+  }
+  return response.json();
 }
