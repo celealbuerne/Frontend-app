@@ -18,7 +18,6 @@ const NAV_PROVEEDOR = [
   { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' },
   { key: 'Mi Flota', href: '#' },
   { key: 'Aeropuertos', href: '#' },
-  { key: 'Sobre nosotros', href: '#' },
 ];
 
 const NAV_CLIENTE = [

@@ -1,8 +1,9 @@
 .navbar {
   position: relative;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  justify-content: center;
   border-top: 1px #4a5b6f solid;
   border-bottom: 1px #4a5b6f solid;
   padding: 5px 0;
@@ -10,7 +11,10 @@
 
 .menu {
   display: flex;
-  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  gap: 0.25rem 1rem;
 }
 
 .menu li {
@@ -18,9 +22,11 @@
 }
 
 .menuOption {
+  display: inline-block; /* sin esto el padding vertical no agranda el area tactil de un link en linea */
+  padding: 0.5rem 0.25rem;
   color: white;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .menuOption:hover {
@@ -28,14 +34,46 @@
 }
 
 .loginLink {
-  position: absolute; /* sale del flujo */
-  right: 20px; /* distancia al borde derecho de la pagina */
+  display: inline-block;
+  padding: 0.5rem 0;
   color: #acd6ff;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
 .loginLink:hover {
   color: #cbacff;
   text-decoration: underline;
+}
+
+/*MD*/
+@media (min-width: 600px) { 
+  .navbar {
+    flex-direction: row; 
+    align-items: center;
+    padding: 5px 1rem; 
+  }
+
+  .menu {
+    flex: 1; 
+  }
+
+  .menuOption{
+    font-size: 1.25rem;
+  }
+
+  .loginLink {
+    padding: 0.5rem 0; 
+  }
+}
+
+/* LG */
+@media (min-width: 1024px) { 
+  .navbar {
+    padding: 5px 20px; 
+  }
+
+  .menu {
+    gap: 0.5rem 2rem; 
+  }
 }

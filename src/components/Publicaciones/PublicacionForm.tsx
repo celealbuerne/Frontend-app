@@ -106,9 +106,9 @@ export default function PublicacionForm({
       </label>
 
       <InputField
-        label="Precio por km (USD)"
+        label="Precio por Día"
         type="number"
-        name="precioPorKM"
+        name="precioPorDia"
         min="1"
         step="any"
         required
