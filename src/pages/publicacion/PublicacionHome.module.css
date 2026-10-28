@@ -2,43 +2,35 @@
   width: 100%;
   max-width: 1360px;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 4rem;
+  padding: 1.5rem 1rem 3rem;
   min-height: calc(100vh - 160px);
 }
 
 .cabecera {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .titulo {
   margin: 0 0 0.4rem;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.02em;
 }
 
-.subtitulo {
-  margin: 0;
-  font-size: 1rem;
-  color: #cbd5e1;
-  font-weight: 400;
-}
-
 .contenidoPrincipal {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .lateralFiltros {
-  width: 280px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 140px;
+  width: 100%;
 }
 
 .seccionPublicaciones {
+  width: 100%;
   flex: 1;
   min-width: 0;
   background-color: #91aabf;
@@ -49,10 +41,12 @@
 
 .seccionCabecera {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 1.25rem;
-  margin-bottom: 1.75rem;
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
   border-bottom: 1px solid rgba(15, 33, 55, 0.15);
 }
 
@@ -74,13 +68,13 @@
 
 .listado {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.75rem;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
   justify-items: center;
 }
 
 .estado {
-  padding: 4rem 1.5rem;
+  padding: 3rem 1rem;
   text-align: center;
   color: #0f2137;
   font-size: 1rem;
@@ -97,17 +91,41 @@
   text-align: center;
 }
 
-@media (max-width: 960px) {
-  .contenidoPrincipal {
-    flex-direction: column;
+@media (min-width: 768px) {
+  .contenedor {
+    padding: 2.5rem 1.5rem 4rem; 
   }
 
-  .lateralFiltros {
-    width: 100%;
-    position: static;
+  .titulo {
+    font-size: 2rem; 
   }
 
   .seccionPublicaciones {
     padding: 1.5rem;
+  }
+
+  .listado {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contenidoPrincipal {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .lateralFiltros {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 140px;
+  }
+
+  .seccionPublicaciones {
+    padding: 2rem;
+    flex: 1;
   }
 }

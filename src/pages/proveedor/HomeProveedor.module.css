@@ -1,24 +1,25 @@
 .contenedor {
   box-sizing: border-box;
   width: 100%;
-  padding: 3rem 2rem 4rem;
+  padding: 1.5rem 1rem 3rem;
   min-height: 10px;
 }
 
 /*  (titulo + boton) */
 .encabezado {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: 1rem;
   justify-content: space-between;
   width: 100%;
   margin-bottom: 25px;
+  padding-bottom: 1rem;
   border-bottom: #000000 1px solid; /*luego cambiar color*/
 }
 
 .titulo {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #0f2137;
   text-align: center;
@@ -26,8 +27,7 @@
 }
 
 .botonNueva {
-  width: auto;
-  align-self: flex-start;
+  width: 100%;
   margin-bottom: 10px;
 }
 
@@ -40,8 +40,12 @@
 /* listado de publicaciones */
 .listado {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1.8rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.listado > article {
+  max-width: none; /* en el listado la card debe llenar la columna del grid*/
 }
 
 /* estado sin publicaciones */
@@ -61,8 +65,6 @@
   text-align: center;
 }
 
-/* mensaje de error */
-
 .error {
   margin: 0;
   padding: 1rem 1.25rem;
@@ -73,4 +75,30 @@
   border-radius: 8px;
 
   font-size: 0.95rem;
+}
+
+/* SM */
+@media (min-width: 600px) {
+  .contenedor {
+    padding: 3rem 2rem 4rem; 
+  }
+
+  .encabezado {
+    flex-direction: row; 
+    align-items: center; 
+    justify-content: space-between; 
+  }
+
+  .titulo {
+    font-size: 1.8rem; 
+  }
+
+  .botonNueva {
+    width: auto; 
+  }
+
+  .listado {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    gap: 1.8rem;
+  }
 }
