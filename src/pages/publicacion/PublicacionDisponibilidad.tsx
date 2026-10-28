@@ -1,113 +1,45 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import CalendarioDisponibilidad from '../../components/Publicaciones/CalendarioDisponibilidad';
-import {
-  GetDisponibilidad,
-  getOnePublicacion,
-} from '../../services/publicacion.service';
-import type {
-  PeriodoOcupado,
-  Publicacion,
-} from '../../models/publicacion.model';
+import CalendarioDisponibilidad, {
+  type RangoFechas,
+} from '../../components/Publicaciones/CalendarioDisponibilidad';
+import PanelRangos from '../../components/Publicaciones/PanelRangos';
+import { usePublicacion } from '../../hooks/usePublicacion';
+import { useDisponibilidad } from '../../hooks/useDisponibilidad';
+import { formatearFecha } from '../../utils/date.utils';
 import style from './PublicacionDisponibilidad.module.css';
-
-function toDateKey(input: string): string {
-  const trimmed = input.trim();
-  if (/^\d{4}-\d{2}-\d{2}/.test(trimmed)) {
-    return trimmed.slice(0, 10);
-  }
-  const parsed = new Date(trimmed);
-  if (Number.isNaN(parsed.getTime())) {
-    return '';
-  }
-  const y = parsed.getFullYear();
-  const m = String(parsed.getMonth() + 1).padStart(2, '0');
-  const d = String(parsed.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
-}
-
-function formatearFechaHumana(dateKey: string): string {
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) return dateKey;
-  const [y, m, d] = dateKey.split('-').map(Number);
-  return `${String(d).padStart(2, '0')}/${String(m).padStart(2, '0')}/${y}`;
-}
 
 export default function PublicacionDisponibilidad() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const [publicacion, setPublicacion] = useState<Publicacion | null>(null);
-  const [periodosOcupados, setPeriodosOcupados] = useState<PeriodoOcupado[]>(
-    []
-  );
-  const [cargando, setCargando] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const [rangoSeleccionado, setRangoSeleccionado] =
+    useState<RangoFechas | null>(null);
 
-  useEffect(() => {
-    let cancelado = false;
+  const {
+    publicacion,
+    cargando: cargandoPub,
+    error: errorPub,
+  } = usePublicacion(id);
 
-    async function cargarAgenda() {
-      if (!id || Number.isNaN(Number(id))) {
-        setError('El identificador de publicación no es válido.');
-        setCargando(false);
-        return;
-      }
+  const {
+    rangosOcupados,
+    cargando: cargandoDisp,
+    error: errorDisp,
+  } = useDisponibilidad(id);
 
-      setCargando(true);
-      setError(null);
+  const cargando = cargandoPub || cargandoDisp;
+  const error = errorPub || errorDisp;
 
-      try {
-        const pId = Number(id);
-        const [dispRes, pubRes] = await Promise.all([
-          GetDisponibilidad(pId),
-          getOnePublicacion(pId), //es por si se accede directo mediante URL
-        ]);
-
-        if (!cancelado) {
-          const rawData = dispRes.data as unknown;
-          const lista: PeriodoOcupado[] = Array.isArray(rawData)
-            ? rawData
-            : rawData && typeof rawData === 'object'
-              ? [rawData as PeriodoOcupado]
-              : [];
-          setPeriodosOcupados(lista);
-          if (pubRes?.data) {
-            setPublicacion(pubRes.data);
-          }
-        }
-      } catch (e) {
-        if (!cancelado) {
-          setError(
-            e instanceof Error
-              ? e.message
-              : 'Error al obtener la disponibilidad de la aeronave'
-          );
-        }
-      } finally {
-        if (!cancelado) {
-          setCargando(false);
-        }
-      }
-    }
-
-    cargarAgenda();
-
-    return () => {
-      cancelado = true;
-    };
-  }, [id]);
-
-  const rangosNormalizados = useMemo(() => {
-    return periodosOcupados
-      .map((p) => {
-        const inicio = toDateKey(p.fechaInicio);
-        const fin = toDateKey(p.fechaFin);
-        if (!inicio || !fin) return null;
-        return inicio <= fin ? { inicio, fin } : { inicio: fin, fin: inicio };
-      })
-      .filter((r): r is { inicio: string; fin: string } => r !== null)
-      .sort((a, b) => a.inicio.localeCompare(b.inicio));
-  }, [periodosOcupados]);
+  const handleContinuarReserva = () => {
+    console.log('en construccion')
+    /*
+    if (!rangoSeleccionado || !id) return;
+    // la pag va a tener que recibir id, fechaInicio y fechaFin (searchParams)
+    navigate(
+      `/publicaciones/${id}/reservar?inicio=${rangoSeleccionado.inicio}&fin=${rangoSeleccionado.fin}`
+    );*/
+  };
 
   if (cargando) {
     return (
@@ -175,41 +107,38 @@ export default function PublicacionDisponibilidad() {
           </div>
 
           <div className={style.layoutContenido}>
-            <CalendarioDisponibilidad rangosOcupados={rangosNormalizados} />
+            <CalendarioDisponibilidad
+              rangosOcupados={rangosOcupados}
+              rangoSeleccionado={rangoSeleccionado}
+              onSeleccionarRango={setRangoSeleccionado}
+            />
 
-            {/* resumen de períodos ocupados */}
-            <aside className={style.panelPeriodos}>
-              <h3 className={style.tituloPanel}>Períodos ocupados</h3>
-              {rangosNormalizados.length === 0 ? (
-                <div className={style.sinOcupacion}>
-                  <p>No se registran períodos ocupados.</p>
-                </div>
-              ) : (
-                <ul className={style.listaPeriodos}>
-                  {rangosNormalizados.map((rango, index) => (
-                    <li
-                      key={`${rango.inicio}-${rango.fin}-${index}`}
-                      className={style.itemPeriodo}
-                    >
-                      <span className={style.badgeOcupado}>Ocupado</span>
-                      <div className={style.fechasPeriodo}>
-                        <span>
-                          <strong>Desde:</strong>{' '}
-                          {formatearFechaHumana(rango.inicio)}
-                        </span>
-                        <span>
-                          <strong>Hasta:</strong>{' '}
-                          {formatearFechaHumana(rango.fin)}
-                        </span>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </aside>
+            <PanelRangos rangos={rangosOcupados} variante="ocupado" />
           </div>
         </section>
       </main>
+
+      <aside className={style.barraInferior}>
+        <div className={style.barraContenido}>
+          <div className={style.grupoPeriodo}>
+            <span className={style.etiquetaPeriodo}>Período seleccionado</span>
+            <div className={style.valorPeriodo}>
+              {rangoSeleccionado
+                ? `${formatearFecha(rangoSeleccionado.inicio)} al ${formatearFecha(rangoSeleccionado.fin)}`
+                : 'Seleccioná un rango en el calendario'}
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className={style.botonReserva}
+            disabled={!rangoSeleccionado}
+            onClick={handleContinuarReserva}
+          >
+            Continuar reserva
+          </button>
+        </div>
+      </aside>
     </div>
   );
 }
