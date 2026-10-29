@@ -4,7 +4,8 @@
   justify-content: space-between;
   gap: 1rem;
   background-color: #f8fafc;
-  border: 1px solid #cbd5e1;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 12px rgba(15, 33, 55, 0.08);
   border-radius: 10px;
   padding: 0.85rem 1rem;
   transition: all 0.2s ease;
@@ -20,7 +21,7 @@
 }
 
 .seleccionada {
-  border: 2px solid #ffab1b;
+  border-color: #ffab1b;
   background-color: #fffbeb;
 }
 
@@ -36,7 +37,7 @@
 }
 
 .codigo {
-  background-color: #0f2137;
+  background-color: #43102f;
   color: #ffffff;
   font-size: 0.8rem;
   font-weight: 700;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { RangoFechas } from './CalendarioDisponibilidad';
 import { formatearFecha } from '../../utils/date.utils';
+import Button from '../ui/Button';
 import style from './PanelRangos.module.css';
 
 export type VarianteRango = 'ocupado' | 'solicitado';
@@ -30,13 +31,14 @@ export default function PanelRangos({
     <aside className={style.panel}>
       <div className={style.cabecera}>
         <h3 className={style.titulo}>{tituloFinal}</h3>
-        <button
+        <Button
           type="button"
+          variant="secondary"
           className={style.botonToggle}
           onClick={() => setMostrar((prev) => !prev)}
         >
           {mostrar ? 'Ocultar' : 'Mostrar'}
-        </button>
+        </Button>
       </div>
 
       {mostrar &&

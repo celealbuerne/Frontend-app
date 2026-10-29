@@ -9,7 +9,7 @@ import style from './AeropuertoSelector.module.css';
 
 interface AeropuertoSelectorProps {
   aeropuertoSeleccionado?: Aeropuerto | null;
-  onSeleccionar: (aeropuerto: Aeropuerto) => void;
+  onSeleccionar: (aeropuerto: Aeropuerto | null) => void;
 }
 
 export default function AeropuertoSelector({
@@ -47,6 +47,14 @@ export default function AeropuertoSelector({
       setError(e instanceof Error ? e.message : 'Error al buscar aeropuertos.');
     } finally {
       setCargando(false);
+    }
+  };
+
+  const handleSeleccionar = (aero: Aeropuerto) => {
+    if (aeropuertoSeleccionado?.id === aero.id) {
+      onSeleccionar(null);
+    } else {
+      onSeleccionar(aero);
     }
   };
 
@@ -101,7 +109,7 @@ export default function AeropuertoSelector({
               key={aero.id}
               aeropuerto={aero}
               seleccionado={aeropuertoSeleccionado?.id === aero.id}
-              onSelect={onSeleccionar}
+              onSelect={handleSeleccionar}
             />
           ))}
         </div>

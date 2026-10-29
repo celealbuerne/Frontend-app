@@ -1,0 +1,33 @@
+.desglose {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.filaCalculo {
+  display: flex;
+  justify-content: space-between;
+  color: #475569;
+  font-size: 0.98rem;
+}
+
+.separador {
+  border: none;
+  border-top: 1px solid #e2e8f0;
+  margin: 0.4rem 0;
+}
+
+.filaTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f2137;
+}
+
+.montoTotal {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f2137;
+}
