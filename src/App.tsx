@@ -14,6 +14,7 @@ import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibil
 import SolicitudReserva from './pages/reserva/SolicitudReserva';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import MisReservas from './pages/reserva/MisReservas';
+import AeronavePage from './pages/proveedor/AeronavePage';
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route path="proveedor">
               <Route index element={<HomeProveedor />} />
               <Route path="crear-publicacion" element={<CrearPublicacion />} />
+              <Route path="aeronaves" element={<AeronavePage />} />
             </Route>
 
             {/* Rutas de administrador */}
