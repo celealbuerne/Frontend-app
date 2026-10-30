@@ -23,10 +23,35 @@ export interface CrearReservaPayload {
   publicacion: number; // ID de la publicacion
 }
 
+export interface ReservaDetalle {
+  id: number;
+  fechaInicio: string;
+  fechaFin: string;
+  montoTotal: number;
+  estado: EstadoReserva;
+  origen: { id: number; nombre: string };
+  destino: { id: number; nombre: string };
+  cliente: User;
+  publicacion: {
+    id: number;
+    aeronave: { modelo: string; fabricante: string; capacidad: number };
+    proveedor: User;
+  };
+}
+
+export interface ReservaFiltros {
+  //por el momento, despues agregar publicaciones 
+  estado?: EstadoReserva;
+}
+
 export interface ReservaResponse extends BaseResponse {
   data: Reserva;
 }
 
 export interface ReservasResponse extends BaseResponse {
   data: Reserva[];
+}
+
+export interface ReservasDetalleResponse extends BaseResponse {
+  data: ReservaDetalle[];
 }

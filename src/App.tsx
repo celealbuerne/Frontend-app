@@ -13,6 +13,7 @@ import PublicacionDetalle from './pages/publicacion/PublicacionDetalle';
 import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibilidad';
 import SolicitudReserva from './pages/reserva/SolicitudReserva';
 import AdminDashboard from './pages/admin/AdminDashboard';
+import MisReservas from './pages/reserva/MisReservas';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
 
             {/* Rutas generales autenticadas */}
             <Route path="profile" element={<ProfilePage />} />
+            <Route path="mis-reservas" element={<MisReservas />} />
 
             {/* Rutas de proveedor */}
             <Route path="proveedor">
