@@ -4,7 +4,7 @@ import style from './AdminDashboard.module.css';
 const OPCIONES_ADMIN = [
   { key: 'Ver proveedores', href: '#' },
   { key: 'Gestionar usuarios', href: '#' },
-  { key: 'Gestionar aeropuertos', href: '#' },
+  { key: 'Gestionar aeropuertos', href: '/admin/crear-aeropuerto' },
   { key: 'Gestionar localidades', href: '#' },
 ];
 
