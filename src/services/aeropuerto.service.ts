@@ -52,3 +52,18 @@ export async function getOne(id: number): Promise<AeropuertosResponse> {
 
   return response.json();
 }
+
+export async function saveOne(data: Omit<Aeropuerto, 'id'>) {
+   const response = await api('aeropuertos', {
+    method: 'POST',
+    body: data,
+   }) 
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+
+    throw new Error(errorData?.message || 'Error al registrar el aeropuerto');
+  }
+
+  return response.json();
+}

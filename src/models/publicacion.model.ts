@@ -1,4 +1,5 @@
 import type { Aeronave } from './aeronave.model.ts';
+import type { User } from './user.model.ts';
 
 export interface Publicacion {
   id: number;
@@ -8,6 +9,7 @@ export interface Publicacion {
   precioPorDia: number;
   imagen: string; //solo el nombre del archivo que guardo multer
   aeronave: Aeronave;
+  proveedor: User;
 }
 
 export interface PublicacionFiltros {
