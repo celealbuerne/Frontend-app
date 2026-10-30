@@ -4,6 +4,7 @@ import CalendarioDisponibilidad, {
   type RangoFechas,
 } from '../../components/Publicaciones/CalendarioDisponibilidad';
 import PanelRangos from '../../components/Publicaciones/PanelRangos';
+import Button from '../../components/ui/Button';
 import { usePublicacion } from '../../hooks/usePublicacion';
 import { useDisponibilidad } from '../../hooks/useDisponibilidad';
 import { formatearFecha } from '../../utils/date.utils';
@@ -32,13 +33,11 @@ export default function PublicacionDisponibilidad() {
   const error = errorPub || errorDisp;
 
   const handleContinuarReserva = () => {
-    console.log('en construccion')
-    /*
     if (!rangoSeleccionado || !id) return;
     // la pag va a tener que recibir id, fechaInicio y fechaFin (searchParams)
     navigate(
       `/publicaciones/${id}/reservar?inicio=${rangoSeleccionado.inicio}&fin=${rangoSeleccionado.fin}`
-    );*/
+    );
   };
 
   if (cargando) {
@@ -52,13 +51,13 @@ export default function PublicacionDisponibilidad() {
   if (error) {
     return (
       <main className={style.contenedor}>
-        <button
+        <Button
           type="button"
           className={style.botonVolver}
           onClick={() => navigate(`/publicaciones/${id}`)}
         >
           Volver a la publicación
-        </button>
+        </Button>
         <div className={style.mensajeError}>
           <p>{error}</p>
         </div>
@@ -69,13 +68,13 @@ export default function PublicacionDisponibilidad() {
   return (
     <div className={style.paginaDisponibilidad}>
       <main className={style.contenedor}>
-        <button
+        <Button
           type="button"
           className={style.botonVolver}
           onClick={() => navigate(`/publicaciones/${id}`)}
         >
           Volver a la publicación
-        </button>
+        </Button>
 
         <section className={style.seccionPrincipal}>
           <div className={style.cabecera}>
@@ -129,14 +128,14 @@ export default function PublicacionDisponibilidad() {
             </div>
           </div>
 
-          <button
+          <Button
             type="button"
             className={style.botonReserva}
             disabled={!rangoSeleccionado}
             onClick={handleContinuarReserva}
           >
             Continuar reserva
-          </button>
+          </Button>
         </div>
       </aside>
     </div>

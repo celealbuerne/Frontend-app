@@ -11,6 +11,7 @@ import CrearPublicacion from './pages/proveedor/CrearPublicacion';
 import PublicacionHome from './pages/publicacion/PublicacionHome';
 import PublicacionDetalle from './pages/publicacion/PublicacionDetalle';
 import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibilidad';
+import SolicitudReserva from './pages/reserva/SolicitudReserva';
 
 function App() {
   return (
@@ -25,6 +26,10 @@ function App() {
             <Route
               path="publicaciones/:id/disponibilidad"
               element={<PublicacionDisponibilidad />}
+            />
+            <Route
+              path="publicaciones/:id/reservar"
+              element={<SolicitudReserva />}
             />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<RegisterPage />} />

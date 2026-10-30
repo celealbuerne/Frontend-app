@@ -1,0 +1,219 @@
+.paginaReserva {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex: 1;
+}
+
+.contenedor {
+  width: 96%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 0.5rem 3rem;
+  min-height: calc(100vh - 160px);
+  flex: 1;
+}
+
+.botonVolver {
+  width: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0;
+  transition: opacity 0.2s ease;
+}
+
+.botonVolver:hover:not(:disabled) {
+  background: none;
+  opacity: 0.8;
+}
+
+.seccionPrincipal {
+  background-color: #91aabf;
+  border-radius: 16px;
+  padding: 2.2rem 2.5rem;
+  box-shadow: 0 4px 20px rgba(15, 33, 55, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.cabecera {
+  border-bottom: 2px solid rgba(15, 33, 55, 0.12);
+  padding-bottom: 1.25rem;
+}
+
+.etiquetaSuperior {
+  display: inline-block;
+  background-color: #0f2137;
+  color: #ffffff;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.6rem;
+}
+
+.titulo {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f2137;
+  margin: 0;
+}
+
+.subtitulo {
+  font-size: 1.05rem;
+  color: #1e3550;
+  font-weight: 500;
+  margin-top: 0.35rem;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.columnaIzquierda,
+.columnaDerecha {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tarjetaResumen {
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 1.75rem;
+  box-shadow: 0 2px 12px rgba(15, 33, 55, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tituloSeccion {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #0f2137;
+  margin: 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.75rem;
+}
+
+.bloqueDestino {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.etiquetaDestino {
+  font-size: 0.78rem;
+  color: #64748b;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.avisoDestino {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  color: #475569;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.infoUsuario {
+  font-size: 0.9rem;
+  color: #475569;
+  background-color: #f1f5f9;
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+}
+
+.alertaAuth {
+  background-color: #fef3c7;
+  color: #92400e;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.alertaError {
+  background-color: #fef2f2;
+  color: #991b1b;
+  padding: 0.9rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.botonConfirmar {
+  background-color: #ffab1b;
+  color: #0f2137;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.95rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.botonConfirmar:hover:not(:disabled) {
+  background-color: #e6950f;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 171, 27, 0.35);
+}
+
+.botonConfirmar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensajeEstado {
+  text-align: center;
+  padding: 5rem 1.5rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.mensajeError {
+  text-align: center;
+  padding: 2rem;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border-radius: 12px;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .seccionPrincipal {
+    padding: 1.4rem 1.1rem;
+  }
+
+  .titulo {
+    font-size: 1.7rem;
+  }
+}

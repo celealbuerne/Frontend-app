@@ -15,6 +15,7 @@
 }
 
 .botonVolver {
+  width: auto;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -29,7 +30,8 @@
   transition: opacity 0.2s ease;
 }
 
-.botonVolver:hover {
+.botonVolver:hover:not(:disabled) {
+  background: none;
   opacity: 0.8;
 }
 
@@ -156,6 +158,7 @@
 }
 
 .botonReserva {
+  width: auto;
   background-color: #bbdaff;
   color: #000000;
   font-size: 1.2rem;
