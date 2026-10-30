@@ -6,19 +6,17 @@ const NAV_VISITANTE = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Aeropuertos', href: '#' },
-  { key: 'Proveedores', href: '#' },
   { key: 'Sobre nosotros', href: '#' },
 ];
 
-// A definir: Mi Flota / Aeropuertos / Sobre nosotros
 const NAV_PROVEEDOR = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Publicaciones', href: '/proveedor' },
-  { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' },
+  // { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' }, va por el boton de la pag anterior
   { key: 'Mi Flota', href: '#' },
   { key: 'Aeropuertos', href: '#' },
-  { key: 'Sobre nosotros', href: '#' },
+  // { key: 'Sobre nosotros', href: '#' },
 ];
 
 const NAV_CLIENTE = [
@@ -26,12 +24,20 @@ const NAV_CLIENTE = [
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Reservas', href: '#' },
   { key: 'Aeropuertos', href: '#' },
-  { key: 'Sobre nosotros', href: '#' },
+  // { key: 'Sobre nosotros', href: '#' },
+];
+
+const NAV_ADMIN = [
+  { key: 'Inicio', href: '/' },
+  { key: 'Publicaciones', href: '/publicaciones' },
+  { key: 'Aeropuertos', href: '#' },
+  { key: 'Dashboard Administrador', href: '/admin' },
 ];
 
 function obtenerOpciones(roles?: string[]) {
   if (roles?.includes('PROVEEDOR')) return NAV_PROVEEDOR;
   if (roles?.includes('CLIENTE')) return NAV_CLIENTE;
+  if (roles?.includes('ADMIN')) return NAV_ADMIN;
   return NAV_VISITANTE;
 }
 

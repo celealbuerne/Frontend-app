@@ -12,6 +12,7 @@ import PublicacionHome from './pages/publicacion/PublicacionHome';
 import PublicacionDetalle from './pages/publicacion/PublicacionDetalle';
 import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibilidad';
 import SolicitudReserva from './pages/reserva/SolicitudReserva';
+import AdminDashboard from './pages/admin/AdminDashboard';
 
 function App() {
   return (
@@ -41,6 +42,11 @@ function App() {
             <Route path="proveedor">
               <Route index element={<HomeProveedor />} />
               <Route path="crear-publicacion" element={<CrearPublicacion />} />
+            </Route>
+
+            {/* Rutas de administrador */}
+            <Route path="admin">
+              <Route index element={<AdminDashboard />} />
             </Route>
           </Route>
         </Routes>
