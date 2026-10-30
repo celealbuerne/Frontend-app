@@ -1,4 +1,5 @@
-import type { BaseResponse } from './publicacion.model';
+import type { Aeropuerto } from './aeropuerto.model.ts';
+import type { BaseResponse, Publicacion } from './publicacion.model';
 import type { User } from './user.model';
 
 export type EstadoReserva =
@@ -29,14 +30,10 @@ export interface ReservaDetalle {
   fechaFin: string;
   montoTotal: number;
   estado: EstadoReserva;
-  origen: { id: number; nombre: string };
-  destino: { id: number; nombre: string };
+  origen: Aeropuerto;
+  destino: Aeropuerto;
   cliente: User;
-  publicacion: {
-    id: number;
-    aeronave: { modelo: string; fabricante: string; capacidad: number };
-    proveedor: User;
-  };
+  publicacion: Publicacion;
 }
 
 export interface ReservaFiltros {

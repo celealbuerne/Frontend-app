@@ -1,6 +1,7 @@
 import type { Aeropuerto } from './aeropuerto.model';
 
 export interface Localidad {
+  id: number;
   pais: string;
   provincia: string;
   nombre: string;
