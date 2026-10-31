@@ -6,10 +6,7 @@ import type {
 
 interface AeropuertosResponse {
   mensaje: string;
-  data: {
-    localidad: unknown;
-    aeropuertos: Aeropuerto[];
-  };
+  data: Aeropuerto[];
 }
 
 export async function getAllAeropuertos(

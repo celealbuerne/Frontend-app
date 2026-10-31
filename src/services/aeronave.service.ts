@@ -26,7 +26,7 @@ export async function createAeronave(data: {
   autonomia: number;
   velocidadMaxima: number;
   antiguedad: string;
-  proveedor: number;
+  //proveedor: number; ya logueado
   ultimoAeropuerto: number;
 }) {
   const response = await api('/aeronaves', {

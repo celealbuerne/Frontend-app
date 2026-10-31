@@ -23,7 +23,7 @@ const NAV_PROVEEDOR = [
 const NAV_CLIENTE = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
-  { key: 'Mis Reservas', href: '/reservas' },
+  { key: 'Mis Reservas', href: '/mis-reservas' },
   { key: 'Aeropuertos', href: '#' },
   // { key: 'Sobre nosotros', href: '#' },
 ];

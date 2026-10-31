@@ -44,7 +44,7 @@ export default function PublicacionForm({
       }
     };
     cargarAeronaves();
-  });
+  },[]);
 
   useEffect(() => {
     return () => {

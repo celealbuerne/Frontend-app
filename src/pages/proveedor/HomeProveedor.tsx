@@ -8,7 +8,7 @@ import style from './HomeProveedor.module.css';
 import Button from '../../components/ui/Button';
 
 export default function HomeProveedor() {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth();  //CAMBIAR POR isLogged
   const navigate = useNavigate();
 
   // null = todavia no llego la respuesta, [] no hay publicaciones

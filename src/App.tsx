@@ -15,6 +15,7 @@ import SolicitudReserva from './pages/reserva/SolicitudReserva';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import MisReservas from './pages/reserva/MisReservas';
 import AeronavePage from './pages/proveedor/AeronavePage';
+import CrearAeronave from './pages/proveedor/CrearAeronave';
 
 function App() {
   return (
@@ -46,8 +47,8 @@ function App() {
               <Route index element={<HomeProveedor />} />
               <Route path="crear-publicacion" element={<CrearPublicacion />} />
               <Route path="aeronaves" element={<AeronavePage />} />
+              <Route path="crear-aeronave" element={<CrearAeronave />} />
             </Route>
-
             {/* Rutas de administrador */}
             <Route path="admin">
               <Route index element={<AdminDashboard />} />

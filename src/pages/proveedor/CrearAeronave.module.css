@@ -1,0 +1,65 @@
+.pagina {
+  display: flex;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 640px;
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #d5deea;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.titulo {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #1f2d3d;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #1f2d3d;
+}
+
+.textarea,
+.select {
+  padding: 10px 12px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: #1f2d3d;
+  background-color: #ffffff;
+  border: 1px solid #d5deea;
+  border-radius: 8px;
+}
+
+.textarea {
+  resize: vertical;
+}
+
+.fila {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.error {
+  margin: 0;
+  color: #b42318;
+}
+
+@media (min-width: 600px) {
+  .fila {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

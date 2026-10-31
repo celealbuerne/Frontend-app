@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { getAeronavesByProveedor } from '../../services/aeronave.service.ts';
 import type { Aeronave } from '../../models/aeronave.model.ts';
 import AeronaveCard from '../../components/Aeronave/AeronaveCard.tsx';
@@ -42,6 +43,11 @@ export default function AeronavePage() {
           <p className={style.subtitulo}>
             Estas son las aeronaves que tenés registradas. Desde acá podés revisar sus características y usarlas para crear publicaciones.
           </p>
+        </div>
+        <div>
+          <Link to="/proveedor/crear-aeronave" className={style.botonAgregar}>
+            Agregar aeronave
+          </Link>
         </div>
       </div>
 
