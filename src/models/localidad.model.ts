@@ -1,12 +1,11 @@
-import type { Aeropuerto } from './aeropuerto.model';
-
 export interface Localidad {
   id: number;
+  fechaAlta: string;
+  fechaModificacion: string;
   pais: string;
   provincia: string;
   nombre: string;
   codigoPostal: number;
-  aeropuertos?: Aeropuerto[];
 }
 
 export interface CreateLocalidad {

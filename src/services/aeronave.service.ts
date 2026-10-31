@@ -1,5 +1,5 @@
 import { api } from './api.ts';
-import type { Aeronave } from '../models/aeronave.model.ts';
+import type { Aeronave, CrearAeronaveInput } from '../models/aeronave.model.ts';
 
 interface AeronavesResponse {
   mensaje: string;
@@ -18,17 +18,7 @@ export async function getAeronavesByProveedor(): Promise<AeronavesResponse> {
   return response.json();
 }
 
-export async function createAeronave(data: {
-  modelo: string;
-  fabricante: string;
-  descripcion: string;
-  capacidad: number;
-  autonomia: number;
-  velocidadMaxima: number;
-  antiguedad: string;
-  //proveedor: number; ya logueado
-  ultimoAeropuerto: number;
-}) {
+export async function createAeronave(data: CrearAeronaveInput) {
   const response = await api('/aeronaves', {
     method: 'POST',
     body: data,

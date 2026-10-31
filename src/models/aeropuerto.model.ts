@@ -2,6 +2,8 @@ import type { Localidad } from './localidad.model';
 
 export interface Aeropuerto {
   id: number;
+  fechaAlta: string;
+  fechaModificacion: string;
   nombre: string;
   codigo: string;
   localidadID: Localidad;

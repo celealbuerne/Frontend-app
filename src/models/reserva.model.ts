@@ -7,10 +7,12 @@ export type EstadoReserva =
 
 export interface Reserva {
   id: number;
+  fechaAlta: string;
+  fechaModificacion: string;
   fechaInicio: string;
   fechaFin: string;
-  origen: number;
-  destino: number;
+  origen: Aeropuerto;
+  destino: Aeropuerto;
   publicacion: number;
   cliente?: User;
   estado?: EstadoReserva;
