@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import type { ChangeEvent, SubmitEvent } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../../components/ui/InputField.tsx';
 import Button from '../../components/ui/Button.tsx';
 import { createAeronave } from '../../services/aeronave.service.ts';
@@ -62,23 +62,6 @@ export default function CrearAeronave() {
   async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     setError('');
-
-    const capacidad = Number(datos.capacidad);
-    const autonomia = Number(datos.autonomia);
-    const velocidadMaxima = Number(datos.velocidadMaxima);
-    const ultimoAeropuerto = Number(datos.ultimoAeropuerto);
-
-  
-    if ([capacidad, autonomia, velocidadMaxima].some((n) => !Number.isFinite(n) || n <= 0)) {
-        setError('Ingresá un número válido mayor a 0 en capacidad, autonomía y velocidad máxima');
-    return;
-    }
-
-    if (!ultimoAeropuerto) {
-        setError('Seleccioná un aeropuerto');
-    return;
-    }
-
     setIsLoading(true);
 
     try {
@@ -100,9 +83,21 @@ export default function CrearAeronave() {
   }
 
   return (
-    <section className={style.pagina}>
+    <main className={style.pagina}>
+      <div className={style.encabezado}>
+        <div className={style.textos}>
+          <h1 className={style.titulo}>Agregar aeronave</h1>
+          <p className={style.subtitulo}>
+            Completá los datos de tu aeronave para sumarla a tu flota. Después
+            vas a poder usarla para crear una publicación y recibir reservas.
+          </p>
+        </div>
+        <Link to="/proveedor/aeronaves" className={style.botonVolver}>
+          ← Volver a Mi Flota
+        </Link>
+      </div>
+
       <form className={style.formulario} onSubmit={handleSubmit}>
-        <h1 className={style.titulo}>Agregar aeronave</h1>
 
         <InputField
           label="Modelo"
@@ -127,7 +122,11 @@ export default function CrearAeronave() {
             value={datos.descripcion}
             onChange={handleChange}
             rows={3}
+            maxLength={200}
           />
+          <small className={style.contador}>
+            {datos.descripcion.length}/200
+          </small>
         </label>
 
         <div className={style.fila}>
@@ -163,6 +162,7 @@ export default function CrearAeronave() {
             name="antiguedad"
             type="date"
             value={datos.antiguedad}
+            max={new Date().toISOString().split('T')[0]}
             onChange={handleChange}
             required
           />
@@ -192,6 +192,6 @@ export default function CrearAeronave() {
           {isLoading ? 'Guardando...' : 'Guardar aeronave'}
         </Button>
       </form>
-    </section>
+    </main>
   );
 }

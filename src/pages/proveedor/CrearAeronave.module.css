@@ -1,7 +1,46 @@
 .pagina {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.encabezado {
   display: flex;
-  justify-content: center;
-  padding: 24px 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.textos {
+  max-width: 40rem;
+}
+
+.titulo {
+  margin: 0;
+  font-size: 1.7rem;
+  color: #ffffff;
+}
+
+.subtitulo {
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #dbe5f0;
+}
+
+.botonVolver {
+  font-size: 1rem;
+  color: #acd6ff;
+  text-decoration: none;
+}
+
+.botonVolver:hover {
+  color: #cbacff;
+  text-decoration: underline;
 }
 
 .formulario {
@@ -10,17 +49,12 @@
   gap: 16px;
   width: 100%;
   max-width: 640px;
+  margin: 0 auto;
   padding: 24px;
   background-color: #ffffff;
   border: 1px solid #d5deea;
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.titulo {
-  margin: 0;
-  font-size: 1.5rem;
-  color: #1f2d3d;
 }
 
 .campo {
@@ -47,6 +81,13 @@
   resize: vertical;
 }
 
+.contador {
+  align-self: flex-end;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: #7b8fa8;
+}
+
 .fila {
   display: grid;
   grid-template-columns: 1fr;
@@ -59,6 +100,10 @@
 }
 
 @media (min-width: 600px) {
+  .pagina {
+    padding: 2.5rem 2rem 4rem;
+  }
+
   .fila {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }

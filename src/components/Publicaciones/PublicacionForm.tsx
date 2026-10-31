@@ -30,6 +30,11 @@ export default function PublicacionForm({
   const [vistaPrevia, setVistaPrevia] = useState<string | null>(null); //guarda la URL temporal de la img elegida para mostrarla antes de enviarla al back
   const [enviando, setEnviando] = useState(false);
 
+  const aeronavesDisponibles = aeronaves.filter(
+  (aeronave) =>
+    !aeronave.publicacion || aeronave.id === valoresIniciales?.aeronave.id
+  );
+
   useEffect(() => {
     const cargarAeronaves = async () => {
       if (!currentUser) return;
@@ -87,7 +92,7 @@ export default function PublicacionForm({
         defaultValue={valoresIniciales?.aeronave.id ?? ''}
       >
         <option value="">Seleccioná una aeronave</option>
-        {aeronaves.map((aeronave) => (
+        {aeronavesDisponibles.map((aeronave) => (
           <option key={aeronave.id} value={aeronave.id}>
             {aeronave.modelo} - {aeronave.ultimoAeropuerto.nombre}
           </option>
@@ -140,6 +145,12 @@ export default function PublicacionForm({
         </ul>
       )}
       {errorServidor && <p className={style.errorServidor}>{errorServidor}</p>}
+
+    {!editando && aeronaves.length > 0 && aeronavesDisponibles.length === 0 && (
+      <p className={style.errorServidor}>
+        Todas tus aeronaves ya tienen una publicación. Podés agregar una nueva desde Mi Flota.
+      </p>
+    )}
 
       <Button type="submit" variant="primary" disabled={enviando}>
         {enviando ? 'Guardando...' : textoBoton}

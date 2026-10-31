@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { getAeronavesByProveedor } from '../../services/aeronave.service.ts';
 import type { Aeronave } from '../../models/aeronave.model.ts';
-import AeronaveCard from '../../components/Aeronave/AeronaveCard.tsx';
+import { useNavigate } from 'react-router-dom';
+import AeronaveFlotaCard from '../../components/Aeronaves/AeronaveFlotaCard.tsx';
+import Button from '../../components/ui/Button.tsx';
 import style from './AeronavePage.module.css';
 
 export default function AeronavePage() {
   const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate()
 
   useEffect(() => {
     let cancelado = false;
@@ -45,17 +47,21 @@ export default function AeronavePage() {
           </p>
         </div>
         <div>
-          <Link to="/proveedor/crear-aeronave" className={style.botonAgregar}>
+          <Button
+            type="button"
+            variant="primary"
+            onClick={() => navigate('/proveedor/crear-aeronave')}
+          >
             Agregar aeronave
-          </Link>
+          </Button>
         </div>
       </div>
 
-  {!error && aeronaves.length > 0 && (
-    <span className={style.contador}>
-      {aeronaves.length} {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
-    </span>
-  )}
+      {!error && aeronaves.length > 0 && (
+        <span className={style.contador}>
+          {aeronaves.length} {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
+        </span>
+      )}
 
       {error && <p className={style.error}>{error}</p>}
 
@@ -65,7 +71,7 @@ export default function AeronavePage() {
 
       <div className={style.grilla}>
         {aeronaves.map((aeronave) => (
-          <AeronaveCard key={aeronave.id} aeronave={aeronave}/>
+          <AeronaveFlotaCard key={aeronave.id} aeronave={aeronave}/>
         ))}
       </div>
     </section>

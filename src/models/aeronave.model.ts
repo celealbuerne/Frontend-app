@@ -14,6 +14,7 @@ export interface Aeronave {
   antiguedad: string;
   ultimoAeropuerto: Aeropuerto;
   proveedor: User;
+  publicacion?: number | null;
 }
 
 export interface CrearAeronaveInput {

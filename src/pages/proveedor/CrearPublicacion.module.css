@@ -11,12 +11,21 @@
   gap: 1rem;
   margin-bottom: 2.5rem;
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
 }
 
 .titulo {
+  margin: 0;
   color: #ffffff;
   font-size: 1.7rem;
+}
+
+.subtitulo {
+  max-width: 40rem;
+  margin: 0.4rem 0 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #dbe5f0;
 }
 
 .botonVolver {

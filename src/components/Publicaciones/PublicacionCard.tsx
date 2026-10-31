@@ -25,7 +25,9 @@ export default function PublicacionCard({
 
       <div className={style.especificacionesPubli}>
         <p>{ultimoAeropuerto.nombre}</p>
-        <p>{descripcion}</p>
+        <p className={style.descripcionPubli} title={descripcion}>
+          {descripcion}
+        </p>
         <p>Hasta {capacidad} pasajeros</p>
       </div>
 

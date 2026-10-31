@@ -14,7 +14,7 @@
   justify-content: space-between;
   width: 100%;
   margin-bottom: 25px;
-  border-bottom: #000000 1px solid; /*luego cambiar color*/
+  border-bottom: 2px solid #7b97bb;
 }
 
 .titulo {

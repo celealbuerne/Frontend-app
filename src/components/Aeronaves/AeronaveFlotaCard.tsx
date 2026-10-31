@@ -1,6 +1,6 @@
 import type { Aeronave } from '../../models/aeronave.model.ts';
 import { formatearFecha } from '../../utils/date.utils.ts';
-import style from './AeronaveCard.module.css';
+import style from './AeronaveFlotaCard.module.css';
 
 type AeronaveCardProps = {
   aeronave: Aeronave;

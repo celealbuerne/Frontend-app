@@ -14,7 +14,14 @@ export default function CrearPublicacion() {
   return (
     <main className={style.contenedor}>
       <div className={style.encabezado}>
-        <h1 className={style.titulo}>Nueva publicación</h1>
+        <div className={style.textos}>
+          <h1 className={style.titulo}>Nueva publicación</h1>
+          <p className={style.subtitulo}>
+            Elegí una de tus aeronaves e ingresá los datos necesarios para que
+            los clientes puedan reservarla. Cada aeronave solo puede tener una
+            publicación.
+          </p>
+        </div>
         <Link to="/proveedor" className={style.botonVolver}>
           ← Volver a mis publicaciones
         </Link>
