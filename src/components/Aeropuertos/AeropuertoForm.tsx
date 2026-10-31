@@ -1,7 +1,10 @@
 import { useEffect, useState, type SubmitEvent } from 'react';
 import { findAll } from '../../services/localidad.service';
 import type { Localidad } from '../../models/localidad.model';
-import type { Aeropuerto } from '../../models/aeropuerto.model';
+import type {
+  Aeropuerto,
+  CreateAeropuerto,
+} from '../../models/aeropuerto.model';
 import InputField from '../ui/InputField';
 import SelectField from '../ui/SelectField';
 import Button from '../ui/Button';
@@ -10,7 +13,7 @@ import style from './AeropuertoForm.module.css';
 interface AeropuertoFormProps {
   valoresIniciales?: Aeropuerto;
   textoBoton: string;
-  onSubmit: (datos: Omit<Aeropuerto, 'id'>) => Promise<void>;
+  onSubmit: (datos: CreateAeropuerto) => Promise<void>;
 }
 
 export default function AeropuertoForm({
@@ -89,10 +92,11 @@ export default function AeropuertoForm({
       />
 
       <SelectField
+        key={localidades.length}
         label="Localidad"
         name="localidadID"
         required
-        defaultValue={valoresIniciales?.localidadID ?? ''}
+        defaultValue={valoresIniciales?.localidadID.id ?? ''}
       >
         <option value="" disabled>
           Seleccioná una localidad
@@ -119,4 +123,3 @@ export default function AeropuertoForm({
     </form>
   );
 }
-

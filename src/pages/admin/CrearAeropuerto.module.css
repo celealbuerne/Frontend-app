@@ -30,3 +30,20 @@
   text-decoration: underline;
 }
 
+.mensaje {
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.error {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0.9rem 1.1rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.95rem;
+}

@@ -1,0 +1,82 @@
+.contenedor {
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.encabezado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.titulo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.4rem;
+}
+
+.botonVolver {
+  color: #acd6ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.botonVolver:hover {
+  color: #cbacff;
+  text-decoration: underline;
+}
+
+.botonNuevo {
+  width: auto;
+}
+
+.listaTarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itemTarjeta {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.cardContenedor {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardContenedor > * {
+  height: 100%;
+}
+
+.botonEditar {
+  width: auto;
+  padding: 0.6rem 0.9rem;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.mensaje {
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.error {
+  margin: 0 0 1.5rem;
+  padding: 0.9rem 1.1rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
