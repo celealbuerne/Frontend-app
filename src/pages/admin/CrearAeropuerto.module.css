@@ -1,0 +1,49 @@
+.contenedor {
+  width: 100%;
+  padding: 3rem 2rem 5rem;
+  box-sizing: border-box;
+}
+
+.encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.titulo {
+  color: #ffffff;
+  font-size: 1.7rem;
+}
+
+.botonVolver {
+  color: #acd6ff;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+.botonVolver:hover {
+  color: #cbacff;
+  text-decoration: underline;
+}
+
+.mensaje {
+  color: #ffffff;
+  text-align: center;
+  font-size: 1.05rem;
+}
+
+.error {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0.9rem 1.1rem;
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 0.95rem;
+}

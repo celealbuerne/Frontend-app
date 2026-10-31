@@ -14,6 +14,8 @@ import PublicacionDisponibilidad from './pages/publicacion/PublicacionDisponibil
 import SolicitudReserva from './pages/reserva/SolicitudReserva';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import MisReservas from './pages/reserva/MisReservas';
+import CrearAeropuerto from './pages/admin/CrearAeropuerto.tsx';
+import GestionarAeropuertos from './pages/admin/GestionarAeropuertos';
 import AeronavePage from './pages/proveedor/AeronavePage';
 import CrearAeronave from './pages/proveedor/CrearAeronave';
 
@@ -52,6 +54,12 @@ function App() {
             {/* Rutas de administrador */}
             <Route path="admin">
               <Route index element={<AdminDashboard />} />
+              <Route path="aeropuertos" element={<GestionarAeropuertos />} />
+              <Route path="crear-aeropuerto" element={<CrearAeropuerto />} />
+              <Route
+                path="editar-aeropuerto/:id"
+                element={<CrearAeropuerto />}
+              />
             </Route>
           </Route>
         </Routes>

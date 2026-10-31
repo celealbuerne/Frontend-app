@@ -17,7 +17,6 @@ const NAV_PROVEEDOR = [
   // { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' }, va por el boton de la pag anterior
   { key: 'Mi Flota', href: '/proveedor/aeronaves' },
   { key: 'Aeropuertos', href: '#' },
-  // { key: 'Sobre nosotros', href: '#' },
 ];
 
 const NAV_CLIENTE = [
@@ -25,13 +24,12 @@ const NAV_CLIENTE = [
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Reservas', href: '/mis-reservas' },
   { key: 'Aeropuertos', href: '#' },
-  // { key: 'Sobre nosotros', href: '#' },
 ];
 
 const NAV_ADMIN = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
-  { key: 'Aeropuertos', href: '#' },
+  { key: 'Aeropuertos', href: '/crear-aeropuerto' },
   { key: 'Dashboard Administrador', href: '/admin' },
 ];
 

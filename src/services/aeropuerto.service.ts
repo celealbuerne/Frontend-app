@@ -2,11 +2,17 @@ import { api } from './api.ts';
 import type {
   Aeropuerto,
   AeropuertoFiltros,
+  CreateAeropuerto,
 } from '../models/aeropuerto.model.ts';
 
 interface AeropuertosResponse {
   mensaje: string;
   data: Aeropuerto[];
+}
+
+interface AeropuertoResponse {
+  mensaje: string;
+  data: Aeropuerto;
 }
 
 export async function getAllAeropuertos(
@@ -39,7 +45,7 @@ export async function getAllAeropuertos(
   return response.json();
 }
 
-export async function getOne(id: number): Promise<AeropuertosResponse> {
+export async function getOne(id: number): Promise<AeropuertoResponse> {
   const response = await api(`/aeropuertos/${id}`);
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
@@ -50,16 +56,31 @@ export async function getOne(id: number): Promise<AeropuertosResponse> {
   return response.json();
 }
 
-export async function saveOne(data: Omit<Aeropuerto, 'id'>) {
-   const response = await api('aeropuertos', {
+export async function saveOne(data: CreateAeropuerto) {
+  const response = await api('aeropuertos', {
     method: 'POST',
     body: data,
-   }) 
+  });
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
 
     throw new Error(errorData?.message || 'Error al registrar el aeropuerto');
+  }
+
+  return response.json();
+}
+
+export async function updateOne(id: number, data: Partial<CreateAeropuerto>) {
+  const response = await api(`/aeropuertos/${id}`, {
+    method: 'PATCH',
+    body: data,
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+
+    throw new Error(errorData?.message || 'Error al modificar el aeropuerto');
   }
 
   return response.json();
