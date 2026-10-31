@@ -10,6 +10,6 @@ export interface Aeronave {
   capacidad: number;
   autonomia: number;
   velocidadMaxima: number;
-  antiguedad: Date;
+  antiguedad: string;
   ultimoAeropuerto: Aeropuerto;
 }

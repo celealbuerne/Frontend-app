@@ -16,6 +16,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import MisReservas from './pages/reserva/MisReservas';
 import CrearAeropuerto from './pages/admin/CrearAeropuerto.tsx';
 import GestionarAeropuertos from './pages/admin/GestionarAeropuertos';
+import AeronavePage from './pages/proveedor/AeronavePage';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
             <Route path="proveedor">
               <Route index element={<HomeProveedor />} />
               <Route path="crear-publicacion" element={<CrearPublicacion />} />
+              <Route path="aeronaves" element={<AeronavePage />} />
             </Route>
 
             {/* Rutas de administrador */}

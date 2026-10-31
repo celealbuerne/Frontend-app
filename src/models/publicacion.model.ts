@@ -3,8 +3,8 @@ import type { User } from './user.model.ts';
 
 export interface Publicacion {
   id: number;
-  fechaAlta: Date;
-  fechaModificacion: Date;
+  fechaAlta: string;
+  fechaModificacion: string;
   descripcion: string;
   precioPorDia: number;
   imagen: string; //solo el nombre del archivo que guardo multer

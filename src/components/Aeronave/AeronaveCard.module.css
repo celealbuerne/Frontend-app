@@ -1,0 +1,80 @@
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #d5deea;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* se pisa el estilo global de header (fondo oscuro, sombra, etc.) que también afecta a este */
+.encabezado {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 0 0 12px;
+  background-color: transparent;
+  box-shadow: none;
+  border-bottom: 1px solid #e3e9f1;
+}
+
+.modelo {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #1f2d3d;
+}
+
+.fabricante {
+  padding: 3px 12px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #435873;
+  background-color: #e3e9f1;
+  border-radius: 999px;
+}
+
+/* se limita a 3 líneas para que las tarjetas queden parejas aunque la descripción sea larga */
+.descripcion {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: #435873;
+  display: -webkit-box;
+  max-height: calc(1.4em * 3);
+  overflow: hidden;
+}
+
+/* margin-top: auto empuja los datos al fondo, así quedan alineados entre tarjetas de una misma fila */
+.datos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: auto 0 0;
+  padding-top: 12px;
+  border-top: 1px solid #e3e9f1;
+}
+
+.dato {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dato dt {
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #7b8fa8;
+}
+
+/* el navegador agrega un margen por defecto a dd */
+.dato dd {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #1f2d3d;
+}

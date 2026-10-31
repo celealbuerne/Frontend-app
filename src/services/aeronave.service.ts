@@ -5,11 +5,9 @@ interface AeronavesResponse {
   mensaje: string;
   data: Aeronave[];
 }
-//revisar el lo del id y cambiar
-export async function getAeronavesByProveedor(
-  proveedorID: number
-): Promise<AeronavesResponse> {
-  const response = await api(`/aeronaves/proveedor/${proveedorID}`);
+
+export async function getAeronavesByProveedor(): Promise<AeronavesResponse> {
+  const response = await api(`/aeronaves/mis-aeronaves`);
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
