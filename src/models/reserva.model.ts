@@ -37,7 +37,7 @@ export interface ReservaDetalle {
 }
 
 export interface ReservaFiltros {
-  //por el momento, despues agregar publicaciones 
+  //por el momento, despues agregar publicaciones
   estado?: EstadoReserva;
 }
 

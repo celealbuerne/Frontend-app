@@ -16,11 +16,8 @@ export async function findAll(): Promise<LocalidadesResponse> {
   return response.json();
 }
 
-export async function findOne(
-  aeropuertoID: number
-): Promise<LocalidadResponse> {
-  const response = await api(`/localidades/${aeropuertoID}`);
-
+export async function findOne(localidadID: number): Promise<LocalidadResponse> {
+  const response = await api(`/localidades/${localidadID}`);
   if (!response.ok) {
     const errorData = await response.json().catch(() => null);
     throw new Error(errorData?.message || 'Error al buscar la localidad');
