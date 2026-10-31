@@ -21,7 +21,7 @@ export default function PublicacionForm({
   textoBoton,
   onSubmit,
 }: PublicacionFormProps) {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuth(); //CAMBIAR POR IS LOGGED
   const editando = valoresIniciales !== undefined;
 
   const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
@@ -35,7 +35,7 @@ export default function PublicacionForm({
       if (!currentUser) return;
 
       try {
-        const respuesta = await getAeronavesByProveedor(currentUser.id); //revisar lo del id
+        const respuesta = await getAeronavesByProveedor(); //revisar lo del id
         setAeronaves(respuesta.data);
       } catch (e) {
         setErrorServidor(
@@ -44,7 +44,7 @@ export default function PublicacionForm({
       }
     };
     cargarAeronaves();
-  }, [currentUser]);
+  });
 
   useEffect(() => {
     return () => {
@@ -106,9 +106,9 @@ export default function PublicacionForm({
       </label>
 
       <InputField
-        label="Precio por km (USD)"
+        label="Precio por día (USD)"
         type="number"
-        name="precioPorKM"
+        name="precioPorDia"
         min="1"
         step="any"
         required
