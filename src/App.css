@@ -9,6 +9,7 @@ html,
 body,
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 #root {
@@ -24,6 +25,12 @@ a {
 body {
   font-family: 'Montserrat', sans-serif;
   background-color: #435a76;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 header {
