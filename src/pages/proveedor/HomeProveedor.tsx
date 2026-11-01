@@ -8,7 +8,7 @@ import style from './HomeProveedor.module.css';
 import Button from '../../components/ui/Button';
 
 export default function HomeProveedor() {
-  const { currentUser } = useAuth();  //CAMBIAR POR isLogged
+  const { isLogged } = useAuth();  //CAMBIAR POR isLogged
   const navigate = useNavigate();
 
   // null = todavia no llego la respuesta, [] no hay publicaciones
@@ -18,7 +18,7 @@ export default function HomeProveedor() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!currentUser) return;
+    if (!isLogged) return;
     let cancelado = false;
 
     async function cargarPublicaciones() {
@@ -41,9 +41,9 @@ export default function HomeProveedor() {
     return () => {
       cancelado = true;
     };
-  }, [currentUser]); // el efecto depende de currentUser
+  }, [isLogged]); // el efecto depende de isLogged
 
-  if (!currentUser) {
+  if (!isLogged) {
     return <p>Usuario no autenticado.</p>;
   }
 
@@ -64,15 +64,17 @@ export default function HomeProveedor() {
       <section className={style.contenedorPublicaciones}>
         {error && <p className={style.error}>{error}</p>}
 
+        {publicaciones === null && <p className={style.vacio}>Cargando...</p>}
+
         {publicaciones !== null && !error && publicaciones.length === 0 && (
           <p className={style.vacio}>Todavía no tenés publicaciones.</p>
         )}
 
-        <section className={style.listado}>
+        <div className={style.listado}>
           {(publicaciones ?? []).map((publicacion) => (
             <PublicacionCard key={publicacion.id} publicacion={publicacion} />
           ))}
-        </section>
+        </div>
       </section>
     </main>
   );

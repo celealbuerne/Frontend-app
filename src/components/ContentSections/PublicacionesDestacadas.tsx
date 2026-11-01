@@ -36,13 +36,13 @@ export default function Publicaciones() {
   return (
     <>
       <div className={style.headMenu}>
-        <h2 className={style.titulo}>Publicaciones Destacadas</h2>
+        <h2 className={style.titulo}>Publicaciones Recientes</h2>
         <Link to="/publicaciones" className={style.botonMas}>
           Ver más
         </Link>
       </div>
 
-      {error && <p className={style.mensaje}>{error}</p>}
+      {error && <p className={style.error}>{error}</p>}
       {publicaciones === null && <p className={style.mensaje}>Cargando...</p>}
       {publicaciones?.length === 0 && !error && (
         <p className={style.mensaje}>Todavía no hay publicaciones.</p>

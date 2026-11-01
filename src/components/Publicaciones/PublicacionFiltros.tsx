@@ -58,7 +58,7 @@ export default function PublicacionFiltros({
 
       <div className={style.campos}>
         <InputField
-          label="Precio mín. (USD/km)"
+          label="Precio mín. (USD/dia)"
           type="number"
           name="precioMin"
           min="0"
@@ -67,7 +67,7 @@ export default function PublicacionFiltros({
           defaultValue={precioMin}
         />
         <InputField
-          label="Precio máx. (USD/km)"
+          label="Precio máx. (USD/dia)"
           type="number"
           name="precioMax"
           min="0"

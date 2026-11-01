@@ -21,7 +21,7 @@ export default function PublicacionForm({
   textoBoton,
   onSubmit,
 }: PublicacionFormProps) {
-  const { currentUser } = useAuth(); //CAMBIAR POR IS LOGGED
+  const { isLogged } = useAuth(); 
   const editando = valoresIniciales !== undefined;
 
   const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
@@ -31,25 +31,31 @@ export default function PublicacionForm({
   const [enviando, setEnviando] = useState(false);
 
   const aeronavesDisponibles = aeronaves.filter(
-  (aeronave) =>
-    !aeronave.publicacion || aeronave.id === valoresIniciales?.aeronave.id
-  );
+  (aeronave) => !aeronave.publicacion );
 
   useEffect(() => {
+    if (!isLogged || editando) return;
+    let cancelado = false;
+
     const cargarAeronaves = async () => {
-      if (!currentUser) return;
 
       try {
         const respuesta = await getAeronavesByProveedor(); //revisar lo del id
+        if (!cancelado)
         setAeronaves(respuesta.data);
       } catch (e) {
-        setErrorServidor(
-          e instanceof Error ? e.message : 'Error al cargar las aeronaves.'
-        );
+        if (!cancelado) {
+          setErrorServidor(
+            e instanceof Error ? e.message : 'Error al cargar las aeronaves.'
+          );
+        }
       }
     };
     cargarAeronaves();
-  },[]);
+    return () => {
+      cancelado = true;
+    }
+  },[isLogged, editando]);
 
   useEffect(() => {
     return () => {
@@ -69,7 +75,6 @@ export default function PublicacionForm({
     const nuevosErrores: string[] = [];
     setErrores(nuevosErrores);
     setErrorServidor(null);
-    if (nuevosErrores.length > 0) return;
 
     setEnviando(true);
     try {
@@ -89,14 +94,23 @@ export default function PublicacionForm({
         label="Aeronave"
         name="aeronaveID"
         required
+        disabled={editando}
         defaultValue={valoresIniciales?.aeronave.id ?? ''}
       >
-        <option value="">Seleccioná una aeronave</option>
-        {aeronavesDisponibles.map((aeronave) => (
-          <option key={aeronave.id} value={aeronave.id}>
-            {aeronave.modelo} - {aeronave.ultimoAeropuerto.nombre}
+        {valoresIniciales ? (
+          <option value={valoresIniciales.aeronave.id}>
+            {valoresIniciales.aeronave.modelo}
           </option>
-        ))}
+        ) : (
+          <>
+            <option value="">Seleccioná una aeronave</option>
+            {aeronavesDisponibles.map((aeronave) => (
+              <option key={aeronave.id} value={aeronave.id}>
+                {aeronave.modelo} - {aeronave.ultimoAeropuerto.nombre}
+              </option>
+            ))}
+          </>
+        )}
       </SelectField>
 
       <label className={style.campo}>

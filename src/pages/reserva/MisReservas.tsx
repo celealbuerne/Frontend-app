@@ -14,20 +14,30 @@ export default function MisReservas() {
   const esProveedor = currentUser?.roles?.includes('PROVEEDOR') ?? false;
 
   useEffect(() => {
+    let cancelado = false;
     async function cargarReservas() {
       try {
         const res = await getAllReservas({ estado: 'PENDIENTE' });
-        setReservas(res.data);
+        if (!cancelado) {
+          setReservas(res.data);
+        }
       } catch (err) {
-        setError(
-          err instanceof Error ? err.message : 'Error al cargar las reservas'
-        );
+        if (!cancelado) {
+          setError(
+            err instanceof Error ? err.message : 'Error al cargar las reservas'
+          );
+        }
       } finally {
-        setIsLoading(false);
+          if (!cancelado) {
+            setIsLoading(false);
+          }
       }
     }
 
     cargarReservas();
+    return () => {
+      cancelado = true;
+    }
   }, []);
 
   if (isLoading) return <p className={style.mensaje}>Cargando reservas...</p>;
@@ -38,7 +48,7 @@ export default function MisReservas() {
       <h2>Mis reservas</h2>
 
       {reservas.length === 0 ? (
-        <p className={style.mensaje}>No tenés reservas ninguna reserva.</p>
+        <p className={style.mensaje}>No tenés ninguna reserva.</p>
       ) : (
         <div className={style.lista}>
           {reservas.map((reserva) => (
