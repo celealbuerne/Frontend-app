@@ -5,7 +5,7 @@ const OPCIONES_ADMIN = [
   { key: 'Ver proveedores', href: '#' },
   { key: 'Gestionar usuarios', href: '#' },
   { key: 'Gestionar aeropuertos', href: '/admin/aeropuertos' },
-  { key: 'Gestionar localidades', href: '#' },
+  { key: 'Gestionar localidades', href: '/admin/localidades' },
 ];
 
 export default function AdminDashboard() {
