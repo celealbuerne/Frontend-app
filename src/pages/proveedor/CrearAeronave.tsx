@@ -51,7 +51,6 @@ export default function CrearAeronave() {
     };
   }, []);
 
-  // [name] como clave permite usar un solo handler para todos los campos
   function handleChange(
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) {

@@ -18,6 +18,8 @@ import CrearAeropuerto from './pages/admin/CrearAeropuerto.tsx';
 import GestionarAeropuertos from './pages/admin/GestionarAeropuertos';
 import AeronavePage from './pages/proveedor/AeronavePage';
 import CrearAeronave from './pages/proveedor/CrearAeronave';
+import CrearLocalidad from './pages/admin/CrearLocalidad';
+import GestionarLocalidades from './pages/admin/GestionarLocalidades.tsx';
 
 function App() {
   return (
@@ -60,6 +62,9 @@ function App() {
                 path="editar-aeropuerto/:id"
                 element={<CrearAeropuerto />}
               />
+              <Route path="localidades" element={<GestionarLocalidades />} />
+              <Route path="crear-localidad" element={<CrearLocalidad />} />
+              <Route path="editar-localidad/:id" element={<CrearLocalidad />} />
             </Route>
           </Route>
         </Routes>

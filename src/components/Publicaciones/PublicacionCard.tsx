@@ -32,7 +32,7 @@ export default function PublicacionCard({
       </div>
 
       <div className={style.precioPubli}>
-        <p>{precioPorDia} USD/km</p>
+        <p>{precioPorDia} USD/dia</p>
       </div>
 
       <button

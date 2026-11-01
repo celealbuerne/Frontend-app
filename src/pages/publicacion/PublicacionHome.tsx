@@ -79,6 +79,8 @@ export default function PublicacionHome() {
     setParams({});
   };
 
+  const hayFiltros = precioMin !== '' || precioMax !== '';
+
   return (
     <main className={style.contenedor}>
       <div className={style.cabecera}>
@@ -98,7 +100,7 @@ export default function PublicacionHome() {
         <section className={style.seccionPublicaciones}>
           <div className={style.seccionCabecera}>
             <h2 className={style.seccionTitulo}>Resultados</h2>
-            {publicaciones && (
+            {publicaciones && !error && (
               <span className={style.contador}>
                 {publicaciones.length}{' '}
                 {publicaciones.length === 1
@@ -118,7 +120,12 @@ export default function PublicacionHome() {
 
           {publicaciones?.length === 0 && !error && (
             <div className={style.estado}>
-              <p>No se encontraron publicaciones en ese rango de precio.</p>
+              <p>
+                {hayFiltros
+                  ? 'No se encontraron publicaciones en ese rango de precio.'
+                  : 'No se encontraron publicaciones.'
+                }
+              </p>
             </div>
           )}
 

@@ -2,11 +2,11 @@ import type { Aeronave } from '../../models/aeronave.model.ts';
 import { formatearFecha } from '../../utils/date.utils.ts';
 import style from './AeronaveFlotaCard.module.css';
 
-type AeronaveCardProps = {
+interface AeronaveCardProps  {
   aeronave: Aeronave;
 };
 
-export default function AeronaveCard({ aeronave }: AeronaveCardProps) {
+export default function AeronaveFlotaCard({ aeronave }: AeronaveCardProps) {
   return (
     <article className={style.tarjeta}>
       <div className={style.encabezado}>

@@ -10,7 +10,7 @@ export async function createReserva(
   datos: CrearReservaPayload
 ): Promise<ReservaResponse> {
   const payload: CrearReservaPayload = {
-    destino: datos.destino ?? 1, // hardcodeado en 1 de momento
+    destino: datos.destino, //?? 1, // hardcodeado en 1 de momento
     fechaInicio: datos.fechaInicio,
     fechaFin: datos.fechaFin,
     publicacion: datos.publicacion,

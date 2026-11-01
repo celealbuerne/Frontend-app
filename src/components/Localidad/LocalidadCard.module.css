@@ -1,0 +1,36 @@
+.card {
+  position: relative;
+  padding: 18px 24px 18px 28px;
+  border: 1px solid #e0e6ed;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+  box-shadow: 0 2px 6px rgba(11, 37, 69, 0.08);
+  overflow: hidden;
+}
+
+/* franja de color a la izquierda */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(180deg, #1d4e89 0%, #3fa7d6 100%);
+}
+
+
+.nombre {
+  margin: 0 0 6px;
+  color: #0b2545;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.detalle {
+  margin: 0 0 2px;
+  color: #5c6b7a;
+  font-size: 14px;
+  line-height: 1.5;
+}

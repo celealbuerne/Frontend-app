@@ -52,7 +52,7 @@ export default function Publicaciones() {
         </Link>
       </div>
 
-      {error && <p className={style.mensaje}>{error}</p>}
+      {error && <p className={style.error}>{error}</p>}
       {publicaciones === null && <p className={style.mensaje}>Cargando...</p>}
       {publicaciones?.length === 0 && !error && (
         <p className={style.mensaje}>Todavía no hay publicaciones.</p>

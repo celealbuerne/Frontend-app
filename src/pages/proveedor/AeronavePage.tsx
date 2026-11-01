@@ -10,7 +10,7 @@ export default function AeronavePage() {
   const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     let cancelado = false;
@@ -35,8 +35,6 @@ export default function AeronavePage() {
     };
   }, []);
 
-  if (isLoading) return <p className={style.mensaje}>Cargando flota...</p>;
-
   return (
     <section className={style.pagina}>
       <div className={style.encabezado}>
@@ -56,24 +54,29 @@ export default function AeronavePage() {
           </Button>
         </div>
       </div>
-
-      {!error && aeronaves.length > 0 && (
-        <span className={style.contador}>
-          {aeronaves.length} {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
-        </span>
-      )}
+      
+      {isLoading && <p className={style.mensaje}>Cargando flota...</p>}
 
       {error && <p className={style.error}>{error}</p>}
 
-      {!error && aeronaves.length === 0 && (
+      {!isLoading && !error && aeronaves.length === 0 && (
         <p className={style.mensaje}>Todavía no tenés ninguna aeronave.</p>
       )}
 
-      <div className={style.grilla}>
-        {aeronaves.map((aeronave) => (
-          <AeronaveFlotaCard key={aeronave.id} aeronave={aeronave}/>
-        ))}
-      </div>
+      {!isLoading && !error && aeronaves.length > 0 && (
+        <>
+        <span className={style.contador}>
+          {aeronaves.length}{' '}
+          {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
+        </span>
+
+        <div className={style.grilla}>
+          {aeronaves.map((aeronave) => (
+            <AeronaveFlotaCard key={aeronave.id} aeronave={aeronave}/>
+          ))}
+        </div>
+      </>
+      )}
     </section>
   );
 }
