@@ -17,6 +17,7 @@ export default function PublicacionFiltros({
   onLimpiar,
 }: PublicacionFiltrosProps) {
   const [error, setError] = useState<string | null>(null);
+  const [abierto, setAbierto] = useState(false);
 
   const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,6 +39,7 @@ export default function PublicacionFiltros({
     }
 
     setError(null);
+    setAbierto(false);
     onFiltrar({ precioMin: min, precioMax: max });
   };
 
@@ -54,41 +56,52 @@ export default function PublicacionFiltros({
     >
       <div className={style.cabeceraFiltro}>
         <h3 className={style.tituloFiltro}>Filtros</h3>
-      </div>
-
-      <div className={style.campos}>
-        <InputField
-          label="Precio mín. (USD/km)"
-          type="number"
-          name="precioMin"
-          min="0"
-          step="any"
-          placeholder="Ej: 50"
-          defaultValue={precioMin}
-        />
-        <InputField
-          label="Precio máx. (USD/km)"
-          type="number"
-          name="precioMax"
-          min="0"
-          step="any"
-          placeholder="Ej: 500"
-          defaultValue={precioMax}
-        />
-      </div>
-
-      {error && <p className={style.error}>{error}</p>}
-
-      <div className={style.acciones}>
-        <Button type="submit">Aplicar filtros</Button>
         <Button
           type="button"
           variant="outline"
-          className={style.botonLimpiar}
-          onClick={handleLimpiar}
+          className={style.botonToggle}
+          onClick={() => setAbierto((prev) => !prev)}
+          aria-expanded={abierto}
         >
-          Limpiar
+          {abierto ? 'Ocultar ▲' : 'Mostrar ▼'}
         </Button>
+      </div>
+
+      <div className={`${style.cuerpoFiltro} ${abierto ? style.abierto : ''}`}>
+        <div className={style.campos}>
+          <InputField
+            label="Precio mín. (USD/km)"
+            type="number"
+            name="precioMin"
+            min="0"
+            step="any"
+            placeholder="Ej: 50"
+            defaultValue={precioMin}
+          />
+          <InputField
+            label="Precio máx. (USD/km)"
+            type="number"
+            name="precioMax"
+            min="0"
+            step="any"
+            placeholder="Ej: 500"
+            defaultValue={precioMax}
+          />
+        </div>
+
+        {error && <p className={style.error}>{error}</p>}
+
+        <div className={style.acciones}>
+          <Button type="submit">Aplicar filtros</Button>
+          <Button
+            type="button"
+            variant="outline"
+            className={style.botonLimpiar}
+            onClick={handleLimpiar}
+          >
+            Limpiar
+          </Button>
+        </div>
       </div>
     </form>
   );
