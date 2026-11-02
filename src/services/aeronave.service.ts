@@ -32,3 +32,18 @@ export async function createAeronave(data: CrearAeronaveInput) {
 
   return response.json();
 }
+
+export async function deleteAeropuerto(id: number) {
+  const response = await api(`/aeropuertos/${id}`, {
+    method: 'DELETE',
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => null);
+
+    throw new Error(errorData?.message || 'Error al eliminar el aeropuerto');
+  }
+
+  return response.json();
+}
+
