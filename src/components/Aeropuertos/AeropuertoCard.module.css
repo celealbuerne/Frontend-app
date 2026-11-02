@@ -28,6 +28,7 @@
 .info {
   display: flex;
   flex-direction: column;
+  min-width: 0
 }
 
 .nombre {
@@ -37,6 +38,7 @@
 }
 
 .codigo {
+  flex-shrink: 0;
   background-color: #43102f;
   color: #ffffff;
   font-size: 0.8rem;

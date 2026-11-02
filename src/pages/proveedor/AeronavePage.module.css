@@ -9,7 +9,6 @@
   padding: 1.5rem 1rem 3rem;
 }
 
-/* se pisa lo que venga del estilo global de header */
 .encabezado {
   display: flex;
   flex-direction: column;
@@ -55,7 +54,6 @@
   border-radius: 999px;
 }
 
-/* Base mobile: 1 columna */
 .grilla {
   display: grid;
   grid-template-columns: 1fr;
@@ -78,7 +76,6 @@
   border-radius: 8px;
 }
 
-/* Tablet */
 @media (min-width: 640px) {
   .pagina {
     gap: 24px;
@@ -107,7 +104,6 @@
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .pagina {
     gap: 28px;

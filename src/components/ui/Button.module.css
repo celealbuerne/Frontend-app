@@ -55,3 +55,12 @@
 .outline:hover:not(:disabled) {
   background-color: rgba(27, 71, 116, 0.08);
 }
+
+.danger {
+  background-color: #7c251b;
+  color: #ffffff;
+}
+
+.danger:hover:not(:disabled) {
+  background-color: #a93226;
+}
