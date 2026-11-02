@@ -1,8 +1,17 @@
+.pagina {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1.25rem 1rem 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .contenedor {
+  box-sizing: border-box;
   width: 100%;
   max-width: 900px;
-  margin: 40px auto;
-  padding: 32px;
+  padding: 1.5rem 1rem;
   background-color: #ffffff;
   border-radius: 12px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
@@ -10,48 +19,40 @@
 
 .encabezado {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
-  margin-bottom: 28px;
-  padding-bottom: 20px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
   border-bottom: 1px solid #e0e6ed;
 }
 
 .titulo {
-  margin: 0 0 12px;
+  margin: 0 0 6px;
   color: #0b2545;
-  font-size: 28px;
+  font-size: 1.5rem;
 }
 
 .botonVolver {
+  display: inline-block;
   color: #0b2545;
   font-size: 14px;
   text-decoration: underline;
 }
 
 .botonNuevo {
-  flex-shrink: 0;
-  width: auto;
-  padding-left: 24px;
-  padding-right: 24px;
-}
-
-.botonEditar {
-  flex-shrink: 0;
-  width: auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  width: 100%;
 }
 
 .mensaje {
   margin: 0;
   color: #5c6b7a;
   text-align: center;
+  padding: 2rem 1rem;
 }
 
 .error {
-  margin: 0;
+  margin: 0 0 1rem;
   padding: 10px 12px;
   background-color: #fdecea;
   border-left: 4px solid #c62828;
@@ -63,7 +64,7 @@
 .lista {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -71,11 +72,63 @@
 
 .item {
   display: flex;
-  align-items: center;
-  gap: 24px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
 }
 
 .cardContenedor {
   flex: 1;
   min-width: 0;
+}
+
+.botonEditar {
+  width: 100%;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+}
+
+/* Tablet y desktop */
+@media (min-width: 640px) {
+  .pagina {
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .contenedor {
+    padding: 32px;
+  }
+
+  .encabezado {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+  }
+
+  .titulo {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .botonNuevo {
+    width: auto;
+    flex-shrink: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .item {
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .botonEditar {
+    width: auto;
+    flex-shrink: 0;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }

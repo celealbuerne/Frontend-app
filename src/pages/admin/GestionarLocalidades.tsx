@@ -39,8 +39,9 @@ export default function GestionarLocalidades() {
   }, []);
 
   return (
-    <main className={style.contenedor}>
-      <div className={style.encabezado}>
+    <main className={style.pagina}>
+      <div className={style.contenedor}>
+        <div className={style.encabezado}>
         <div>
           <h1 className={style.titulo}>Gestionar localidades</h1>
           <Link to="/admin" className={style.botonVolver}>
@@ -86,6 +87,7 @@ export default function GestionarLocalidades() {
           ))}
         </ul>
       )}
+      </div>
     </main>
   );
 }
