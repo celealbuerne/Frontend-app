@@ -1,59 +1,66 @@
 .contenedor {
-  max-width: 720px;
-  margin: 40px auto;
-  padding: 32px;
-  background-color: #ffffff;
-  border-radius: 12px;
+  padding: 1.5rem 1.5rem 4rem;
+  width: 100%;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .encabezado {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 24px;
+  align-items: center;
+  gap: 2px 24px;
   margin-bottom: 28px;
   padding-bottom: 20px;
-  border-bottom: 1px solid #e0e6ed;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 .textos {
-  flex: 1;
+  flex: 1 1 20rem;
   min-width: 0;
 }
 
 .titulo {
   margin: 0 0 8px;
-  color: #0b2545;
-  font-size: 28px;
+  color: #ffffff;
+  font-size: 1.8rem;
+  font-weight: 700;
 }
 
 .subtitulo {
   margin: 0;
-  color: #5c6b7a;
+  color: #d6e4f5;
   font-size: 15px;
   line-height: 1.5;
 }
 
 .botonVolver {
-  flex-shrink: 0;
-  padding: 10px 16px;
-  border: 1px solid #0b2545;
-  border-radius: 8px;
-  color: #0b2545;
-  font-size: 14px;
-  text-decoration: none;
+  display: inline-block;
+  color: #9ec9ff;
+  text-decoration: underline;
+  font-size: 0.95rem;
+  cursor: pointer;
   white-space: nowrap;
 }
 
 .botonVolver:hover {
-  background-color: #0b2545;
-  color: #ffffff;
+  color: #cbacff;
+  text-decoration: underline;
+}
+
+.tarjeta{
+  box-sizing: border-box;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .mensaje {
   margin: 0;
-  color: #5c6b7a;
+  color: #ffffff;
   text-align: center;
 }
 

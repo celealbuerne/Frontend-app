@@ -50,17 +50,8 @@
 
 /* estado sin publicaciones */
 .vacio {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  min-height: 250px;
-  padding: 3rem 2rem;
-  background-color: #ffffff;
-  border: 1px solid #e1e8ef;
-  border-radius: 14px;
-  color: #6b7d90;
+  padding: 2rem 0rem;
+  color: #e6f0fa;
   font-size: 1.05rem;
   text-align: center;
 }

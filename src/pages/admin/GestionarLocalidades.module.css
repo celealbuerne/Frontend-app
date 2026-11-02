@@ -1,20 +1,13 @@
 .pagina {
   box-sizing: border-box;
   width: 100%;
-  padding: 1.25rem 1rem 3rem;
+  padding: 1.5rem 1.5rem 4rem;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .contenedor {
   box-sizing: border-box;
   width: 100%;
-  max-width: 900px;
-  padding: 1.5rem 1rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .encabezado {
@@ -24,19 +17,23 @@
   gap: 1rem;
   margin-bottom: 1.5rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #e0e6ed;
 }
 
 .titulo {
   margin: 0 0 6px;
-  color: #0b2545;
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
 .botonVolver {
   display: inline-block;
-  color: #0b2545;
-  font-size: 14px;
+  color: #acd6ff;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.botonVolver:hover {
+  color: #cbacff;
   text-decoration: underline;
 }
 
@@ -46,7 +43,7 @@
 
 .mensaje {
   margin: 0;
-  color: #5c6b7a;
+  color: #e6f0fa;
   text-align: center;
   padding: 2rem 1rem;
 }
