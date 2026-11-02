@@ -1,5 +1,5 @@
 .mainLogo {
-  padding: 5px 0;
+  padding: 6px 16px;
 }
 
 .mainLogo a {
@@ -7,14 +7,29 @@
   align-items: center;
   color: white;
   text-decoration: none;
-  font-size: 16px;
+  font-size: 1.1rem;
   font-weight: 600;
-  gap: 12px;
+  gap: 10px;
 }
 
 .mainLogo img {
   border-radius: 50%;
   object-fit: cover;
-  height: 4rem;
+  height: 2.8rem;
   width: auto;
+}
+
+@media (min-width: 992px) {
+  .mainLogo {
+    padding: 5px 0;
+  }
+
+  .mainLogo a {
+    font-size: 16px;
+    gap: 12px;
+  }
+
+  .mainLogo img {
+    height: 4rem;
+  }
 }

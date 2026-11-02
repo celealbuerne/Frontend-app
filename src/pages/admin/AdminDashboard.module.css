@@ -1,21 +1,23 @@
 .contenedor {
+  box-sizing: border-box;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 1.5rem 1rem 3rem;
 }
 
 .titulo {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
 .listaTarjetas {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -26,22 +28,66 @@
 }
 
 .tarjeta {
-  border-radius: 20px;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 120px;
-  padding: 1.5rem;
+  min-height: 80px;
+  padding: 1.25rem 1rem;
   background-color: #ffffff;
   color: #0f2137;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 600;
   text-align: center;
   text-decoration: none;
-  box-shadow: 0 4px 20px rgba(15, 33, 55, 0.3);
+  box-shadow: 0 4px 20px rgba(15, 33, 55, 0.2);
+  transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .tarjeta:hover {
   background-color: #e0f7f4;
+  transform: translateY(-2px);
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .contenedor {
+    padding: 2.5rem 1.5rem 3.5rem;
+  }
+
+  .titulo {
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .listaTarjetas {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .tarjeta {
+    min-height: 100px;
+    padding: 1.5rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .contenedor {
+    padding: 3rem 2rem;
+  }
+
+  .listaTarjetas {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .tarjeta {
+    border-radius: 20px;
+    min-height: 120px;
+    font-size: 1.15rem;
+  }
 }

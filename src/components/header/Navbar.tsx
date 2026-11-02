@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../ui/Button';
 import style from './Navbar.module.css';
 import { useAuth } from '../../contexts/auth.context.tsx';
 
@@ -41,31 +43,47 @@ function obtenerOpciones(roles?: string[]) {
 
 export default function Navbar() {
   const { isLogged, currentUser } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   const opciones = obtenerOpciones(isLogged ? currentUser?.roles : undefined);
 
+  const toggleMenu = () => setIsOpen((prev) => !prev);
+  const closeMenu = () => setIsOpen(false);
+
   return (
     <nav className={style.navbar}>
-      <ul className={style.menu}>
-        {opciones.map((op) => {
-          return (
+      <Button
+        type="button"
+        variant="outline"
+        className={style.hamburger}
+        onClick={toggleMenu}
+        aria-label={isOpen ? 'Cerrar menú' : 'Abrir menú'}
+        aria-expanded={isOpen}
+      >
+        {isOpen ? '✕' : '☰'}
+      </Button>
+
+      <div className={`${style.navContainer} ${isOpen ? style.navOpen : ''}`}>
+        <ul className={style.menu}>
+          {opciones.map((op) => (
             <li key={op.key}>
-              <Link to={op.href} className={style.menuOption}>
+              <Link to={op.href} className={style.menuOption} onClick={closeMenu}>
                 {op.key}
               </Link>
             </li>
-          );
-        })}
-      </ul>
-      {isLogged ? (
-        <Link to="/profile" className={style.loginLink}>
-          Mi Perfil
-        </Link>
-      ) : (
-        <Link to="/login" className={style.loginLink}>
-          Ingresar
-        </Link>
-      )}
+          ))}
+        </ul>
+
+        {isLogged ? (
+          <Link to="/profile" className={style.loginLink} onClick={closeMenu}>
+            Mi Perfil
+          </Link>
+        ) : (
+          <Link to="/login" className={style.loginLink} onClick={closeMenu}>
+            Ingresar
+          </Link>
+        )}
+      </div>
     </nav>
   );
 }

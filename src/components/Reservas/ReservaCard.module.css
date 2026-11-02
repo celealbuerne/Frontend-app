@@ -1,12 +1,12 @@
 .reserva {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
   background-color: #ffffff;
   color: #435873;
   border: 1px solid #d5deea;
   border-radius: 12px;
-  padding: 20px;
+  padding: 16px;
 }
 
 .encabezado {
@@ -21,7 +21,7 @@
 .encabezado h3 {
   margin: 0;
   color: #1f2d3d;
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 .estado {
@@ -29,7 +29,7 @@
   color: #8a6d3b;
   border: 1px solid #f0b429;
   border-radius: 999px;
-  padding: 4px 12px;
+  padding: 4px 10px;
   font-size: 0.75rem;
   font-weight: bold;
   white-space: nowrap;
@@ -74,5 +74,24 @@
 }
 
 .total strong {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+}
+
+@media (min-width: 640px) {
+  .reserva {
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .encabezado h3 {
+    font-size: 1.15rem;
+  }
+
+  .estado {
+    padding: 4px 12px;
+  }
+
+  .total strong {
+    font-size: 1.2rem;
+  }
 }

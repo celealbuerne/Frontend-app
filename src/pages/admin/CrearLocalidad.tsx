@@ -65,11 +65,11 @@ export default function CrearLocalidad() {
           <p className={style.subtitulo}>
             {editando
               ? 'Modificá los datos de la localidad.'
-              : 'Registrá una localidad para poder asignarle aeropuertos.'}
+              : 'Registrá una localidad para asignarle aeropuertos.'}
           </p>
         </div>
         <Link to="/admin/localidades" className={style.botonVolver}>
-          ← Volver a gestión localidades
+          Volver a gestión localidades
         </Link>
       </div>
 
@@ -78,11 +78,13 @@ export default function CrearLocalidad() {
       ) : errorCarga ? (
         <p className={style.error}>{errorCarga}</p>
       ) : (
-        <LocalidadForm
-          valoresIniciales={localidadInicial}
-          textoBoton={editando ? 'Guardar cambios' : 'Registrar localidad'}
-          onSubmit={guardarForm}
-        />
+        <div className={style.tarjeta}>
+          <LocalidadForm
+            valoresIniciales={localidadInicial}
+            textoBoton={editando ? 'Guardar cambios' : 'Registrar localidad'}
+            onSubmit={guardarForm}
+          />
+        </div>
       )}
     </main>
   );

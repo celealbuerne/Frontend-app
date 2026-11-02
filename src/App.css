@@ -9,6 +9,7 @@ html,
 body,
 #root {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 #root {
@@ -26,9 +27,16 @@ body {
   background-color: #435a76;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
 header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: #0f2137;
   align-items: center;
   justify-content: space-between;
@@ -36,6 +44,12 @@ header {
   top: 0;
   z-index: 1000;
   box-shadow: 0 0 15px rgba(3, 19, 41, 0.853);
+}
+
+@media (min-width: 992px) {
+  header {
+    flex-direction: column;
+  }
 }
 
 footer {

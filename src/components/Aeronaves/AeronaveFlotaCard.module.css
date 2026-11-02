@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-  padding: 20px;
+  padding: 16px;
   background-color: #ffffff;
   border: 1px solid #d5deea;
   border-radius: 12px;
@@ -23,7 +23,7 @@
 
 .modelo {
   margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   color: #1f2d3d;
 }
 
@@ -77,4 +77,14 @@
   font-size: 0.95rem;
   font-weight: bold;
   color: #1f2d3d;
+}
+
+@media (min-width: 640px) {
+  .tarjeta {
+    padding: 20px;
+  }
+
+  .modelo {
+    font-size: 1.2rem;
+  }
 }

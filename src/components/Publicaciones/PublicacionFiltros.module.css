@@ -1,8 +1,7 @@
 .filtros {
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   background-color: #91aabf;
   border-radius: 14px;
   box-shadow: 0 4px 16px rgba(15, 33, 55, 0.12);
@@ -13,16 +12,53 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(15, 33, 55, 0.15);
 }
 
 .tituloFiltro {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #0f2137;
   letter-spacing: -0.01em;
   margin: 0;
+}
+
+.filtros .botonToggle {
+  width: auto;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  color: #0f2137;
+  border-color: #0f2137;
+}
+
+.filtros .botonToggle:hover:not(:disabled) {
+  background-color: rgba(15, 33, 55, 0.1);
+}
+
+.cuerpoFiltro {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-top: 0;
+  margin-top: 0;
+  border-top: 0 solid rgba(15, 33, 55, 0.15);
+  pointer-events: none;
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease,
+    padding-top 0.35s ease,
+    margin-top 0.35s ease;
+}
+
+.cuerpoFiltro.abierto {
+  max-height: 420px;
+  opacity: 1;
+  padding-top: 1rem;
+  margin-top: 0.75rem;
+  border-top-width: 1px;
+  pointer-events: auto;
 }
 
 .campos {
@@ -77,4 +113,35 @@
   border-radius: 8px;
   font-size: 0.925rem;
   line-height: 1.4;
+}
+
+@media (min-width: 992px) {
+  .filtros {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
+  .cabeceraFiltro {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(15, 33, 55, 0.15);
+  }
+
+  .tituloFiltro {
+    font-size: 1.3rem;
+  }
+
+  .filtros .botonToggle {
+    display: none;
+  }
+
+  .cuerpoFiltro {
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    padding-top: 0;
+    margin-top: 0;
+    border-top: none;
+    pointer-events: auto;
+    transition: none;
+  }
 }

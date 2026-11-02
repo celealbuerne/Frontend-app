@@ -1,26 +1,65 @@
 .navbar {
-  position: relative;
+  display: contents;
+}
+
+.navbar .hamburger {
+  width: auto;
+  padding: 6px 12px;
+  margin-right: 16px;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: #ebf5ff;
+  border-color: #4a5b6f;
+}
+
+.navbar .hamburger:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.navContainer {
   display: flex;
+  flex-direction: column;
   width: 100%;
-  justify-content: center;
-  border-top: 1px #4a5b6f solid;
-  border-bottom: 1px #4a5b6f solid;
-  padding: 5px 0;
+  max-height: 0; /* lo oculta al principio, para la animacion */
+  opacity: 0;
+  overflow: hidden;
+  padding: 0 24px;
+  gap: 1rem;
+  background-color: #0f2137;
+  border-top: 0 solid #4a5b6f;
+  border-bottom: 0px solid #4a5b6f;
+  pointer-events: none;
+  transition:
+    max-height 0.35s ease-out,
+    opacity 0.25s ease-out,
+    padding 0.35s ease;
+}
+
+.navContainer.navOpen {
+  max-height: 400px;
+  opacity: 1;
+  padding: 12px 24px 20px;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  pointer-events: auto;
 }
 
 .menu {
   display: flex;
-  gap: 1.2rem;
-}
-
-.menu li {
+  flex-direction: column;
+  gap: 0.8rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .menuOption {
   color: white;
   text-decoration: none;
-  font-size: 1.25rem;
+  text-align: center;
+  font-size: 1.15rem;
+  display: block;
+  padding: 6px 0;
 }
 
 .menuOption:hover {
@@ -28,14 +67,66 @@
 }
 
 .loginLink {
-  position: absolute; /* sale del flujo */
-  right: 20px; /* distancia al borde derecho de la pagina */
   color: #acd6ff;
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding-top: 0.8rem;
+  border-top: 1px solid #233954;
 }
 
 .loginLink:hover {
   color: #cbacff;
   text-decoration: underline;
+}
+
+@media (min-width: 992px) {
+  .navbar {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px #4a5b6f solid;
+    border-bottom: 1px #4a5b6f solid;
+    padding: 5px 0;
+  }
+
+  .navbar .hamburger {
+    display: none;
+  }
+
+  .navContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-height: none;
+    opacity: 1;
+    overflow: visible;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    pointer-events: auto;
+    transition: none;
+  }
+
+  .menu {
+    flex-direction: row;
+    gap: 1.2rem;
+  }
+
+  .menuOption {
+    font-size: 1.25rem;
+    padding: 0;
+  }
+
+  .loginLink {
+    position: absolute;
+    right: 20px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    padding-top: 0;
+    border-top: none;
+  }
 }

@@ -1,11 +1,13 @@
 .panelCalendario {
   background-color: #ffffff;
   border-radius: 14px;
-  padding: 1.75rem;
+  padding: 1rem;
   box-shadow: 0 2px 12px rgba(15, 33, 55, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 1rem;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .barraInstruccion {
@@ -52,10 +54,10 @@
 .calendarioRdp {
   --rdp-accent-color: #366cad;
   --rdp-accent-background-color: #dbeafe;
-  --rdp-day-height: 52px;
-  --rdp-day-width: 52px;
-  --rdp-day_button-height: 48px;
-  --rdp-day_button-width: 48px;
+  --rdp-day-height: 42px;
+  --rdp-day-width: 42px;
+  --rdp-day_button-height: 38px;
+  --rdp-day_button-width: 38px;
   --rdp-day_button-border-radius: 10px;
   margin: 0;
   font-family: inherit;
@@ -108,7 +110,7 @@
 .leyenda {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.75rem 1rem;
   padding-top: 0.75rem;
   border-top: 1px solid #e2e8f0;
 }
@@ -117,7 +119,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #0f2137;
 }
@@ -128,6 +130,7 @@
   border-radius: 5px;
   display: inline-block;
   border: 2px solid transparent;
+  flex-shrink: 0;
 }
 
 .indicadorDisponible {
@@ -151,11 +154,24 @@
   border-color: #cbd5e1;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  .panelCalendario {
+    padding: 1.5rem;
+    gap: 1.25rem;
+  }
+
   .calendarioRdp {
-    --rdp-day-height: 42px;
-    --rdp-day-width: 42px;
-    --rdp-day_button-height: 38px;
-    --rdp-day_button-width: 38px;
+    --rdp-day-height: 52px;
+    --rdp-day-width: 52px;
+    --rdp-day_button-height: 48px;
+    --rdp-day_button-width: 48px;
+  }
+
+  .leyenda {
+    gap: 1.5rem;
+  }
+
+  .itemLeyenda {
+    font-size: 0.95rem;
   }
 }

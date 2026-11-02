@@ -41,18 +41,17 @@ export default function AeronavePage() {
         <div className={style.textos}>
           <h1 className={style.titulo}>Mi Flota</h1>
           <p className={style.subtitulo}>
-            Estas son las aeronaves que tenés registradas. Desde acá podés revisar sus características y usarlas para crear publicaciones.
+            Desde acá podés revisar las características de las aeronaves y usarlas para crear publicaciones.
           </p>
         </div>
-        <div>
-          <Button
-            type="button"
-            variant="primary"
-            onClick={() => navigate('/proveedor/crear-aeronave')}
-          >
-            Agregar aeronave
-          </Button>
-        </div>
+        <Button
+          type="button"
+          variant="primary"
+          className={style.botonAgregar}
+          onClick={() => navigate('/proveedor/crear-aeronave')}
+        >
+          Agregar aeronave
+        </Button>
       </div>
       
       {isLoading && <p className={style.mensaje}>Cargando flota...</p>}

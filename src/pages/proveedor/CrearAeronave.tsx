@@ -69,8 +69,7 @@ export default function CrearAeronave() {
         <div className={style.textos}>
           <h1 className={style.titulo}>Agregar aeronave</h1>
           <p className={style.subtitulo}>
-            Completá los datos de tu aeronave para sumarla a tu flota. Después
-            vas a poder usarla para crear una publicación y recibir reservas.
+            Completá los datos de tu aeronave para sumarla a tu flota.
           </p>
         </div>
         <Link to="/proveedor/aeronaves" className={style.botonVolver}>
