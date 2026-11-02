@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { getAllAeropuertos } from '../../services/aeropuerto.service';
 import type { Aeropuerto } from '../../models/aeropuerto.model';
 import { useAuth } from '../../contexts/auth.context';
+import { deleteAeropuerto } from '../../services/aeronave.service';
 import AeropuertoCard from '../../components/Aeropuertos/AeropuertoCard';
 import Button from '../../components/ui/Button';
 import style from './GestionarAeropuertos.module.css';
@@ -86,16 +87,27 @@ export default function GestionarAeropuertos() {
                 <AeropuertoCard aeropuerto={aeropuerto} />
               </div>
               {esAdmin && (
-                <Button
-                  type="button"
-                  variant="secondary"
-                  className={style.botonEditar}
-                  onClick={() =>
-                    navigate(`/admin/editar-aeropuerto/${aeropuerto.id}`)
-                  }
-                >
-                  Editar
-                </Button>
+                <div className={style.botonesAdmin}>
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className={style.botonEditar}
+                    onClick={() =>
+                      navigate(`/admin/editar-aeropuerto/${aeropuerto.id}`)
+                    }
+                  >
+                    Editar
+                  </Button>
+                  
+                  <Button
+                    type="button"
+                    variant="danger"
+                    className={style.botonEliminar}
+                    onClick={() => deleteAeropuerto(aeropuerto.id)}
+                  >
+                    Eliminar
+                  </Button>
+                </div>
               )}
             </li>
           ))}
