@@ -18,7 +18,6 @@ export default function LocalidadForm({
 }: LocalidadFormProps) {
   const [datos, setDatos] = useState({
     nombre: valoresIniciales?.nombre ?? '',
-    pais: valoresIniciales?.pais ?? '',
     provincia: valoresIniciales?.provincia ?? '',
     codigoPostal: valoresIniciales?.codigoPostal?.toString() ?? '',
   });
@@ -39,7 +38,7 @@ export default function LocalidadForm({
     try {
       await onSubmit({
         nombre: datos.nombre,
-        pais: datos.pais,
+        pais: 'Argentina',
         provincia: datos.provincia,
         codigoPostal: Number(datos.codigoPostal),
       });
@@ -57,10 +56,8 @@ export default function LocalidadForm({
       <InputField
         label="País"
         name="pais"
-        placeholder="Ej: Argentina"
-        value={datos.pais}
-        onChange={handleChange}
-        required
+        value="Argentina"
+        disabled
       />
 
       <InputField

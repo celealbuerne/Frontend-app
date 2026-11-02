@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAllAeropuertos } from '../../services/aeropuerto.service';
 import type { Aeropuerto } from '../../models/aeropuerto.model';
+import { useAuth } from '../../contexts/auth.context';
 import AeropuertoCard from '../../components/Aeropuertos/AeropuertoCard';
 import Button from '../../components/ui/Button';
 import style from './GestionarAeropuertos.module.css';
 
 export default function GestionarAeropuertos() {
   const navigate = useNavigate();
+  const { isLogged, currentUser } = useAuth();
+  const esAdmin = Boolean(isLogged && currentUser?.roles.includes('ADMIN'));
+
   const [aeropuertos, setAeropuertos] = useState<Aeropuerto[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -45,20 +49,26 @@ export default function GestionarAeropuertos() {
     <main className={style.contenedor}>
       <div className={style.encabezado}>
         <div>
-          <h1 className={style.titulo}>Gestionar aeropuertos</h1>
-          <Link to="/admin" className={style.botonVolver}>
-            Volver al dashboard
-          </Link>
+          <h1 className={style.titulo}>
+            {esAdmin ? 'Gestionar aeropuertos' : 'Aeropuertos Disponibles'}
+          </h1>
+          {esAdmin && (
+            <Link to="/admin" className={style.botonVolver}>
+              Volver al dashboard
+            </Link>
+          )}
         </div>
 
-        <Button
-          type="button"
-          variant="primary"
-          className={style.botonNuevo}
-          onClick={() => navigate('/admin/crear-aeropuerto')}
-        >
-          Nuevo aeropuerto
-        </Button>
+        {esAdmin && (
+          <Button
+            type="button"
+            variant="primary"
+            className={style.botonNuevo}
+            onClick={() => navigate('/admin/crear-aeropuerto')}
+          >
+            Nuevo aeropuerto
+          </Button>
+        )}
       </div>
 
       {cargando && <p className={style.mensaje}>Cargando aeropuertos...</p>}
@@ -75,16 +85,18 @@ export default function GestionarAeropuertos() {
               <div className={style.cardContenedor}>
                 <AeropuertoCard aeropuerto={aeropuerto} />
               </div>
-              <Button
-                type="button"
-                variant="secondary"
-                className={style.botonEditar}
-                onClick={() =>
-                  navigate(`/admin/editar-aeropuerto/${aeropuerto.id}`)
-                }
-              >
-                Editar
-              </Button>
+              {esAdmin && (
+                <Button
+                  type="button"
+                  variant="secondary"
+                  className={style.botonEditar}
+                  onClick={() =>
+                    navigate(`/admin/editar-aeropuerto/${aeropuerto.id}`)
+                  }
+                >
+                  Editar
+                </Button>
+              )}
             </li>
           ))}
         </ul>

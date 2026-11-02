@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import { getAllAeropuertos } from '../../services/aeropuerto.service';
 import type { Aeropuerto } from '../../models/aeropuerto.model';
 import InputField from '../ui/InputField';
@@ -10,23 +10,24 @@ import style from './AeropuertoSelector.module.css';
 interface AeropuertoSelectorProps {
   aeropuertoSeleccionado?: Aeropuerto | null;
   onSeleccionar: (aeropuerto: Aeropuerto | null) => void;
+  titulo?: string;
 }
 
 export default function AeropuertoSelector({
   aeropuertoSeleccionado,
   onSeleccionar,
+  titulo = 'Aeropuerto de destino',
 }: AeropuertoSelectorProps) {
   const [criterio, setCriterio] = useState<'localidadNombre' | 'codigo'>(
     'localidadNombre'
   );
+  const [valorBusqueda, setValorBusqueda] = useState<string>('');
   const [aeropuertos, setAeropuertos] = useState<Aeropuerto[] | null>(null);
   const [cargando, setCargando] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const handleBuscar = async (event: SubmitEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const datos = new FormData(event.currentTarget);
-    const valor = String(datos.get('valorBusqueda') ?? '').trim();
+  const handleBuscar = async () => {
+    const valor = valorBusqueda.trim();
 
     if (!valor) {
       setError('Ingresá un valor para buscar.');
@@ -50,6 +51,13 @@ export default function AeropuertoSelector({
     }
   };
 
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleBuscar();
+    }
+  };
+
   const handleSeleccionar = (aero: Aeropuerto) => {
     if (aeropuertoSeleccionado?.id === aero.id) {
       onSeleccionar(null);
@@ -60,9 +68,9 @@ export default function AeropuertoSelector({
 
   return (
     <section className={style.contenedor}>
-      <h3 className={style.titulo}>Aeropuerto de destino</h3>
+      <h3 className={style.titulo}>{titulo}</h3>
 
-      <form className={style.formulario} onSubmit={handleBuscar}>
+      <div className={style.formulario}>
         <div className={style.campos}>
           <SelectField
             label="Buscar por"
@@ -83,16 +91,19 @@ export default function AeropuertoSelector({
                 : 'Código'
             }
             name="valorBusqueda"
+            value={valorBusqueda}
+            onChange={(e) => setValorBusqueda(e.target.value)}
+            onKeyDown={handleKeyDown}
             placeholder={
-              criterio === 'localidadNombre' ? 'Ej: Rosario' : 'Ej: 2000'
+              criterio === 'localidadNombre' ? 'Ej: Rosario' : 'Ej: ROS'
             }
           />
         </div>
 
-        <Button type="submit" isLoading={cargando}>
+        <Button type="button" onClick={handleBuscar} isLoading={cargando}>
           Buscar aeropuertos
         </Button>
-      </form>
+      </div>
 
       {error && <p className={style.error}>{error}</p>}
 

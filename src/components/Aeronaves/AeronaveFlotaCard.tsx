@@ -1,5 +1,6 @@
 import type { Aeronave } from '../../models/aeronave.model.ts';
 import { formatearFecha } from '../../utils/date.utils.ts';
+import AeropuertoCard from '../Aeropuertos/AeropuertoCard.tsx';
 import style from './AeronaveFlotaCard.module.css';
 
 interface AeronaveCardProps  {
@@ -34,6 +35,10 @@ export default function AeronaveFlotaCard({ aeronave }: AeronaveCardProps) {
           <dd>{formatearFecha(aeronave.antiguedad)}</dd>
         </div>
       </dl>
+
+      {aeronave.ultimoAeropuerto && (
+        <AeropuertoCard aeropuerto={aeronave.ultimoAeropuerto} />
+      )}
     </article>
   );
 }
