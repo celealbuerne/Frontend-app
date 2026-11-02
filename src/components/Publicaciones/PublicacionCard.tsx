@@ -10,7 +10,7 @@ export default function PublicacionCard({
   publicacion: Publicacion;
 }) {
   const navigate = useNavigate();
-  const { imagen, descripcion, precioPorDia, aeronave } = publicacion;
+  const { imagen, precioPorDia, aeronave } = publicacion;
   const { modelo, capacidad, ultimoAeropuerto } = aeronave;
 
   const src = `${BASE_URL}/${imagen.replace(/^\/+/, '')}`;
@@ -25,9 +25,6 @@ export default function PublicacionCard({
 
       <div className={style.especificacionesPubli}>
         <p>{ultimoAeropuerto.nombre}</p>
-        <p className={style.descripcionPubli} title={descripcion}>
-          {descripcion}
-        </p>
         <p>Hasta {capacidad} pasajeros</p>
       </div>
 

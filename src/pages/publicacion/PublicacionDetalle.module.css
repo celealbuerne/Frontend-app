@@ -115,6 +115,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
 }
 
 .columnaInformacion {
@@ -130,6 +131,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  min-width: 0;
 }
 
 .subtitulo {
@@ -144,6 +146,8 @@
   line-height: 1.7;
   color: #0f2137;
   margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .rejillaDatos {

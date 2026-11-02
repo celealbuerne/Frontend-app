@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/auth.context.tsx';
 const NAV_VISITANTE = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
-  { key: 'Aeropuertos', href: '#' },
+  { key: 'Aeropuertos', href: '/aeropuertos' },
   { key: 'Sobre nosotros', href: '#' },
 ];
 
@@ -16,22 +16,21 @@ const NAV_PROVEEDOR = [
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Publicaciones', href: '/proveedor' },
   { key: 'Reservas', href: '/mis-reservas' },
-  // { key: 'Crear Publicación', href: '/proveedor/crear-publicacion' }, va por el boton de la pag anterior
   { key: 'Mi Flota', href: '/proveedor/aeronaves' },
-  { key: 'Aeropuertos', href: '#' },
+  { key: 'Aeropuertos', href: '/aeropuertos' },
 ];
 
 const NAV_CLIENTE = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
   { key: 'Mis Reservas', href: '/mis-reservas' },
-  { key: 'Aeropuertos', href: '#' },
+  { key: 'Aeropuertos', href: '/aeropuertos' },
 ];
 
 const NAV_ADMIN = [
   { key: 'Inicio', href: '/' },
   { key: 'Publicaciones', href: '/publicaciones' },
-  { key: 'Aeropuertos', href: '/crear-aeropuerto' },
+  { key: 'Aeropuertos', href: '/aeropuertos' },
   { key: 'Dashboard Administrador', href: '/admin' },
 ];
 

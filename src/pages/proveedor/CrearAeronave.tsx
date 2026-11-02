@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { ChangeEvent, SubmitEvent } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import InputField from '../../components/ui/InputField.tsx';
 import Button from '../../components/ui/Button.tsx';
+import AeropuertoSelector from '../../components/Aeropuertos/AeropuertoSelector.tsx';
 import { createAeronave } from '../../services/aeronave.service.ts';
-import { getAllAeropuertos } from '../../services/aeropuerto.service.ts';
 import type { Aeropuerto } from '../../models/aeropuerto.model.ts';
 import style from './CrearAeronave.module.css';
 
@@ -16,43 +16,19 @@ const datosIniciales = {
   autonomia: '',
   velocidadMaxima: '',
   antiguedad: '',
-  ultimoAeropuerto: '',
 };
 
 export default function CrearAeronave() {
   const navigate = useNavigate();
   const [datos, setDatos] = useState(datosIniciales);
-  const [aeropuertos, setAeropuertos] = useState<Aeropuerto[]>([]);
+  const [ultimoAeropuerto, setUltimoAeropuerto] = useState<Aeropuerto | null>(
+    null
+  );
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    let cancelado = false;
-
-    async function cargarAeropuertos() {
-      try {
-        const response = await getAllAeropuertos();
-        if (!cancelado) setAeropuertos(response.data);
-      } catch (err) {
-        if (!cancelado) {
-          setError(
-            err instanceof Error
-              ? err.message
-              : 'Error al cargar los aeropuertos'
-          );
-        }
-      }
-    }
-
-    cargarAeropuertos();
-
-    return () => {
-      cancelado = true;
-    };
-  }, []);
-
   function handleChange(
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const { name, value } = e.target;
     setDatos((prev) => ({ ...prev, [name]: value }));
@@ -61,12 +37,18 @@ export default function CrearAeronave() {
   async function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     setError('');
+
+    if (!ultimoAeropuerto) {
+      setError('Seleccioná un aeropuerto');
+      return;
+    }
+
     setIsLoading(true);
 
     try {
       await createAeronave({
         ...datos,
-        ultimoAeropuerto: Number(datos.ultimoAeropuerto),
+        ultimoAeropuerto: ultimoAeropuerto.id,
         capacidad: Number(datos.capacidad),
         autonomia: Number(datos.autonomia),
         velocidadMaxima: Number(datos.velocidadMaxima),
@@ -167,23 +149,11 @@ export default function CrearAeronave() {
           />
         </div>
 
-        <label className={style.campo}>
-          Último aeropuerto
-          <select
-            className={style.select}
-            name="ultimoAeropuerto"
-            value={datos.ultimoAeropuerto}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Seleccioná un aeropuerto</option>
-            {aeropuertos.map((aeropuerto) => (
-              <option key={aeropuerto.id} value={aeropuerto.id}>
-                {aeropuerto.nombre}
-              </option>
-            ))}
-          </select>
-        </label>
+        <AeropuertoSelector
+          titulo="Último aeropuerto"
+          aeropuertoSeleccionado={ultimoAeropuerto}
+          onSeleccionar={setUltimoAeropuerto}
+        />
 
         {error && <p className={style.error}>{error}</p>}
 

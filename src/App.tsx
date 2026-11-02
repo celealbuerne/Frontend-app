@@ -30,6 +30,7 @@ function App() {
             {/* Rutas públicas */}
             <Route index element={<HomePage />} />
             <Route path="publicaciones" element={<PublicacionHome />} />
+            <Route path="aeropuertos" element={<GestionarAeropuertos />} />
             <Route path="publicaciones/:id" element={<PublicacionDetalle />} />
             <Route
               path="publicaciones/:id/disponibilidad"

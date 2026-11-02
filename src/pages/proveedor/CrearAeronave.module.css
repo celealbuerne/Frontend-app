@@ -65,8 +65,7 @@
   color: #1f2d3d;
 }
 
-.textarea,
-.select {
+.textarea {
   padding: 10px 12px;
   font-family: inherit;
   font-size: 0.95rem;
@@ -74,9 +73,6 @@
   background-color: #ffffff;
   border: 1px solid #d5deea;
   border-radius: 8px;
-}
-
-.textarea {
   resize: vertical;
 }
 
