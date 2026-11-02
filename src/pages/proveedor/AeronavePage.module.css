@@ -1,18 +1,20 @@
 .pagina {
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
+  width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 1.5rem 1rem 3rem;
 }
 
-/* se pisa lo que venga del estilo global de header (fondo oscuro, sombra, etc.) */
+/* se pisa lo que venga del estilo global de header */
 .encabezado {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
   padding: 0 0 16px;
   background-color: transparent;
   box-shadow: none;
@@ -25,20 +27,24 @@
 
 .titulo {
   margin: 0 0 6px;
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   color: #ffffff;
   text-align: left;
 }
 
 .subtitulo {
   margin: 0;
-  max-width: 640px;
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1.4;
   color: #dce6f2;
 }
 
+.botonAgregar {
+  width: 100%;
+}
+
 .contador {
+  align-self: flex-start;
   white-space: nowrap;
   padding: 6px 14px;
   font-size: 0.85rem;
@@ -49,30 +55,16 @@
   border-radius: 999px;
 }
 
-/* minmax(0, 1fr) permite que la columna se achique aunque el contenido sea más ancho */
+/* Base mobile: 1 columna */
 .grilla {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px;
-}
-
-.botonAgregar {
-  flex-shrink: 0;
-  padding: 10px 20px;
-  font-weight: bold;
-  color: #0d2137;
-  text-decoration: none;
-  background-color: #ffffff;
-  border-radius: 8px;
-}
-
-.botonAgregar:hover {
-  background-color: #e3e9f1;
+  grid-template-columns: 1fr;
+  gap: 16px;
 }
 
 .mensaje {
   margin: 0;
-  padding: 40px 24px;
+  padding: 32px 16px;
   text-align: center;
   color: #dce6f2;
   border: 1px dashed #6f8bad;
@@ -86,4 +78,59 @@
   background-color: #fee2e2;
   border: 1px solid #fecaca;
   border-radius: 8px;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .pagina {
+    gap: 24px;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .encabezado {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .titulo {
+    font-size: 1.8rem;
+  }
+
+  .botonAgregar {
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .grilla {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+  .pagina {
+    gap: 28px;
+    padding: 40px 24px;
+  }
+
+  .titulo {
+    font-size: 1.9rem;
+  }
+
+  .subtitulo {
+    max-width: 640px;
+    font-size: 1rem;
+  }
+
+  .grilla {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .mensaje {
+    padding: 40px 24px;
+  }
 }
