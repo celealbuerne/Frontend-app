@@ -1,73 +1,89 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Contenidos
 
-Currently, two official plugins are available:
+- [Funcionalidades](#funcionalidades)
+- [Tecnologías](#tecnologías)
+- [Instalación](#instalación)
+- [Ejecución](#ejecución)
+- [Scripts Disponibles](#scripts-disponibles)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Funcionalidades
 
-## React Compiler
+La aplicación tiene cuatro tipos de usuario:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Rol | Qué puede hacer |
+| --- | --- |
+| Visitante | Ver publicaciones y aeropuertos, registrarse e iniciar sesión |
+| Cliente | Solicitar reservas y consultar Mis Reservas |
+| Proveedor | Gestionar Mi Flota y crear publicaciones de aeronaves |
+| Administrador | Crear, editar y eliminar aeropuertos y localidades |
 
-## Expanding the ESLint configuration
+## Tecnologías
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+| Tecnología | Versión |
+| --- | --- |
+| PNPM | 11.27.0 |
+| Node.js | 24 |
+| TypeScript | 6.0.3 |
+| React | 19.2.8 |
+| Vite | 8.2.1 |
+| React Router | 7.18.4 |
+| React Day Picker | 10.0.2 |
+| CSS Modules | Integrado en Vite |
+| ESLint | 10.8.1 |
+| Prettier | 3.9.9 |
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Instalación
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. Clonar el repositorio
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+git clone https://github.com/celealbuerne/Frontend-app.git
+cd Frontend-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Instalar dependencias
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+pnpm install
 ```
+
+### 3. Configurar variables de entorno
+
+Creá un archivo `.env` en la raíz del proyecto (ver [Configuración](#configuración)).
+
+### 4. Ejecutar el proyecto
+
+```bash
+pnpm dev
+```
+
+La aplicación estará disponible en `http://localhost:5173`.
+
+
+## Ejecución
+
+### Modo desarrollo
+
+```bash
+pnpm dev
+```
+
+Inicia el servidor de desarrollo con hot-reload en `http://localhost:5173`.
+
+### Modo producción
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## Scripts Disponibles
+
+| Script | Comando | Descripción |
+| --- | --- | --- |
+| dev | `pnpm dev` | Inicia el servidor de desarrollo con hot-reload |
+| build | `pnpm build` | Compila TypeScript y genera el build de producción |
+| preview | `pnpm preview` | Previsualiza el build de producción localmente |
+| lint | `pnpm lint` | Ejecuta ESLint para verificar la calidad del código |
+| format | `pnpm format` | Formatea el código con Prettier |# AeroLux - Frontend
