@@ -43,6 +43,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.75rem;
+  min-width: 0;
 }
 
 .cabecera {
@@ -79,9 +80,10 @@
 
 .layoutGrid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
   gap: 2rem;
   align-items: start;
+  min-width: 0;
 }
 
 .columnaIzquierda,
@@ -89,6 +91,15 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  min-width: 0;
+}
+
+.columnaIzquierda > *,
+.columnaDerecha > *,
+.tarjetaResumen > * {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .tarjetaResumen {
@@ -99,6 +110,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  min-width: 0;
 }
 
 .tituloSeccion {
@@ -204,13 +216,22 @@
 
 @media (max-width: 900px) {
   .layoutGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
 @media (max-width: 768px) {
+  .contenedor {
+    width: 100%;
+    padding: 1rem 0.5rem 2rem;
+  }
+
   .seccionPrincipal {
-    padding: 1.4rem 1.1rem;
+    padding: 1rem 0.75rem;
+  }
+
+  .tarjetaResumen {
+    padding: 1rem;
   }
 
   .titulo {

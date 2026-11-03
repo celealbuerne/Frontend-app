@@ -94,6 +94,15 @@
   font-size: 0.95rem;
 }
 
+.exito {
+  margin: 0 0 1.5rem;
+  padding: 0.9rem 1.1rem;
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
 /* Tablet */
 @media (min-width: 640px) {
   .contenedor {

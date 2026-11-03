@@ -16,6 +16,23 @@ export default function GestionarAeropuertos() {
   const [aeropuertos, setAeropuertos] = useState<Aeropuerto[]>([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [exito, setExito] = useState<string | null>(null);
+
+  const handleEliminar = async (id: number) => {
+    try {
+      setError(null);
+      setExito(null);
+      await deleteAeropuerto(id);
+      setAeropuertos((prev) =>
+        prev.filter((aeropuerto) => aeropuerto.id !== id)
+      );
+      setExito('Aeropuerto eliminado correctamente.');
+    } catch (e) {
+      setError(
+        e instanceof Error ? e.message : 'Error al eliminar el aeropuerto'
+      );
+    }
+  };
 
   useEffect(() => {
     let cancelado = false;
@@ -74,6 +91,7 @@ export default function GestionarAeropuertos() {
 
       {cargando && <p className={style.mensaje}>Cargando aeropuertos...</p>}
       {error && <p className={style.error}>{error}</p>}
+      {exito && <p className={style.exito}>{exito}</p>}
 
       {!cargando && !error && aeropuertos.length === 0 && (
         <p className={style.mensaje}>No hay aeropuertos registrados.</p>
@@ -103,7 +121,7 @@ export default function GestionarAeropuertos() {
                     type="button"
                     variant="danger"
                     className={style.botonEliminar}
-                    onClick={() => deleteAeropuerto(aeropuerto.id)}
+                    onClick={() => handleEliminar(aeropuerto.id)}
                   >
                     Eliminar
                   </Button>
