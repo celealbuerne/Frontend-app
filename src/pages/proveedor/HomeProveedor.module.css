@@ -71,25 +71,25 @@
 /* SM */
 @media (min-width: 600px) {
   .contenedor {
-    padding: 3rem 2rem 4rem; 
+    padding: 3rem 2rem 4rem;
   }
 
   .encabezado {
-    flex-direction: row; 
-    align-items: center; 
-    justify-content: space-between; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .titulo {
-    font-size: 1.8rem; 
+    font-size: 1.8rem;
   }
 
   .botonNueva {
-    width: auto; 
+    width: auto;
   }
 
   .listado {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.8rem;
   }
 }

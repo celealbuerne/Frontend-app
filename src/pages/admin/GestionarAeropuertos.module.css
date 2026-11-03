@@ -70,7 +70,7 @@
   flex-shrink: 0;
 }
 
-.botonEditar, 
+.botonEditar,
 .botonEliminar {
   flex: 1;
   width: auto;

@@ -80,13 +80,13 @@
 }
 
 /* MD */
-@media (min-width: 600px) { 
+@media (min-width: 600px) {
   .card {
-    padding: 28px 24px; 
+    padding: 28px 24px;
   }
 
   .title {
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
   }
 
   .form {
@@ -99,39 +99,39 @@
   .sectionTitle,
   .submitButton,
   .loginPrompt {
-    grid-column: span 2; 
+    grid-column: span 2;
   }
 
   .roleSection {
-    gap: 20px; 
+    gap: 20px;
   }
 
   .sectionTitle {
-    font-size: 1.25rem; 
+    font-size: 1.25rem;
   }
 
   .submitButton button {
-    width: auto; 
-    min-width: 200px; 
+    width: auto;
+    min-width: 200px;
   }
 }
 
 /* LG */
-@media (min-width: 1024px) { 
+@media (min-width: 1024px) {
   .card {
-    padding: 35px 30px; 
+    padding: 35px 30px;
   }
 
   .title {
-    font-size: 1.8rem; 
-    margin-bottom: 25px; 
+    font-size: 1.8rem;
+    margin-bottom: 25px;
   }
 
   .form {
-    gap: 30px; 
+    gap: 30px;
   }
 
   .roleSection {
-    gap: 30px; 
+    gap: 30px;
   }
 }

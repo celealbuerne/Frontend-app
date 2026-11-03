@@ -28,16 +28,16 @@ export default function MisReservas() {
           );
         }
       } finally {
-          if (!cancelado) {
-            setIsLoading(false);
-          }
+        if (!cancelado) {
+          setIsLoading(false);
+        }
       }
     }
 
     cargarReservas();
     return () => {
       cancelado = true;
-    }
+    };
   }, []);
 
   if (isLoading) return <p className={style.mensaje}>Cargando reservas...</p>;

@@ -67,7 +67,11 @@ export default function Navbar() {
         <ul className={style.menu}>
           {opciones.map((op) => (
             <li key={op.key}>
-              <Link to={op.href} className={style.menuOption} onClick={closeMenu}>
+              <Link
+                to={op.href}
+                className={style.menuOption}
+                onClick={closeMenu}
+              >
                 {op.key}
               </Link>
             </li>

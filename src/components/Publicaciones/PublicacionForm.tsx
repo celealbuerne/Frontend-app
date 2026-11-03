@@ -21,7 +21,7 @@ export default function PublicacionForm({
   textoBoton,
   onSubmit,
 }: PublicacionFormProps) {
-  const { isLogged } = useAuth(); 
+  const { isLogged } = useAuth();
   const editando = valoresIniciales !== undefined;
 
   const [aeronaves, setAeronaves] = useState<Aeronave[]>([]);
@@ -31,18 +31,17 @@ export default function PublicacionForm({
   const [enviando, setEnviando] = useState(false);
 
   const aeronavesDisponibles = aeronaves.filter(
-  (aeronave) => !aeronave.publicacion );
+    (aeronave) => !aeronave.publicacion
+  );
 
   useEffect(() => {
     if (!isLogged || editando) return;
     let cancelado = false;
 
     const cargarAeronaves = async () => {
-
       try {
         const respuesta = await getAeronavesByProveedor(); //revisar lo del id
-        if (!cancelado)
-        setAeronaves(respuesta.data);
+        if (!cancelado) setAeronaves(respuesta.data);
       } catch (e) {
         if (!cancelado) {
           setErrorServidor(
@@ -54,8 +53,8 @@ export default function PublicacionForm({
     cargarAeronaves();
     return () => {
       cancelado = true;
-    }
-  },[isLogged, editando]);
+    };
+  }, [isLogged, editando]);
 
   useEffect(() => {
     return () => {
@@ -160,11 +159,14 @@ export default function PublicacionForm({
       )}
       {errorServidor && <p className={style.errorServidor}>{errorServidor}</p>}
 
-    {!editando && aeronaves.length > 0 && aeronavesDisponibles.length === 0 && (
-      <p className={style.errorServidor}>
-        Todas tus aeronaves ya tienen una publicación. Podés agregar una nueva desde Mi Flota.
-      </p>
-    )}
+      {!editando &&
+        aeronaves.length > 0 &&
+        aeronavesDisponibles.length === 0 && (
+          <p className={style.errorServidor}>
+            Todas tus aeronaves ya tienen una publicación. Podés agregar una
+            nueva desde Mi Flota.
+          </p>
+        )}
 
       <Button type="submit" variant="primary" disabled={enviando}>
         {enviando ? 'Guardando...' : textoBoton}

@@ -53,12 +53,7 @@ export default function LocalidadForm({
 
   return (
     <form className={style.formulario} onSubmit={handleSubmit}>
-      <InputField
-        label="País"
-        name="pais"
-        value="Argentina"
-        disabled
-      />
+      <InputField label="País" name="pais" value="Argentina" disabled />
 
       <InputField
         label="Provincia"

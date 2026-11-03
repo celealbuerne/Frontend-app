@@ -56,8 +56,8 @@
 }
 
 .tarjeta > * {
-  flex: 1; 
-  max-width: none; 
+  flex: 1;
+  max-width: none;
 }
 
 .flecha {

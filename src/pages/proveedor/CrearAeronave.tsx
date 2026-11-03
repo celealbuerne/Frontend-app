@@ -78,7 +78,6 @@ export default function CrearAeronave() {
       </div>
 
       <form className={style.formulario} onSubmit={handleSubmit}>
-
         <InputField
           label="Modelo"
           name="modelo"

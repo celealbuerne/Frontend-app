@@ -3,9 +3,9 @@ import { formatearFecha } from '../../utils/date.utils.ts';
 import AeropuertoCard from '../Aeropuertos/AeropuertoCard.tsx';
 import style from './AeronaveFlotaCard.module.css';
 
-interface AeronaveCardProps  {
+interface AeronaveCardProps {
   aeronave: Aeronave;
-};
+}
 
 export default function AeronaveFlotaCard({ aeronave }: AeronaveCardProps) {
   return (

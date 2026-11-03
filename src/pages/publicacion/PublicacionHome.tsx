@@ -123,8 +123,7 @@ export default function PublicacionHome() {
               <p>
                 {hayFiltros
                   ? 'No se encontraron publicaciones en ese rango de precio.'
-                  : 'No se encontraron publicaciones.'
-                }
+                  : 'No se encontraron publicaciones.'}
               </p>
             </div>
           )}

@@ -28,7 +28,7 @@
 .info {
   display: flex;
   flex-direction: column;
-  min-width: 0
+  min-width: 0;
 }
 
 .nombre {

@@ -46,4 +46,3 @@ export async function deleteAeropuerto(id: number) {
 
   return response.json();
 }
-

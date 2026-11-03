@@ -31,7 +31,9 @@ export async function createReserva(
   return response.json();
 }
 
-export async function getAllReservas(filtros: ReservaFiltros = {}): Promise<ReservasDetalleResponse> {
+export async function getAllReservas(
+  filtros: ReservaFiltros = {}
+): Promise<ReservasDetalleResponse> {
   const params = new URLSearchParams();
 
   if (filtros.estado !== undefined) {

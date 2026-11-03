@@ -21,7 +21,9 @@ export default function AeronavePage() {
         if (!cancelado) setAeronaves(response.data);
       } catch (err) {
         if (!cancelado) {
-          setError(err instanceof Error ? err.message : 'Error al cargar las aeronaves');
+          setError(
+            err instanceof Error ? err.message : 'Error al cargar las aeronaves'
+          );
         }
       } finally {
         if (!cancelado) setIsLoading(false);
@@ -41,7 +43,8 @@ export default function AeronavePage() {
         <div className={style.textos}>
           <h1 className={style.titulo}>Mi Flota</h1>
           <p className={style.subtitulo}>
-            Desde acá podés revisar las características de las aeronaves y usarlas para crear publicaciones.
+            Desde acá podés revisar las características de las aeronaves y
+            usarlas para crear publicaciones.
           </p>
         </div>
         <Button
@@ -53,7 +56,7 @@ export default function AeronavePage() {
           Agregar aeronave
         </Button>
       </div>
-      
+
       {isLoading && <p className={style.mensaje}>Cargando flota...</p>}
 
       {error && <p className={style.error}>{error}</p>}
@@ -64,17 +67,17 @@ export default function AeronavePage() {
 
       {!isLoading && !error && aeronaves.length > 0 && (
         <>
-        <span className={style.contador}>
-          {aeronaves.length}{' '}
-          {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
-        </span>
+          <span className={style.contador}>
+            {aeronaves.length}{' '}
+            {aeronaves.length === 1 ? 'aeronave' : 'aeronaves'}
+          </span>
 
-        <div className={style.grilla}>
-          {aeronaves.map((aeronave) => (
-            <AeronaveFlotaCard key={aeronave.id} aeronave={aeronave}/>
-          ))}
-        </div>
-      </>
+          <div className={style.grilla}>
+            {aeronaves.map((aeronave) => (
+              <AeronaveFlotaCard key={aeronave.id} aeronave={aeronave} />
+            ))}
+          </div>
+        </>
       )}
     </section>
   );

@@ -17,12 +17,12 @@ export default function CrearPublicacion() {
         <div className={style.textos}>
           <h1 className={style.titulo}>Nueva publicación</h1>
           <p className={style.subtitulo}>
-            Ingresá los datos para la publicación. Cada aeronave solo puede tener una
-            publicación.
+            Ingresá los datos para la publicación. Cada aeronave solo puede
+            tener una publicación.
           </p>
         </div>
         <Link to="/proveedor" className={style.botonVolver}>
-           Volver a mis publicaciones
+          Volver a mis publicaciones
         </Link>
       </div>
 
