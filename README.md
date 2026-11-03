@@ -29,7 +29,6 @@ La aplicación tiene cuatro tipos de usuario:
 | Vite | 8.2.1 |
 | React Router | 7.18.4 |
 | React Day Picker | 10.0.2 |
-| CSS Modules | Integrado en Vite |
 | ESLint | 10.8.1 |
 | Prettier | 3.9.9 |
 
